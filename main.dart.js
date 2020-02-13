@@ -7608,7 +7608,7 @@ auw:function(a){var t=0,s=P.aa(u.z),r,q=2,p,o=[],n,m,l,k,j,i,h
 var $async$ld=P.a2(function(b,c){if(b===1){p=c
 t=q}while(true)switch(t){case 0:i=null
 q=4
-n="http://www.luckfu.com:5001/"
+n="https://cors-anywhere.herokuapp.com/http://www.luckfu.com:5001/"
 P.e7(C.d.S("acc:",n)+a)
 k=u.N
 t=7
@@ -18869,7 +18869,7 @@ Aa:function(a){var t
 if(P.ne(a).gIV())return a
 t=this.gQC()
 if(t==null)t=""
-return t+("/assets/"+H.c(a))},
+return t+("assets/"+H.c(a))},
 dt:function(a,b){return this.a4C(a,b)},
 a4C:function(a,b){var t=0,s=P.aa(u.yp),r,q=2,p,o=[],n=this,m,l,k,j,i,h,g,f
 var $async$dt=P.a2(function(c,d){if(c===1){p=d
