@@ -1,0 +1,471 @@
+<!doctype html><html lang=en dir=content/en>
+<head>
+<meta name=baidu-site-verification content="code-HXR9G6t0qN">
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=content-security-policy content="upgrade-insecure-requests">
+<title> Use python scripts to preemptively create Oracle VM.Standard.A1.Flex - luckfu's notes. </title>
+<meta name=keywords content="Blog,Software,Big Data,Product,Architecture,python">
+<meta name=author content="luckfu">
+<meta property="og:title" content="Use python scripts to preemptively create Oracle VM.Standard.A1.Flex">
+<meta property="og:site_name" content="luckfu's notes.">
+<meta property="og:image" content="/img/author.jpg">
+<meta name=title content="Use python scripts to preemptively create Oracle VM.Standard.A1.Flex - luckfu's notes.">
+<meta name=description content="Python script create VM.Standard.A1.Flex">
+<link rel="shortcut icon" href=/img/favicon.ico>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=apple-touch-icon-precomposed href=/img/apple-touch-icon.png>
+<link href=//cdn.bootcdn.net/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css rel=stylesheet type=text/css>
+<link href=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.css rel=stylesheet>
+<link href=/css/main.css rel=stylesheet type=text/css>
+<link href=/css/syntax.css rel=stylesheet type=text/css>
+<script type=text/javascript>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?656fb5e7c7a37752108a9bb75a5c8f6a",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151587-2"></script>
+<script type=text/javascript>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-151587-2 ')</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3345927991797420" crossorigin=anonymous></script>
+</head>
+<body itemscope itemtype=http://schema.org/WebPage lang=zh-hans>
+<div class="container one-collumn sidebar-position-left page-home">
+<div class=headband></div>
+<header id=header class=header itemscope itemtype=http://schema.org/WPHeader>
+<div class=header-inner> <div class=site-brand-container>
+<div class=site-nav-toggle>
+<div class=toggle role=button style=opacity:1;top:0>
+<span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span>
+</div>
+</div>
+<div class=site-meta>
+<div class=multi-lang-switch>
+<i class="fa fa-fw fa-language" style=margin-right:5px></i>
+<a class=lang-link id=zh-cn href=http://www.luckfu.com/post/ampere_a1_free/>中文</a>
+<span class=lang-line> / </span>
+<a class=lang-link id=en href=#>English</a>
+</div>
+<div class=custom-logo-site-title>
+<a href=/en/ class=brand rel=start>
+<span class=logo-line-before><i></i></span>
+<span class=site-title>luckfu's notes.</span>
+<span class=logo-line-after><i></i></span>
+</a>
+</div>
+<p class=site-subtitle>Never forget your dreams！</p>
+</div>
+<div class=site-nav-right>
+<div class="toggle popup-trigger" style=opacity:1;top:0>
+<i class="fa fa-search fa-fw fa-lg"></i>
+</div>
+</div>
+</div>
+<nav class=site-nav>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a href=/en/ rel=section>
+<i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home
+</a>
+</li>
+<li class=menu-item>
+<a href=/en/post rel=section>
+<i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archive
+</a>
+</li>
+<li class=menu-item>
+<a href=/en/about.html rel=section>
+<i class="menu-item-icon fa fa-fw fa-user"></i> <br>About
+</a>
+</li>
+<li class=menu-item>
+<a href=/en/404.html rel=section>
+<i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Page404
+</a>
+</li>
+<li class="menu-item menu-item-search">
+<a href=javascript:; class=popup-trigger> <i class="menu-item-icon fa fa-search fa-fw"></i> <br> Search</a>
+</li>
+</ul>
+<div class=site-search>
+<div class="popup search-popup local-search-popup">
+<div class="local-search-header clearfix">
+<span class=search-icon><i class="fa fa-search"></i> </span>
+<span class=popup-btn-close><i class="fa fa-times-circle"></i></span>
+<div class=local-search-input-wrapper>
+<input autocomplete=off placeholder="Enter key words..." spellcheck=false type=text id=local-search-input autocapitalize=none autocorrect=off>
+</div>
+</div>
+<div id=local-search-result></div>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<main id=main class=main>
+<div class=main-inner>
+<div class=content-wrap>
+<div id=content class=content>
+<section id=posts class=posts-expand>
+<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
+<header class=post-header>
+<h1 class=post-title itemprop="name headline">
+<a class=post-title-link href=http://www.luckfu.com/en/post/ampere_a1_free/ itemprop=url>
+Use python scripts to preemptively create Oracle VM.Standard.A1.Flex
+</a>
+</h1>
+<div class=post-meta>
+<span class=post-time>
+<i class="fa fa-calendar-o fa-fw"></i>
+<span class=post-meta-item-text>Published at:</span>
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021/05/11">
+2021/05/11
+</time>
+</span>
+<span class=post-category>
+&nbsp; | &nbsp;
+<i class="fa fa-folder-o fa-fw"></i>
+<span class=post-meta-item-text>Categories:</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/en/categories/cloud-vps itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>cloud vps</span>
+</a>
+&nbsp;
+</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/en/categories/python itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>python</span>
+</a>
+&nbsp;
+</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/en/categories/oci itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>oci</span>
+</a>
+&nbsp;
+</span>
+</span>
+<span>
+|
+<i class="fa fa-file-word-o fa-fw"></i>
+<span class=post-meta-item-text>Words:</span>
+<span class=leancloud-world-count>605 words</span>
+</span>
+<span>
+|
+<i class="fa fa-eye fa-fw"></i>
+<span class=post-meta-item-text>Reading:</span>
+<span class=leancloud-view-count>3 minutes</span>
+</span>
+<span id=/en/post/ampere_a1_free/ class=leancloud_visitors data-flag-title="Use python scripts to preemptively create Oracle VM.Standard.A1.Flex">
+|
+<i class="fa fa-binoculars fa-fw"></i>
+<span class=post-meta-item-text>Visited:</span>
+<span class=leancloud-visitors-count></span>
+</span>
+</div>
+</header>
+<div class=post-body itemprop=articleBody>
+<p>Oracle cloud open registered account can apply for 4c24g free cloud server, database and other services, 1c1g x86 server is easier to apply, but the popular 4c24g Ampere A1 type of host under normal circumstances can not apply through the web, currently popular on the Internet Cybersquatting methods are nothing more than two modes：</p>
+<ul>
+<li>Browser plug-ins or scripts or button wizards. The problem with this method is that the console is timed out. It is also easy to be judged by the server as illegal operations. Accounts are disabled. It is obviously not suitable for operations that require stable operation for several days.</li>
+<li>Call the oci command script, this is the safest mode, because oci is officially provided by oracle, the principle is to use the oci command to directly apply for an instance, for example：</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>oci compute instance launch ....
+</code></pre></div><p>However, according to my Hong Kong host test, this can only be refreshed every 20 seconds at most, because the complete process of the oci command execution：</p>
+<ul>
+<li>1、start to connect to oracle cloud</li>
+<li>2、Verify user legitimacy</li>
+<li>3、Excuting an command</li>
+<li>4、exit</li>
+</ul>
+<blockquote>
+<p>Steps 1, 2, and 4 waste a lot of time in the loop. In this article, we use python to call the oci api , omit multiple verification , and execute the generated instance command in loop. The refresh speed can reach 3 seconds/time. When the instance creation is successful, return ,Automatic withdrawal.</p>
+</blockquote>
+<h1 id=deployment-steps>Deployment steps</h1>
+<h2 id=1download-oci-tools>1、Download oci tools</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>bash -c &#34;$(curl –L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)&#34;
+</code></pre></div><p>By default, press Enter. After the installation is complete, execute the following command to check whether it is successful</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>oci -v
+</code></pre></div><h2 id=2configure-oci>2、Configure oci</h2>
+<p>On the oracle cloud console, click on the avatar in the upper right corner => select &ldquo;User Settings&rdquo; in the menu to copy the user and tenancy OCID
+<img src=/post/ampere_a1_free/user_id.jpg alt>
+<img src=/post/ampere_a1_free/tenancy_id.jpg alt></p>
+<p>execute</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>oci setup config
+</code></pre></div><p>Fill in the correct user and tenancy id</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>Enter a location for your config [/root/.oci/config]: 
+Enter a user OCID: #your user ocid
+Enter a tenancy OCID: #your tenancy ocid
+Enter a region by index or name(e.g.
+1: ap-chiyoda-1, 2: ap-chuncheon-1, 3: ap-hyderabad-1, 4: ap-melbourne-1, 5: ap-mumbai-1,
+6: ap-osaka-1, 7: ap-seoul-1, 8: ap-sydney-1, 9: ap-tokyo-1, 10: ca-montreal-1,
+11: ca-toronto-1, 12: eu-amsterdam-1, 13: eu-frankfurt-1, 14: eu-zurich-1, 15: me-dubai-1,
+16: me-jeddah-1, 17: sa-santiago-1, 18: sa-saopaulo-1, 19: uk-cardiff-1, 20: uk-gov-cardiff-1,
+21: uk-gov-london-1, 22: uk-london-1, 23: us-ashburn-1, 24: us-gov-ashburn-1, 25: us-gov-chicago-1,
+26: us-gov-phoenix-1, 27: us-langley-1, 28: us-luke-1, 29: us-phoenix-1, 30: us-sanjose-1): 9  # select you regist region
+Do you want to generate a new API Signing RSA key pair? (If you decline you will be asked to supply the path to an existing key.) [Y/n]: y  #y
+Enter a directory for your keys to be created [/root/.oci]: 
+Enter a name for your key [oci_api_key]: 
+Public key written to: /root/.oci/oci_api_key_public.pem
+Enter a passphrase for your private key (empty for no passphrase): 
+Private key written to: /root/.oci/oci_api_key.pem
+Fingerprint: 
+Config written to /root/.oci/config
+...
+</code></pre></div><p>Copy the generated public key and get the command as follows：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>cat /root/.oci/oci_api_key_public.pem
+</code></pre></div><p>Copy the displayed content. And add it to Identity=>Users=>User Details=>API Keys Key&#187;Add API Keys</p>
+<h2 id=3python-programe>3、python programe</h2>
+<h3 id=install-python-oci>Install python oci</h3>
+<p>Assuming you have installed the python environment</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>pip install oci
+</code></pre></div><h3 id=login-public-certificate>Login public certificate</h3>
+<ul>
+<li>Create a new or use the existing certificate of the system, this article directly check the existing certificate of this machine and record it</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAA......local
+</code></pre></div><h3 id=modify-script>Modify script</h3>
+<p>download:</p>
+<ul>
+<li><a href=/post/ampere_a1_free/luanch.py>link</a></li>
+<li>Modify the parameters in the luanch.py ​​script</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>INSTANCE_NAME = &#39;apply instance name&#39; 
+#If you are a new user, create a VCN first
+SUBNET_ID = &#34;Networking=&gt;Virtual Cloud Networks=&gt;Virtual Cloud Network Details OCID&#34; 
+compartment_id= &#34;tenancy OCID&#34;
+ssh_public_key=&#34;Contents of id_rsa.pub&#34;
+</code></pre></div><h3 id=run-script>run script</h3>
+<p>Execute the script, when the instance apply completed, it will automatically exit</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>python ./luanch.py
+</code></pre></div>
+</div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/en/tags/oracle-cloud rel=tag title="Oracle Cloud">#Oracle Cloud#</a>
+<a href=/en/tags/free-vps rel=tag title="Free VPS">#Free VPS#</a>
+<a href=/en/tags/python-script rel=tag title="python script">#python script#</a>
+<a href=/en/tags/automation-script rel=tag title="Automation script ">#Automation script #</a>
+<a href=/en/tags/vm.standard.a1.flex rel=tag title=VM.Standard.A1.Flex>#VM.Standard.A1.Flex#</a>
+</div>
+<div class=addthis_inline_share_toolbox></div>
+<div class=post-nav>
+<div class=article-copyright>
+<div class=article-copyright-img>
+</div>
+<div class=article-copyright-info>
+<p>
+<span>Declaration：</span>Use python scripts to preemptively create Oracle VM.Standard.A1.Flex
+</p>
+<p>
+<span>Link：</span>http://www.luckfu.com/en/post/ampere_a1_free/
+</p>
+<p>
+<span>Author：</span>luckfu
+</p>
+<p>
+<span>Declaration： </span>This blog post article is under the <a href=https://creativecommons.org/licenses/by-nc-sa/3.0/ target=_blank style=text-decoration:underline>CC BY-NC-SA 3.0</a> license,Please indicate the source!
+</p>
+</div>
+</div>
+<div class=clear></div>
+</div>
+<div class=reward-qr-info>
+<div>If it can help you, you can give tips for blogger that how much you want. ^_^</div>
+<button id=rewardButton disable=enable onclick="var qr=document.getElementById('QR');qr.style.display==='none'?qr.style.display='block':qr.style.display='none'">
+<span>Reward</span>
+</button>
+<div id=QR style=display:none>
+<div id=wechat style=display:inline-block>
+<img id=wechat_qr src=/img/wechat-pay.png alt="WeChat Pay">
+<p>Wechat Pay</p>
+</div>
+<div id=alipay style=display:inline-block>
+<img id=alipay_qr src=/img/ali-pay.png alt=Alipay>
+<p>Ali Pay</p>
+</div>
+<div id=paypal style=display:inline-block>
+<a href="https://paypal.me/luckfu?country.x=C2&locale.x=zh_XC">
+<img src=/img/paypal.png alt="paypal Pay">
+</a>
+<p>PayPal</p>
+</div>
+</div>
+</div>
+<div class=post-nav>
+<div class="post-nav-next post-nav-item">
+<a href=http://www.luckfu.com/en/post/ampere_a1_docker/ rel=next title="Use the docker container as a virtual machine">
+<i class="fa fa-chevron-left"></i> Use the docker container as a virtual machine
+</a>
+</div>
+<div class="post-nav-prev post-nav-item">
+</div>
+</div>
+<div id=wcomments></div>
+</footer>
+</article>
+</section>
+</div>
+</div>
+<div class=sidebar-toggle>
+<div class=sidebar-toggle-line-wrap>
+<span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+</div>
+</div>
+<aside id=sidebar class=sidebar>
+<div class=sidebar-inner>
+<ul class="sidebar-nav motion-element">
+<li class="sidebar-nav-toc sidebar-nav-active" data-target=post-toc-wrap>
+Table of Content
+</li>
+<li class=sidebar-nav-overview data-target=site-overview>
+Site Information
+</li>
+</ul>
+<section class="site-overview sidebar-panel">
+<div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person>
+<img class=site-author-image itemprop=image src=/img/avatar.gif alt=luckfu>
+<p class=site-author-name itemprop=name>luckfu</p>
+<p class="site-description motion-element" itemprop=description>
+In a flash, all of the past away from you, the rest of the only memories.
+</p>
+</div>
+<nav class="site-state motion-element">
+<div class="site-state-item site-state-posts">
+<a href=/en/post/>
+<span class=site-state-item-count>2</span>
+<span class=site-state-item-name>Blogs</span>
+</a>
+</div>
+<div class="site-state-item site-state-categories">
+<a href=/en/categories/>
+<span class=site-state-item-count>4</span>
+<span class=site-state-item-name>Categories</span>
+</a>
+</div>
+<div class="site-state-item site-state-tags">
+<a href=/en/tags/>
+<span class=site-state-item-count>6</span>
+<span class=site-state-item-name>Tags</span>
+</a>
+</div>
+</nav>
+<div class="links-of-author motion-element">
+<span class=links-of-author-item>
+<a href=https://github.com/lucfu/ target=_blank title=GitHub>
+<i class="fa fa-fw fa-github"></i>
+GitHub
+</a>
+</span>
+</div>
+<div class="tagcloud-of-blogroll motion-element tagcloud-of-blogroll-inline">
+<div class=tagcloud-of-blogroll-title>
+<i class="fa fa-fw fa-tags"></i>
+TagCloud
+</div>
+<ul class=tagcloud-of-blogroll-list>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/free-vps>Free vps</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/oracle-cloud>Oracle cloud</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/vm.standard.a1.flex>Vm.Standard.A1.Flex</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/automation-script>Automation script</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/docker>Docker</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/python-script>Python script</a>
+</li>
+</ul>
+</div>
+</section>
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+<div class=post-toc>
+<div class=post-toc-content><nav id=TableOfContents>
+<ul>
+<li><a href=#1download-oci-tools>1、Download oci tools</a></li>
+<li><a href=#2configure-oci>2、Configure oci</a></li>
+<li><a href=#3python-programe>3、python programe</a>
+<ul>
+<li><a href=#install-python-oci>Install python oci</a></li>
+<li><a href=#login-public-certificate>Login public certificate</a></li>
+<li><a href=#modify-script>Modify script</a></li>
+<li><a href=#run-script>run script</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div>
+</section>
+</div>
+</aside>
+</div>
+</main>
+<footer id=footer class=footer>
+<div class=footer-inner>
+<div class=copyright>
+<span class=copyright-year>
+&copy; 2010 - 2021
+</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=copyright-author>luckfu's notes.</span>
+</div>
+<div class=powered-info>
+<span class=powered-by>
+Powered by - <a class=powered-link href=//gohugo.io target=_blank title=hugo>Hugo v0.90.0</a>
+</span>
+<span class=separator-line>/</span>
+<span class=theme-info>
+Theme by - <a class=powered-link href=//github.com/elkan1788/hugo-theme-next target=_blank> NexT
+</a>
+</span>
+</div>
+<div class=vistor-info>
+<script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<span class=site-uv>
+<i class="fa fa-user"></i>
+<span class=busuanzi-value id=busuanzi_value_site_uv></span>
+</span>
+<span class=separator-line>/</span>
+<span class=site-pv>
+<i class="fa fa-eye"></i>
+<span class=busuanzi-value id=busuanzi_value_site_pv></span>
+</span>
+</div>
+<div class=license-info>
+<span class=storage-info>
+Storage by
+<a href style=font-weight:700 target=_blank></a>
+</span>
+<span class=separator-line>/</span>
+<span class=license-num>
+<a href target=_blank></a>
+</span>
+</div>
+</div>
+</footer>
+<div class=back-to-top>
+<i class="fa fa-arrow-up"></i>
+<span id=scrollpercent><span>0</span>%</span>
+</div>
+</div>
+<script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js></script>
+<script type=text/javascript src=/js/search.js></script>
+<script type=text/javascript src=/js/affix.js></script>
+<script type=text/javascript src=/js/scrollspy.js></script>
+<script type=text/javascript>function detectIE(){var a=window.navigator.userAgent,b=a.indexOf('MSIE '),c=a.indexOf('Trident/'),d=a.indexOf('Edge/');return b>0||c>0||d>0?-1:1}function getCntViewHeight(){var b=$('#content').height(),a=$(window).height(),c=b>a?b-a:$(document).height()-a;return c}function getScrollbarWidth(){var a=$('<div />').addClass('scrollbar-measure').prependTo('body'),b=a[0],c=b.offsetWidth-b.clientWidth;return a.remove(),c}function registerBackTop(){var b=50,a=$('.back-to-top');$(window).on('scroll',function(){var d,e,f,c,g;a.toggleClass('back-to-top-on',window.pageYOffset>b),d=$(window).scrollTop(),e=getCntViewHeight(),f=d/e,c=Math.round(f*100),g=c>100?100:c,$('#scrollpercent>span').html(g)}),a.on('click',function(){$("html,body").animate({scrollTop:0,screenLeft:0},800)})}function initScrollSpy(){var a='.post-toc',d=$(a),b='.active-current';d.on('activate.bs.scrollspy',function(){var b=$(a+' .active').last();c(),b.addClass('active-current')}).on('clear.bs.scrollspy',c),$('body').scrollspy({target:a});function c(){$(a+' '+b).removeClass(b.substring(1))}}function initAffix(){var a=$('.header-inner').height(),b=parseInt($('.main').css('padding-bottom'),10),c=a+10;$('.sidebar-inner').affix({offset:{top:c,bottom:b}}),$(document).on('affixed.bs.affix',function(){updateTOCHeight(document.body.clientHeight-100)})}function initTOCDimension(){var a,b;$(window).on('resize',function(){a&&clearTimeout(a),a=setTimeout(function(){var a=document.body.clientHeight-100;updateTOCHeight(a)},0)}),updateTOCHeight(document.body.clientHeight-100),b=getScrollbarWidth(),$('.post-toc').css('width','calc(100% + '+b+'px)')}function updateTOCHeight(a){a=a||'auto',$('.post-toc').css('max-height',a)}$(function(){var b=$('.header-inner').height()+10,c,d,a,e;$('#sidebar').css({'margin-top':b}).show(),c=parseInt($('#sidebar').css('margin-top')),d=parseInt($('.sidebar-inner').css('height')),a=c+d,e=$('.content-wrap').height(),e<a&&$('.content-wrap').css('min-height',a),$('.site-nav-toggle').on('click',function(){var a=$('.site-nav'),e=$('.toggle'),b='site-nav-on',f='toggle-close',c=a.hasClass(b),g=c?'slideUp':'slideDown',d=c?'removeClass':'addClass';a.stop()[g]('normal',function(){a[d](b),e[d](f)})}),registerBackTop(),initScrollSpy(),initAffix(),initTOCDimension(),$('.sidebar-nav-toc').click(function(){$(this).addClass('sidebar-nav-active'),$(this).next().removeClass('sidebar-nav-active'),$('.'+$(this).next().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)}),$('.sidebar-nav-overview').click(function(){$(this).addClass('sidebar-nav-active'),$(this).prev().removeClass('sidebar-nav-active'),$('.'+$(this).prev().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)})})</script>
+<script src=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.js></script>
+<script type=text/javascript>$(function(){$('.post-body').viewer()})</script>
+<script type=text/javascript>$(function(){detectIE()>0?$.getScript(document.location.protocol+'//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js',function(){new Waline({el:'#wcomments',visitor:!0,avatar:'wavatar',avatarCDN:'https://sdn.geekzu.org/avatar/',avatarForce:!1,wordLimit:'200',placeholder:' Just do what you want leave here, and don\u0027t forget give your email to make exchange. ^_^ ',requiredFields:['nick','mail'],serverURL:"https://blog-comment-6x61e4e8l-luckfu.vercel.app/",lang:"en"})}):$('#wcomments').html('Sorry, Waline plugin doesn\u0027t support IE or Edge, Please swithc to Chrome browser.')})</script>
+<script type=text/javascript src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Your%20AddthisId"></script>
+<script>(function(){var a=document.createElement('script'),c=window.location.protocol.split(':')[0],b;c==='https'?a.src='https://zz.bdstatic.com/linksubmit/push.js':a.src='http://push.zhanzhang.baidu.com/push.js',b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+</body>
+</html>

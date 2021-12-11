@@ -1,0 +1,479 @@
+<!doctype html><html lang=en dir=content/en>
+<head>
+<meta name=baidu-site-verification content="code-HXR9G6t0qN">
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=content-security-policy content="upgrade-insecure-requests">
+<title> Use the docker container as a virtual machine - luckfu's notes. </title>
+<meta name=keywords content="Blog,Software,Big Data,Product,Architecture,python">
+<meta name=author content="luckfu">
+<meta property="og:title" content="Use the docker container as a virtual machine">
+<meta property="og:site_name" content="luckfu's notes.">
+<meta property="og:image" content="/img/author.jpg">
+<meta name=title content="Use the docker container as a virtual machine - luckfu's notes.">
+<meta name=description content="Docker VM">
+<link rel="shortcut icon" href=/img/favicon.ico>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=apple-touch-icon-precomposed href=/img/apple-touch-icon.png>
+<link href=//cdn.bootcdn.net/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css rel=stylesheet type=text/css>
+<link href=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.css rel=stylesheet>
+<link href=/css/main.css rel=stylesheet type=text/css>
+<link href=/css/syntax.css rel=stylesheet type=text/css>
+<script type=text/javascript>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?656fb5e7c7a37752108a9bb75a5c8f6a",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151587-2"></script>
+<script type=text/javascript>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-151587-2 ')</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3345927991797420" crossorigin=anonymous></script>
+</head>
+<body itemscope itemtype=http://schema.org/WebPage lang=zh-hans>
+<div class="container one-collumn sidebar-position-left page-home">
+<div class=headband></div>
+<header id=header class=header itemscope itemtype=http://schema.org/WPHeader>
+<div class=header-inner> <div class=site-brand-container>
+<div class=site-nav-toggle>
+<div class=toggle role=button style=opacity:1;top:0>
+<span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span>
+</div>
+</div>
+<div class=site-meta>
+<div class=multi-lang-switch>
+<i class="fa fa-fw fa-language" style=margin-right:5px></i>
+<a class=lang-link id=zh-cn href=http://www.luckfu.com/post/ampere_a1_docker/>中文</a>
+<span class=lang-line> / </span>
+<a class=lang-link id=en href=#>English</a>
+</div>
+<div class=custom-logo-site-title>
+<a href=/en/ class=brand rel=start>
+<span class=logo-line-before><i></i></span>
+<span class=site-title>luckfu's notes.</span>
+<span class=logo-line-after><i></i></span>
+</a>
+</div>
+<p class=site-subtitle>Never forget your dreams！</p>
+</div>
+<div class=site-nav-right>
+<div class="toggle popup-trigger" style=opacity:1;top:0>
+<i class="fa fa-search fa-fw fa-lg"></i>
+</div>
+</div>
+</div>
+<nav class=site-nav>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a href=/en/ rel=section>
+<i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home
+</a>
+</li>
+<li class=menu-item>
+<a href=/en/post rel=section>
+<i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archive
+</a>
+</li>
+<li class=menu-item>
+<a href=/en/about.html rel=section>
+<i class="menu-item-icon fa fa-fw fa-user"></i> <br>About
+</a>
+</li>
+<li class=menu-item>
+<a href=/en/404.html rel=section>
+<i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Page404
+</a>
+</li>
+<li class="menu-item menu-item-search">
+<a href=javascript:; class=popup-trigger> <i class="menu-item-icon fa fa-search fa-fw"></i> <br> Search</a>
+</li>
+</ul>
+<div class=site-search>
+<div class="popup search-popup local-search-popup">
+<div class="local-search-header clearfix">
+<span class=search-icon><i class="fa fa-search"></i> </span>
+<span class=popup-btn-close><i class="fa fa-times-circle"></i></span>
+<div class=local-search-input-wrapper>
+<input autocomplete=off placeholder="Enter key words..." spellcheck=false type=text id=local-search-input autocapitalize=none autocorrect=off>
+</div>
+</div>
+<div id=local-search-result></div>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<main id=main class=main>
+<div class=main-inner>
+<div class=content-wrap>
+<div id=content class=content>
+<section id=posts class=posts-expand>
+<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
+<header class=post-header>
+<h1 class=post-title itemprop="name headline">
+<a class=post-title-link href=http://www.luckfu.com/en/post/ampere_a1_docker/ itemprop=url>
+Use the docker container as a virtual machine
+</a>
+</h1>
+<div class=post-meta>
+<span class=post-time>
+<i class="fa fa-calendar-o fa-fw"></i>
+<span class=post-meta-item-text>Published at:</span>
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021/07/15">
+2021/07/15
+</time>
+</span>
+<span class=post-category>
+&nbsp; | &nbsp;
+<i class="fa fa-folder-o fa-fw"></i>
+<span class=post-meta-item-text>Categories:</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/en/categories/cloud-vps itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>cloud vps</span>
+</a>
+&nbsp;
+</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/en/categories/docker itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>Docker</span>
+</a>
+&nbsp;
+</span>
+</span>
+<span>
+|
+<i class="fa fa-file-word-o fa-fw"></i>
+<span class=post-meta-item-text>Words:</span>
+<span class=leancloud-world-count>548 words</span>
+</span>
+<span>
+|
+<i class="fa fa-eye fa-fw"></i>
+<span class=post-meta-item-text>Reading:</span>
+<span class=leancloud-view-count>2 minutes</span>
+</span>
+<span id=/en/post/ampere_a1_docker/ class=leancloud_visitors data-flag-title="Use the docker container as a virtual machine">
+|
+<i class="fa fa-binoculars fa-fw"></i>
+<span class=post-meta-item-text>Visited:</span>
+<span class=leancloud-visitors-count></span>
+</span>
+</div>
+</header>
+<div class=post-body itemprop=articleBody>
+<p>The last article mentioned that Oracle Cloud’s free and popular 4c24g VM.Standard.A1.Flex model is difficult to apply, but in actual use, there are still many traps in the Oracle Cloud free package. The following are some common situations:</p>
+<p>Free hosting is over quota, free storage is over quota, oc priority to stop the resource is this A1.Flex vps 。</p>
+<p>Flex.A1 The optional operating system is only oracle linux v7 or v8 , if you like ubuntu&mldr;😭</p>
+<p>When the operating system is broken, unlike general cloud service consoles that can restore the image, you can only reapply</p>
+<blockquote>
+<p>Using a container as a virtual machine is not in line with the original intention of container application deployment, but in view of the above problems, docker is used to create a container instead of a virtual machine in this article. Everything is operated in the virtual machine. When the system disaster is unrecoverable, just delete container and Create the container again.</p>
+</blockquote>
+<h1 id=deployment-steps>Deployment steps</h1>
+<p>ssh Log in to the host</p>
+<h2 id=1install-docker>1、Install docker</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>yum install docker
+</code></pre></div><h2 id=2dockerfile>2、Dockerfile</h2>
+<p>Writing Dockerfile</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-mysql data-lang=mysql><span style=color:#a2f;font-weight:700>FROM</span><span style=color:#bbb> </span>ubuntu:<span style=color:#666>20</span>.<span style=color:#666>04</span><span style=color:#bbb>
+</span><span style=color:#bbb></span>LABEL<span style=color:#bbb> </span>MAINTAINER<span style=color:#666>=</span><span style=color:#b44>&#34;luckfu.com&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#a2f;font-weight:700>USER</span><span style=color:#bbb> </span>root<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># change root password to `ubuntu`
+</span><span style=color:#080;font-style:italic></span>RUN<span style=color:#bbb> </span>echo<span style=color:#bbb> </span><span style=color:#b44>&#39;root:ubuntu&#39;</span><span style=color:#bbb> </span><span style=color:#666>|</span><span style=color:#bbb> </span>chpasswd<span style=color:#bbb> 
+</span><span style=color:#bbb></span>ENV<span style=color:#bbb> </span>DEBIAN_FRONTEND<span style=color:#bbb> </span>noninteractive<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># install ssh server
+</span><span style=color:#080;font-style:italic></span>RUN<span style=color:#bbb> </span>apt<span style=color:#666>-</span>get<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>update</span><span style=color:#bbb> </span><span style=color:#666>&amp;&amp;</span><span style=color:#bbb> </span>apt<span style=color:#666>-</span>get<span style=color:#bbb> </span>install<span style=color:#bbb> </span><span style=color:#666>-</span>y<span style=color:#bbb> </span><span>\</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span>openssh<span style=color:#666>-</span>server<span style=color:#bbb> </span>sudo<span style=color:#bbb> </span><span>\</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:#666>&amp;&amp;</span><span style=color:#bbb> </span>rm<span style=color:#bbb> </span><span style=color:#666>-</span>rf<span style=color:#bbb> </span><span style=color:#666>/</span>var<span style=color:#666>/</span>lib<span style=color:#666>/</span>apt<span style=color:#666>/</span>lists<span style=color:#080;font-style:italic>/* \
+</span><span style=color:#080;font-style:italic>  &amp;&amp; mkdir -p /run/sshd \
+</span><span style=color:#080;font-style:italic>  &amp;&amp; ssh-keygen -A \
+</span><span style=color:#080;font-style:italic>  &amp;&amp; sed -i &#39;s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g&#39; /etc/ssh/sshd_config \
+</span><span style=color:#080;font-style:italic>  &amp;&amp; apt-get purge -y --auto-remove 
+</span><span style=color:#080;font-style:italic>
+</span><span style=color:#080;font-style:italic>EXPOSE 22
+</span><span style=color:#080;font-style:italic>
+</span><span style=color:#080;font-style:italic># run ssh server
+</span><span style=color:#080;font-style:italic>CMD [&#34;/usr/sbin/sshd&#34;, &#34;-D&#34;, &#34;-o&#34;, &#34;ListenAddress=0.0.0.0&#34;]
+</span></code></pre></div><h2 id=3generate-image>3、Generate image</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>docker build -f ./Dockerfile -t ubuntu-ssh
+</code></pre></div><p>docker images view image list</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>docker images
+REPOSITORY     TAG       IMAGE ID       CREATED       SIZE
+ubuntuos-ssh   latest    b6010c26ebb7   1 days ago   189MB
+ubuntu         20.04     d5ca7a445605   8 weeks ago   65.6MB
+</code></pre></div><h2 id=4launching-containers>4、Launching containers</h2>
+<p>执行命令</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>docker run -d -p 9022:22  -p 8000-9000:8000-9000 \
+-v /data/:/data \
+--name ubuntuos-ssh ubuntuos-ssh 
+</code></pre></div><p>parameters and meaning：</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>Daemon mode</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>Port Mapping [host port:Port in container]</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>volume mapping [host vol:container vol]</td>
+</tr>
+<tr>
+<td>&ndash;name</td>
+<td>container name ubuntu-ssh</td>
+</tr>
+</tbody>
+</table>
+<p>In the above command, we deployed a container named ubuntuos-ssh, and set the host&rsquo;s /data<font color=red size=2> (you can apply for 100G &ldquo;always free&rdquo; storage in the oracle cloud and mount it to the host /data)</font> is mounted under the /data of the container, and 9022 of the host is mapped to port 22 of the ssh service of the container, and ports 8000-9000 are opened for spare</p>
+<p>Check if the container is running</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>CONTAINER ID   IMAGE          COMMAND                  CREATED        STATUS        PORTS                                                                                                  NAMES
+0c9cf191daf2   ubuntuos-ssh   &#34;/usr/sbin/sshd -D -…&#34;   12 days ago    Up 12 days    0.0.0.0:8000-9000-&gt;8000-9000/tcp, :::8000-9000-&gt;8000-9000/tcp, 0.0.0.0:9022-&gt;22/tcp, :::9022-&gt;22/tcp   ubuntuos-ssh
+</code></pre></div><p>Log in to the container</p>
+<blockquote>
+<p>use ssh instead of exec -it to enter</p>
+</blockquote>
+<p>password: ubuntu</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>ssh root@localhost -p 9022
+root@localhost&#39;s password:
+(base) root@xxxxxxx:~# 
+</code></pre></div><p>If login success, the container is running normally</p>
+<h2 id=5login-from-internet>5、Login from internet</h2>
+<p>Login to Oracle Cloud</p>
+<ul>
+<li>Check VNC config ,port 22 8000-9000 used by the container is open</li>
+<li>checks the firewall such as iptables firwwall，port is open</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>ssh root@IP -p 9022
+</code></pre></div><p>Let&rsquo;s play</p>
+</div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/en/tags/oracle-cloud rel=tag title="Oracle Cloud">#Oracle Cloud#</a>
+<a href=/en/tags/free-vps rel=tag title="Free VPS">#Free VPS#</a>
+<a href=/en/tags/docker rel=tag title=docker>#docker#</a>
+<a href=/en/tags/vm.standard.a1.flex rel=tag title=VM.Standard.A1.Flex>#VM.Standard.A1.Flex#</a>
+</div>
+<div class=addthis_inline_share_toolbox></div>
+<div class=post-nav>
+<div class=article-copyright>
+<div class=article-copyright-img>
+</div>
+<div class=article-copyright-info>
+<p>
+<span>Declaration：</span>Use the docker container as a virtual machine
+</p>
+<p>
+<span>Link：</span>http://www.luckfu.com/en/post/ampere_a1_docker/
+</p>
+<p>
+<span>Author：</span>luckfu
+</p>
+<p>
+<span>Declaration： </span>This blog post article is under the <a href=https://creativecommons.org/licenses/by-nc-sa/3.0/ target=_blank style=text-decoration:underline>CC BY-NC-SA 3.0</a> license,Please indicate the source!
+</p>
+</div>
+</div>
+<div class=clear></div>
+</div>
+<div class=reward-qr-info>
+<div>If it can help you, you can give tips for blogger that how much you want. ^_^</div>
+<button id=rewardButton disable=enable onclick="var qr=document.getElementById('QR');qr.style.display==='none'?qr.style.display='block':qr.style.display='none'">
+<span>Reward</span>
+</button>
+<div id=QR style=display:none>
+<div id=wechat style=display:inline-block>
+<img id=wechat_qr src=/img/wechat-pay.png alt="WeChat Pay">
+<p>Wechat Pay</p>
+</div>
+<div id=alipay style=display:inline-block>
+<img id=alipay_qr src=/img/ali-pay.png alt=Alipay>
+<p>Ali Pay</p>
+</div>
+<div id=paypal style=display:inline-block>
+<a href="https://paypal.me/luckfu?country.x=C2&locale.x=zh_XC">
+<img src=/img/paypal.png alt="paypal Pay">
+</a>
+<p>PayPal</p>
+</div>
+</div>
+</div>
+<div class=post-nav>
+<div class="post-nav-next post-nav-item">
+</div>
+<div class="post-nav-prev post-nav-item">
+<a href=http://www.luckfu.com/en/post/ampere_a1_free/ rel=prev title="Use python scripts to preemptively create Oracle VM.Standard.A1.Flex">
+Use python scripts to preemptively create Oracle VM.Standard.A1.Flex
+<i class="fa fa-chevron-right"></i>
+</a>
+</div>
+</div>
+<div id=wcomments></div>
+</footer>
+</article>
+</section>
+</div>
+</div>
+<div class=sidebar-toggle>
+<div class=sidebar-toggle-line-wrap>
+<span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+</div>
+</div>
+<aside id=sidebar class=sidebar>
+<div class=sidebar-inner>
+<ul class="sidebar-nav motion-element">
+<li class="sidebar-nav-toc sidebar-nav-active" data-target=post-toc-wrap>
+Table of Content
+</li>
+<li class=sidebar-nav-overview data-target=site-overview>
+Site Information
+</li>
+</ul>
+<section class="site-overview sidebar-panel">
+<div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person>
+<img class=site-author-image itemprop=image src=/img/avatar.gif alt=luckfu>
+<p class=site-author-name itemprop=name>luckfu</p>
+<p class="site-description motion-element" itemprop=description>
+In a flash, all of the past away from you, the rest of the only memories.
+</p>
+</div>
+<nav class="site-state motion-element">
+<div class="site-state-item site-state-posts">
+<a href=/en/post/>
+<span class=site-state-item-count>2</span>
+<span class=site-state-item-name>Blogs</span>
+</a>
+</div>
+<div class="site-state-item site-state-categories">
+<a href=/en/categories/>
+<span class=site-state-item-count>4</span>
+<span class=site-state-item-name>Categories</span>
+</a>
+</div>
+<div class="site-state-item site-state-tags">
+<a href=/en/tags/>
+<span class=site-state-item-count>6</span>
+<span class=site-state-item-name>Tags</span>
+</a>
+</div>
+</nav>
+<div class="links-of-author motion-element">
+<span class=links-of-author-item>
+<a href=https://github.com/lucfu/ target=_blank title=GitHub>
+<i class="fa fa-fw fa-github"></i>
+GitHub
+</a>
+</span>
+</div>
+<div class="tagcloud-of-blogroll motion-element tagcloud-of-blogroll-inline">
+<div class=tagcloud-of-blogroll-title>
+<i class="fa fa-fw fa-tags"></i>
+TagCloud
+</div>
+<ul class=tagcloud-of-blogroll-list>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/free-vps>Free vps</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/oracle-cloud>Oracle cloud</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/vm.standard.a1.flex>Vm.Standard.A1.Flex</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/automation-script>Automation script</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/docker>Docker</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/en/tags/python-script>Python script</a>
+</li>
+</ul>
+</div>
+</section>
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+<div class=post-toc>
+<div class=post-toc-content><nav id=TableOfContents>
+<ul>
+<li><a href=#1install-docker>1、Install docker</a></li>
+<li><a href=#2dockerfile>2、Dockerfile</a></li>
+<li><a href=#3generate-image>3、Generate image</a></li>
+<li><a href=#4launching-containers>4、Launching containers</a></li>
+<li><a href=#5login-from-internet>5、Login from internet</a></li>
+</ul>
+</nav></div>
+</div>
+</section>
+</div>
+</aside>
+</div>
+</main>
+<footer id=footer class=footer>
+<div class=footer-inner>
+<div class=copyright>
+<span class=copyright-year>
+&copy; 2010 - 2021
+</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=copyright-author>luckfu's notes.</span>
+</div>
+<div class=powered-info>
+<span class=powered-by>
+Powered by - <a class=powered-link href=//gohugo.io target=_blank title=hugo>Hugo v0.90.0</a>
+</span>
+<span class=separator-line>/</span>
+<span class=theme-info>
+Theme by - <a class=powered-link href=//github.com/elkan1788/hugo-theme-next target=_blank> NexT
+</a>
+</span>
+</div>
+<div class=vistor-info>
+<script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+<span class=site-uv>
+<i class="fa fa-user"></i>
+<span class=busuanzi-value id=busuanzi_value_site_uv></span>
+</span>
+<span class=separator-line>/</span>
+<span class=site-pv>
+<i class="fa fa-eye"></i>
+<span class=busuanzi-value id=busuanzi_value_site_pv></span>
+</span>
+</div>
+<div class=license-info>
+<span class=storage-info>
+Storage by
+<a href style=font-weight:700 target=_blank></a>
+</span>
+<span class=separator-line>/</span>
+<span class=license-num>
+<a href target=_blank></a>
+</span>
+</div>
+</div>
+</footer>
+<div class=back-to-top>
+<i class="fa fa-arrow-up"></i>
+<span id=scrollpercent><span>0</span>%</span>
+</div>
+</div>
+<script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js></script>
+<script type=text/javascript src=/js/search.js></script>
+<script type=text/javascript src=/js/affix.js></script>
+<script type=text/javascript src=/js/scrollspy.js></script>
+<script type=text/javascript>function detectIE(){var a=window.navigator.userAgent,b=a.indexOf('MSIE '),c=a.indexOf('Trident/'),d=a.indexOf('Edge/');return b>0||c>0||d>0?-1:1}function getCntViewHeight(){var b=$('#content').height(),a=$(window).height(),c=b>a?b-a:$(document).height()-a;return c}function getScrollbarWidth(){var a=$('<div />').addClass('scrollbar-measure').prependTo('body'),b=a[0],c=b.offsetWidth-b.clientWidth;return a.remove(),c}function registerBackTop(){var b=50,a=$('.back-to-top');$(window).on('scroll',function(){var d,e,f,c,g;a.toggleClass('back-to-top-on',window.pageYOffset>b),d=$(window).scrollTop(),e=getCntViewHeight(),f=d/e,c=Math.round(f*100),g=c>100?100:c,$('#scrollpercent>span').html(g)}),a.on('click',function(){$("html,body").animate({scrollTop:0,screenLeft:0},800)})}function initScrollSpy(){var a='.post-toc',d=$(a),b='.active-current';d.on('activate.bs.scrollspy',function(){var b=$(a+' .active').last();c(),b.addClass('active-current')}).on('clear.bs.scrollspy',c),$('body').scrollspy({target:a});function c(){$(a+' '+b).removeClass(b.substring(1))}}function initAffix(){var a=$('.header-inner').height(),b=parseInt($('.main').css('padding-bottom'),10),c=a+10;$('.sidebar-inner').affix({offset:{top:c,bottom:b}}),$(document).on('affixed.bs.affix',function(){updateTOCHeight(document.body.clientHeight-100)})}function initTOCDimension(){var a,b;$(window).on('resize',function(){a&&clearTimeout(a),a=setTimeout(function(){var a=document.body.clientHeight-100;updateTOCHeight(a)},0)}),updateTOCHeight(document.body.clientHeight-100),b=getScrollbarWidth(),$('.post-toc').css('width','calc(100% + '+b+'px)')}function updateTOCHeight(a){a=a||'auto',$('.post-toc').css('max-height',a)}$(function(){var b=$('.header-inner').height()+10,c,d,a,e;$('#sidebar').css({'margin-top':b}).show(),c=parseInt($('#sidebar').css('margin-top')),d=parseInt($('.sidebar-inner').css('height')),a=c+d,e=$('.content-wrap').height(),e<a&&$('.content-wrap').css('min-height',a),$('.site-nav-toggle').on('click',function(){var a=$('.site-nav'),e=$('.toggle'),b='site-nav-on',f='toggle-close',c=a.hasClass(b),g=c?'slideUp':'slideDown',d=c?'removeClass':'addClass';a.stop()[g]('normal',function(){a[d](b),e[d](f)})}),registerBackTop(),initScrollSpy(),initAffix(),initTOCDimension(),$('.sidebar-nav-toc').click(function(){$(this).addClass('sidebar-nav-active'),$(this).next().removeClass('sidebar-nav-active'),$('.'+$(this).next().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)}),$('.sidebar-nav-overview').click(function(){$(this).addClass('sidebar-nav-active'),$(this).prev().removeClass('sidebar-nav-active'),$('.'+$(this).prev().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)})})</script>
+<script src=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.js></script>
+<script type=text/javascript>$(function(){$('.post-body').viewer()})</script>
+<script type=text/javascript>$(function(){detectIE()>0?$.getScript(document.location.protocol+'//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js',function(){new Waline({el:'#wcomments',visitor:!0,avatar:'wavatar',avatarCDN:'https://sdn.geekzu.org/avatar/',avatarForce:!1,wordLimit:'200',placeholder:' Just do what you want leave here, and don\u0027t forget give your email to make exchange. ^_^ ',requiredFields:['nick','mail'],serverURL:"https://blog-comment-6x61e4e8l-luckfu.vercel.app/",lang:"en"})}):$('#wcomments').html('Sorry, Waline plugin doesn\u0027t support IE or Edge, Please swithc to Chrome browser.')})</script>
+<script type=text/javascript src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Your%20AddthisId"></script>
+<script>(function(){var a=document.createElement('script'),c=window.location.protocol.split(':')[0],b;c==='https'?a.src='https://zz.bdstatic.com/linksubmit/push.js':a.src='http://push.zhanzhang.baidu.com/push.js',b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+</body>
+</html>

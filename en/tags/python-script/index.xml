@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python script on luckfu's notes.</title><link>http://www.luckfu.com/en/tags/python-script/</link><description>Recent content in python script on luckfu's notes.</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 11 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://www.luckfu.com/en/tags/python-script/index.xml" rel="self" type="application/rss+xml"/><item><title>Use python scripts to preemptively create Oracle VM.Standard.A1.Flex</title><link>http://www.luckfu.com/en/post/ampere_a1_free/</link><pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/en/post/ampere_a1_free/</guid><description>&lt;p>Oracle cloud open registered account can apply for 4c24g free cloud server, database and other services, 1c1g x86 server is easier to apply, but the popular 4c24g Ampere A1 type of host under normal circumstances can not apply through the web, currently popular on the Internet Cybersquatting methods are nothing more than two modes：&lt;/p>
+&lt;ul>
+&lt;li>Browser plug-ins or scripts or button wizards. The problem with this method is that the console is timed out. It is also easy to be judged by the server as illegal operations. Accounts are disabled. It is obviously not suitable for operations that require stable operation for several days.&lt;/li>
+&lt;li>Call the oci command script, this is the safest mode, because oci is officially provided by oracle, the principle is to use the oci command to directly apply for an instance, for example：&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">oci compute instance launch ....
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>However, according to my Hong Kong host test, this can only be refreshed every 20 seconds at most, because the complete process of the oci command execution：&lt;/p>
+&lt;ul>
+&lt;li>1、start to connect to oracle cloud&lt;/li>
+&lt;li>2、Verify user legitimacy&lt;/li>
+&lt;li>3、Excuting an command&lt;/li>
+&lt;li>4、exit&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Steps 1, 2, and 4 waste a lot of time in the loop. In this article, we use python to call the oci api , omit multiple verification , and execute the generated instance command in loop. The refresh speed can reach 3 seconds/time. When the instance creation is successful, return ,Automatic withdrawal.&lt;/p>
+&lt;/blockquote></description></item></channel></rss>
