@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>自动化脚本 on luckfu的潦草笔记</title><link>http://www.luckfu.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/</link><description>Recent content in 自动化脚本 on luckfu的潦草笔记</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 15 Jul 2021 18:40:21 +0800</lastBuildDate><atom:link href="http://www.luckfu.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>在oracle cloud中将docker容器作为虚拟机折腾</title><link>http://www.luckfu.com/post/oracle_cloud_ampere_a1_docker/</link><pubDate>Thu, 15 Jul 2021 18:40:21 +0800</pubDate><guid>http://www.luckfu.com/post/oracle_cloud_ampere_a1_docker/</guid><description>&lt;p>上一篇说到Oracle Cloud免费且大热的4c24g的VM.Standard.A1.Flex机型难申请，而实际使用中，oracle cloud免费套餐中陷阱还是很多的，以下是几种常见情况：&lt;/p>
+&lt;p>免费主机超额度，免费存储超额度，oc优先停掉的资源就是这个A1.Flex机型。&lt;/p>
+&lt;p>A1.Flex机型可选操作系统只有oracle linux 7或8，不一定顺手。&lt;/p>
+&lt;p>操作系统被玩坏时，不像一般云服务控制台可以恢复镜像，你只能重新申请&lt;/p>
+&lt;blockquote>
+&lt;p>将容器作为虚拟机使用并不符合容器应用部署的初衷，但鉴于以上问题本文中采用docker创建一个容器代替虚拟机，一切在虚机中操作，当系统灾难不可恢复时，删掉就好，省却刷机抢注之苦。&lt;/p>
+&lt;/blockquote></description></item><item><title>使用python脚本注册Oracle甲骨文 VM.Standard.A1.Flex</title><link>http://www.luckfu.com/post/oracle_cloud_ampere_a1_free/</link><pubDate>Tue, 11 May 2021 14:40:21 +0800</pubDate><guid>http://www.luckfu.com/post/oracle_cloud_ampere_a1_free/</guid><description>&lt;p>Oracle cloud 开放注册账号能申请4c24g的免费云服务器,数据库以及其他的服务，1c1g的x86服务器比较容易申请，但热门的4c24g的Ampere A1类型主机通过网页正常申请根本申请不到，目前网络上流行的抢注方法无外乎两种模式：&lt;/p>
+&lt;ul>
+&lt;li>浏览器插件或脚本或按键精灵，这种方法的问题是控制台超时，还容易被服务器判定非法操作，禁用账号，对于动辄要求稳定运行几天才能完成的操作，显然已经不合适。&lt;/li>
+&lt;li>调用oci命令脚本，这是最安全的模式，因为oci是oracle官方提供，原理是使用oci命令直接申请实例，例如：&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">oci compute instance launch ....
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然而，根据我香港主机测试，这种最多只能做到20秒刷新一次，原因是 oci 命令执行的完整的过程：&lt;/p>
+&lt;ul>
+&lt;li>1、启动、开始连接 oracle cloud&lt;/li>
+&lt;li>2、验证用户合法性&lt;/li>
+&lt;li>3、执行命令&lt;/li>
+&lt;li>4、退出&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>1，2，4步骤在循环中浪费了大量时间，本文中采用python调用oci api 的模式，省略多次验证环节，循环执行生成instance命令，刷新速度可以达到3秒/次 当返回instance创建成功时，自动退出。&lt;/p>
+&lt;/blockquote></description></item></channel></rss>
