@@ -1,22 +1,22 @@
 <!doctype html><html lang=zh-cn dir=content/zh-cn>
 <head>
-<meta name=generator content="Hugo 0.90.0">
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=content-security-policy content="upgrade-insecure-requests">
-<title> luckfu的潦草笔记 </title>
+<title> 将docker容器作为虚拟机折腾 - luckfu的潦草笔记 </title>
 <meta name=keywords content="博客,程序员,架构师,思考, 笔记,技术,分享,大数据,产品">
 <meta name=author content="luckfu">
-<meta property="og:title" content="Home">
+<meta property="og:title" content="将docker容器作为虚拟机折腾">
 <meta property="og:site_name" content="luckfu的潦草笔记">
 <meta property="og:image" content="/img/author.jpg">
-<meta name=title content="Home - luckfu的潦草笔记">
-<meta name=description content="欢迎来到luckfu的潦草笔记，主要记录一些琐碎过往。">
+<meta name=title content="将docker容器作为虚拟机折腾 - luckfu的潦草笔记">
+<meta name=description content="Docker VM">
 <link rel="shortcut icon" href=/img/favicon.ico>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
 <link rel=apple-touch-icon-precomposed href=/img/apple-touch-icon.png>
 <link href=//cdn.bootcdn.net/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css rel=stylesheet type=text/css>
+<link href=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.css rel=stylesheet>
 <link href=/css/main.css rel=stylesheet type=text/css>
 <link href=/css/syntax.css rel=stylesheet type=text/css>
 <script type=text/javascript>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?656fb5e7c7a37752108a9bb75a5c8f6a",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
@@ -40,8 +40,6 @@ hahaha
 <div class=multi-lang-switch>
 <i class="fa fa-fw fa-language" style=margin-right:5px></i>
 <a class=lang-link id=zh-cn href=#>中文</a>
-<span class=lang-line> / </span>
-<a class=lang-link id=en href=http://www.luckfu.com/en/>English</a>
 </div>
 <div class=custom-logo-site-title>
 <a href=/ class=brand rel=start>
@@ -148,6 +146,12 @@ hahaha
 <span class=post-meta-item-text>阅读：</span>
 <span class=leancloud-view-count>2分钟</span>
 </span>
+<span id=/post/ampere_a1_docker/ class=leancloud_visitors data-flag-title=将docker容器作为虚拟机折腾>
+|
+<i class="fa fa-binoculars fa-fw"></i>
+<span class=post-meta-item-text>阅读次数：</span>
+<span class=leancloud-visitors-count></span>
+</span>
 </div>
 </header>
 <div class=post-body itemprop=articleBody>
@@ -158,95 +162,154 @@ hahaha
 <blockquote>
 <p>将容器作为虚拟机使用并不符合容器应用部署的初衷，但鉴于以上问题本文中采用docker创建一个容器代替虚拟机，一切在虚机中操作，当系统灾难不可恢复时，删掉就好，省却刷机抢注之苦。</p>
 </blockquote>
-</div>
-<div class="post-more-link text-center">
-<a class=btn href=http://www.luckfu.com/post/ampere_a1_docker/ rel=contents>
-阅读全文 &#187;
-</a>
-</div>
-<footer class=post-footer><div class=post-eof></div></footer>
-</article>
-<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
-<header class=post-header>
-<h1 class=post-title itemprop="name headline">
-<a class=post-title-link href=http://www.luckfu.com/post/ampere_a1_free/ itemprop=url>
-使用python脚本注册Oracle甲骨文 VM.Standard.A1.Flex
-</a>
-</h1>
-<div class=post-meta>
-<span class=post-time>
-<i class="fa fa-calendar-o fa-fw"></i>
-<span class=post-meta-item-text>时间：</span>
-<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-05-11">
-2021-05-11
-</time>
-</span>
-<span class=post-category>
-&nbsp; | &nbsp;
-<i class="fa fa-folder-o fa-fw"></i>
-<span class=post-meta-item-text>分类：</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing>
-<a href=/categories/cloud-vps itemprop=url rel=index style=text-decoration:underline>
-<span itemprop=name>cloud vps</span>
-</a>
-&nbsp;
-</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing>
-<a href=/categories/python itemprop=url rel=index style=text-decoration:underline>
-<span itemprop=name>python</span>
-</a>
-&nbsp;
-</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing>
-<a href=/categories/oci itemprop=url rel=index style=text-decoration:underline>
-<span itemprop=name>oci</span>
-</a>
-&nbsp;
-</span>
-</span>
-<span>
-|
-<i class="fa fa-file-word-o fa-fw"></i>
-<span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>1096 字</span>
-</span>
-<span>
-|
-<i class="fa fa-eye fa-fw"></i>
-<span class=post-meta-item-text>阅读：</span>
-<span class=leancloud-view-count>3分钟</span>
-</span>
-</div>
-</header>
-<div class=post-body itemprop=articleBody>
-<p>Oracle cloud 开放注册账号能申请4c24g的免费云服务器,数据库以及其他的服务，1c1g的x86服务器比较容易申请，但热门的4c24g的Ampere A1类型主机通过网页正常申请根本申请不到，目前网络上流行的抢注方法无外乎两种模式：</p>
-<ul>
-<li>浏览器插件或脚本或按键精灵，这种方法的问题是控制台超时，还容易被服务器判定非法操作，禁用账号，对于动辄要求稳定运行几天才能完成的操作，显然已经不合适。</li>
-<li>调用oci命令脚本，这是最安全的模式，因为oci是oracle官方提供，原理是使用oci命令直接申请实例，例如：</li>
-</ul>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>oci compute instance launch ....
-</code></pre></div><p>然而，根据我香港主机测试，这种最多只能做到20秒刷新一次，原因是 oci 命令执行的完整的过程：</p>
-<ul>
-<li>1、启动、开始连接 oracle cloud</li>
-<li>2、验证用户合法性</li>
-<li>3、执行命令</li>
-<li>4、退出</li>
-</ul>
+<h1 id=布署步骤>布署步骤</h1>
+<p>ssh 登录到主机</p>
+<h2 id=1安装docker>1、安装docker</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>yum install docker
+</code></pre></div><h2 id=2dockerfile>2、Dockerfile</h2>
+<p>编写Dockerfile</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-mysql data-lang=mysql><span style=color:#a2f;font-weight:700>FROM</span><span style=color:#bbb> </span>ubuntu:<span style=color:#666>20</span>.<span style=color:#666>04</span><span style=color:#bbb>
+</span><span style=color:#bbb></span>LABEL<span style=color:#bbb> </span>MAINTAINER<span style=color:#666>=</span><span style=color:#b44>&#34;luckfu.com&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#a2f;font-weight:700>USER</span><span style=color:#bbb> </span>root<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># change root password to `ubuntu`
+</span><span style=color:#080;font-style:italic></span>RUN<span style=color:#bbb> </span>echo<span style=color:#bbb> </span><span style=color:#b44>&#39;root:ubuntu&#39;</span><span style=color:#bbb> </span><span style=color:#666>|</span><span style=color:#bbb> </span>chpasswd<span style=color:#bbb> 
+</span><span style=color:#bbb></span>ENV<span style=color:#bbb> </span>DEBIAN_FRONTEND<span style=color:#bbb> </span>noninteractive<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb></span><span style=color:#080;font-style:italic># install ssh server
+</span><span style=color:#080;font-style:italic></span>RUN<span style=color:#bbb> </span>apt<span style=color:#666>-</span>get<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>update</span><span style=color:#bbb> </span><span style=color:#666>&amp;&amp;</span><span style=color:#bbb> </span>apt<span style=color:#666>-</span>get<span style=color:#bbb> </span>install<span style=color:#bbb> </span><span style=color:#666>-</span>y<span style=color:#bbb> </span><span>\</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span>openssh<span style=color:#666>-</span>server<span style=color:#bbb> </span>sudo<span style=color:#bbb> </span><span>\</span><span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:#666>&amp;&amp;</span><span style=color:#bbb> </span>rm<span style=color:#bbb> </span><span style=color:#666>-</span>rf<span style=color:#bbb> </span><span style=color:#666>/</span>var<span style=color:#666>/</span>lib<span style=color:#666>/</span>apt<span style=color:#666>/</span>lists<span style=color:#080;font-style:italic>/* \
+</span><span style=color:#080;font-style:italic>  &amp;&amp; mkdir -p /run/sshd \
+</span><span style=color:#080;font-style:italic>  &amp;&amp; ssh-keygen -A \
+</span><span style=color:#080;font-style:italic>  &amp;&amp; sed -i &#39;s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g&#39; /etc/ssh/sshd_config \
+</span><span style=color:#080;font-style:italic>  &amp;&amp; apt-get purge -y --auto-remove 
+</span><span style=color:#080;font-style:italic>
+</span><span style=color:#080;font-style:italic>EXPOSE 22
+</span><span style=color:#080;font-style:italic>
+</span><span style=color:#080;font-style:italic># run ssh server
+</span><span style=color:#080;font-style:italic>CMD [&#34;/usr/sbin/sshd&#34;, &#34;-D&#34;, &#34;-o&#34;, &#34;ListenAddress=0.0.0.0&#34;]
+</span></code></pre></div><h2 id=3生成镜像>3、生成镜像</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>docker build -f ./Dockerfile -t ubuntu-ssh
+</code></pre></div><p>使用 docker images命令查看</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>docker images
+REPOSITORY     TAG       IMAGE ID       CREATED       SIZE
+ubuntuos-ssh   latest    b6010c26ebb7   1 days ago   189MB
+ubuntu         20.04     d5ca7a445605   8 weeks ago   65.6MB
+</code></pre></div><h2 id=4启动容器>4、启动容器</h2>
+<p>执行命令</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>docker run -d -p 9022:22  -p 8000-9000:8000-9000 \
+-v /data/:/data \
+--name ubuntuos-ssh ubuntuos-ssh 
+</code></pre></div><p>主要参数及含义：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>守护进程模式</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>端口映射 [主机端口:容器端口]</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>存储卷映射 [主机目录:容器目录]</td>
+</tr>
+<tr>
+<td>&ndash;name</td>
+<td>指定容器名称 ubuntuos</td>
+</tr>
+</tbody>
+</table>
+<p>上述命令中我们部署了一个名称为ubuntuos-ssh的容器，将主机的/data<font color=red size=2>(oracle cloud 中可以申请100G“始终免费”存储，挂载到主机/data)</font>挂载到容器的/data下，将主机的9022映射容器的ssh服务22端口，另外开放了8000-9000端口备用</p>
+<p>查看容器是否运行</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>CONTAINER ID   IMAGE          COMMAND                  CREATED        STATUS        PORTS                                                                                                  NAMES
+0c9cf191daf2   ubuntuos-ssh   &#34;/usr/sbin/sshd -D -…&#34;   12 days ago    Up 12 days    0.0.0.0:8000-9000-&gt;8000-9000/tcp, :::8000-9000-&gt;8000-9000/tcp, 0.0.0.0:9022-&gt;22/tcp, :::9022-&gt;22/tcp   ubuntuos-ssh
+</code></pre></div><p>登录容器ß</p>
 <blockquote>
-<p>1，2，4步骤在循环中浪费了大量时间，本文中采用python调用oci api 的模式，省略多次验证环节，循环执行生成instance命令，刷新速度可以达到3秒/次 当返回instance创建成功时，自动退出。</p>
+<p>这里我们要使用ssh，而不是exec -it 进入</p>
 </blockquote>
+<p>密码 ubuntu</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>ssh root@localhost -p 9022
+root@localhost&#39;s password:
+(base) root@xxxxxxx:~# 
+</code></pre></div><p>到这里如果正常登录，则说明容器正常运行</p>
+<h2 id=5通过网络登录>5、通过网络登录</h2>
+<p>登录oracle cloud控制台</p>
+<ul>
+<li>检查容器使用的 22 8000-9000端口是否开通</li>
+<li>主机检查防火墙如iptables firwwall中，端口是否打开
+远程登录</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>ssh root@IP -p 9022
+</code></pre></div><p>可劲造吧</p>
 </div>
-<div class="post-more-link text-center">
-<a class=btn href=http://www.luckfu.com/post/ampere_a1_free/ rel=contents>
-阅读全文 &#187;
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/oracle-cloud rel=tag title="Oracle Cloud">#Oracle Cloud#</a>
+<a href=/tags/free-vps rel=tag title="Free VPS">#Free VPS#</a>
+<a href=/tags/docker rel=tag title=docker>#docker#</a>
+<a href=/tags/vm.standard.a1.flex rel=tag title=VM.Standard.A1.Flex>#VM.Standard.A1.Flex#</a>
+</div>
+<div class=addthis_inline_share_toolbox></div>
+<div class=post-nav>
+<div class=article-copyright>
+<div class=article-copyright-img>
+</div>
+<div class=article-copyright-info>
+<p>
+<span>声明：</span>将docker容器作为虚拟机折腾
+</p>
+<p>
+<span>链接：</span>http://www.luckfu.com/post/ampere_a1_docker/
+</p>
+<p>
+<span>作者：</span>luckfu
+</p>
+<p>
+<span>声明： </span>本博客文章除特别声明外，均采用 <a href=https://creativecommons.org/licenses/by-nc-sa/3.0/ target=_blank style=text-decoration:underline>CC BY-NC-SA 3.0</a>许可协议，转载请注明出处！
+</p>
+</div>
+</div>
+<div class=clear></div>
+</div>
+<div class=reward-qr-info>
+<div>创作实属不易，如有帮助，那就打赏博主些许茶钱吧 ^_^</div>
+<button id=rewardButton disable=enable onclick="var qr=document.getElementById('QR');qr.style.display==='none'?qr.style.display='block':qr.style.display='none'">
+<span>赏</span>
+</button>
+<div id=QR style=display:none>
+<div id=wechat style=display:inline-block>
+<img id=wechat_qr src=/img/wechat-pay.png alt="WeChat Pay">
+<p>微信打赏</p>
+</div>
+<div id=alipay style=display:inline-block>
+<img id=alipay_qr src=/img/ali-pay.png alt=Alipay>
+<p>支付宝打赏</p>
+</div>
+</div>
+</div>
+<div class=post-nav>
+<div class="post-nav-next post-nav-item">
+</div>
+<div class="post-nav-prev post-nav-item">
+<a href=http://www.luckfu.com/post/ampere_a1_free/ rel=prev title="使用python脚本注册Oracle甲骨文 VM.Standard.A1.Flex">
+使用python脚本注册Oracle甲骨文 VM.Standard.A1.Flex
+<i class="fa fa-chevron-right"></i>
 </a>
 </div>
-<footer class=post-footer><div class=post-eof></div></footer>
+</div>
+<div id=wcomments></div>
+</footer>
 </article>
 </section>
-<nav class=pagination>
-<span class="page-number current">1</span>
-</nav>
 </div>
 </div>
 <div class=sidebar-toggle>
@@ -258,7 +321,15 @@ hahaha
 </div>
 <aside id=sidebar class=sidebar>
 <div class=sidebar-inner>
-<section class="site-overview sidebar-panel sidebar-panel-active">
+<ul class="sidebar-nav motion-element">
+<li class="sidebar-nav-toc sidebar-nav-active" data-target=post-toc-wrap>
+文章目录
+</li>
+<li class=sidebar-nav-overview data-target=site-overview>
+站点概览
+</li>
+</ul>
+<section class="site-overview sidebar-panel">
 <div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person>
 <img class=site-author-image itemprop=image src=/img/avatar.gif alt=luckfu>
 <p class=site-author-name itemprop=name>luckfu</p>
@@ -286,12 +357,6 @@ hahaha
 </a>
 </div>
 </nav>
-<div class="feed-link motion-element">
-<a href=/index.xml rel=alternate type=application/rss+xml target=_blank>
-<i class="fa fa-rss"></i>
-RSS 订阅
-</a>
-</div>
 <div class="links-of-author motion-element">
 <span class=links-of-author-item>
 <a href=https://github.com/luckfu/ target=_blank title=GitHub>
@@ -325,6 +390,19 @@ GitHub
 <a href=/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC>自动化脚本</a>
 </li>
 </ul>
+</div>
+</section>
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+<div class=post-toc>
+<div class=post-toc-content><nav id=TableOfContents>
+<ul>
+<li><a href=#1安装docker>1、安装docker</a></li>
+<li><a href=#2dockerfile>2、Dockerfile</a></li>
+<li><a href=#3生成镜像>3、生成镜像</a></li>
+<li><a href=#4启动容器>4、启动容器</a></li>
+<li><a href=#5通过网络登录>5、通过网络登录</a></li>
+</ul>
+</nav></div>
 </div>
 </section>
 </div>
@@ -384,6 +462,10 @@ Storage by
 <script type=text/javascript src=/js/affix.js></script>
 <script type=text/javascript src=/js/scrollspy.js></script>
 <script type=text/javascript>function detectIE(){var a=window.navigator.userAgent,b=a.indexOf('MSIE '),c=a.indexOf('Trident/'),d=a.indexOf('Edge/');return b>0||c>0||d>0?-1:1}function getCntViewHeight(){var b=$('#content').height(),a=$(window).height(),c=b>a?b-a:$(document).height()-a;return c}function getScrollbarWidth(){var a=$('<div />').addClass('scrollbar-measure').prependTo('body'),b=a[0],c=b.offsetWidth-b.clientWidth;return a.remove(),c}function registerBackTop(){var b=50,a=$('.back-to-top');$(window).on('scroll',function(){var d,e,f,c,g;a.toggleClass('back-to-top-on',window.pageYOffset>b),d=$(window).scrollTop(),e=getCntViewHeight(),f=d/e,c=Math.round(f*100),g=c>100?100:c,$('#scrollpercent>span').html(g)}),a.on('click',function(){$("html,body").animate({scrollTop:0,screenLeft:0},800)})}function initScrollSpy(){var a='.post-toc',d=$(a),b='.active-current';d.on('activate.bs.scrollspy',function(){var b=$(a+' .active').last();c(),b.addClass('active-current')}).on('clear.bs.scrollspy',c),$('body').scrollspy({target:a});function c(){$(a+' '+b).removeClass(b.substring(1))}}function initAffix(){var a=$('.header-inner').height(),b=parseInt($('.main').css('padding-bottom'),10),c=a+10;$('.sidebar-inner').affix({offset:{top:c,bottom:b}}),$(document).on('affixed.bs.affix',function(){updateTOCHeight(document.body.clientHeight-100)})}function initTOCDimension(){var a,b;$(window).on('resize',function(){a&&clearTimeout(a),a=setTimeout(function(){var a=document.body.clientHeight-100;updateTOCHeight(a)},0)}),updateTOCHeight(document.body.clientHeight-100),b=getScrollbarWidth(),$('.post-toc').css('width','calc(100% + '+b+'px)')}function updateTOCHeight(a){a=a||'auto',$('.post-toc').css('max-height',a)}$(function(){var b=$('.header-inner').height()+10,c,d,a,e;$('#sidebar').css({'margin-top':b}).show(),c=parseInt($('#sidebar').css('margin-top')),d=parseInt($('.sidebar-inner').css('height')),a=c+d,e=$('.content-wrap').height(),e<a&&$('.content-wrap').css('min-height',a),$('.site-nav-toggle').on('click',function(){var a=$('.site-nav'),e=$('.toggle'),b='site-nav-on',f='toggle-close',c=a.hasClass(b),g=c?'slideUp':'slideDown',d=c?'removeClass':'addClass';a.stop()[g]('normal',function(){a[d](b),e[d](f)})}),registerBackTop(),initScrollSpy(),initAffix(),initTOCDimension(),$('.sidebar-nav-toc').click(function(){$(this).addClass('sidebar-nav-active'),$(this).next().removeClass('sidebar-nav-active'),$('.'+$(this).next().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)}),$('.sidebar-nav-overview').click(function(){$(this).addClass('sidebar-nav-active'),$(this).prev().removeClass('sidebar-nav-active'),$('.'+$(this).prev().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)})})</script>
+<script src=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.js></script>
+<script type=text/javascript>$(function(){$('.post-body').viewer()})</script>
+<script type=text/javascript>$(function(){detectIE()>0?$.getScript(document.location.protocol+'//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js',function(){new Waline({el:'#wcomments',visitor:!0,avatar:'wavatar',avatarCDN:'https://sdn.geekzu.org/avatar/',avatarForce:!1,wordLimit:'200',placeholder:' 欢迎留下您的宝贵建议，请填写您的昵称和邮箱便于后续交流. ^_^ ',requiredFields:['nick','mail'],serverURL:"https://blog-comment-6x61e4e8l-luckfu.vercel.app/",lang:"zh-cn"})}):$('#wcomments').html('抱歉，Waline插件不支持IE或Edge，建议使用Chrome浏览器。')})</script>
+<script type=text/javascript src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Your%20AddthisId"></script>
 <script>(function(){var a=document.createElement('script'),c=window.location.protocol.split(':')[0],b;c==='https'?a.src='https://zz.bdstatic.com/linksubmit/push.js':a.src='http://push.zhanzhang.baidu.com/push.js',b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
 </body>
 </html>

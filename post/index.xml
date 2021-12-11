@@ -1,1 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on luckfu的潦草笔记</title><link>http://www.luckfu.com/post/</link><description>Recent content in Posts on luckfu的潦草笔记</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://www.luckfu.com/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Markdown语法手册</title><link>http://www.luckfu.com/post/markdown_syntax/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/markdown_syntax/</guid><description>&lt;p>本文提供了一个可以在 Hugo 内容文件中使用的基本Markdown语法示例，还展示了基本 HTML 元素在 Hugo 主题中是否使用 CSS 装饰。&lt;/p></description></item><item><title>富文本内容测试</title><link>http://www.luckfu.com/post/rich_content/</link><pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/rich_content/</guid><description>&lt;p>Hugo上有几个&lt;a href="https://gohugo.io/content-management/shortcodes/#use-hugos">&lt;strong>内置短代码&lt;/strong>&lt;/a>，用于丰富内容，以及&lt;a href="https://gohugo.io/about/hugo-and-gdpr/">&lt;strong>隐私配置&lt;/strong>&lt;/a>还有一组简单的短代码，支持各种社交媒体嵌入的静态和非JS版本。&lt;/p></description></item><item><title>占位符文本显示</title><link>http://www.luckfu.com/post/placeholder_text/</link><pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/placeholder_text/</guid><description>&lt;p>你对我的心有偏见。我向您保证，我们的生活将不会受到影响，我们的生活将会受到影响。你说你现在住在医院里，因为你的眼睛是透明的，你的眼睛是光明的，你的眼睛是光明的!&lt;/p></description></item><item><title>数据公式设置显示</title><link>http://www.luckfu.com/post/math_typesetting/</link><pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/math_typesetting/</guid><description>&lt;p>Hugo项目中的数学表示法可以通过使用第三方JavaScript库来实现。&lt;/p></description></item><item><title>支持Emoji表情符号</title><link>http://www.luckfu.com/post/emoji_support/</link><pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/emoji_support/</guid><description>&lt;p>在Hugo项目中可以通过多种方式启用Emoji。&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on luckfu的潦草笔记</title><link>http://www.luckfu.com/post/</link><description>Recent content in Posts on luckfu的潦草笔记</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 15 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://www.luckfu.com/post/index.xml" rel="self" type="application/rss+xml"/><item><title>将docker容器作为虚拟机折腾</title><link>http://www.luckfu.com/post/ampere_a1_docker/</link><pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/ampere_a1_docker/</guid><description>&lt;p>上一篇说到Oracle Cloud免费且大热的4c24g的VM.Standard.A1.Flex机型难申请，而实际使用中，oracle cloud免费套餐中陷阱还是很多的，以下是几种常见情况：&lt;/p>
+&lt;p>免费主机超额度，免费存储超额度，oc优先停掉的资源就是这个A1.Flex机型。&lt;/p>
+&lt;p>A1.Flex机型可选操作系统只有oracle linux 7或8，不一定顺手。&lt;/p>
+&lt;p>操作系统被玩坏时，不像一般云服务控制台可以恢复镜像，你只能重新申请&lt;/p>
+&lt;blockquote>
+&lt;p>将容器作为虚拟机使用并不符合容器应用部署的初衷，但鉴于以上问题本文中采用docker创建一个容器代替虚拟机，一切在虚机中操作，当系统灾难不可恢复时，删掉就好，省却刷机抢注之苦。&lt;/p>
+&lt;/blockquote></description></item><item><title>使用python脚本注册Oracle甲骨文 VM.Standard.A1.Flex</title><link>http://www.luckfu.com/post/ampere_a1_free/</link><pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/ampere_a1_free/</guid><description>&lt;p>Oracle cloud 开放注册账号能申请4c24g的免费云服务器,数据库以及其他的服务，1c1g的x86服务器比较容易申请，但热门的4c24g的Ampere A1类型主机通过网页正常申请根本申请不到，目前网络上流行的抢注方法无外乎两种模式：&lt;/p>
+&lt;ul>
+&lt;li>浏览器插件或脚本或按键精灵，这种方法的问题是控制台超时，还容易被服务器判定非法操作，禁用账号，对于动辄要求稳定运行几天才能完成的操作，显然已经不合适。&lt;/li>
+&lt;li>调用oci命令脚本，这是最安全的模式，因为oci是oracle官方提供，原理是使用oci命令直接申请实例，例如：&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">oci compute instance launch ....
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然而，根据我香港主机测试，这种最多只能做到20秒刷新一次，原因是 oci 命令执行的完整的过程：&lt;/p>
+&lt;ul>
+&lt;li>1、启动、开始连接 oracle cloud&lt;/li>
+&lt;li>2、验证用户合法性&lt;/li>
+&lt;li>3、执行命令&lt;/li>
+&lt;li>4、退出&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>1，2，4步骤在循环中浪费了大量时间，本文中采用python调用oci api 的模式，省略多次验证环节，循环执行生成instance命令，刷新速度可以达到3秒/次 当返回instance创建成功时，自动退出。&lt;/p>
+&lt;/blockquote></description></item></channel></rss>

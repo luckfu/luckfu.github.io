@@ -4,14 +4,14 @@
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=content-security-policy content="upgrade-insecure-requests">
-<title> 关于我 - luckfu的潦草笔记 </title>
+<title> 使用python脚本注册Oracle甲骨文 VM.Standard.A1.Flex - luckfu的潦草笔记 </title>
 <meta name=keywords content="博客,程序员,架构师,思考, 笔记,技术,分享,大数据,产品">
 <meta name=author content="luckfu">
-<meta property="og:title" content="关于我">
+<meta property="og:title" content="使用python脚本注册Oracle甲骨文 VM.Standard.A1.Flex">
 <meta property="og:site_name" content="luckfu的潦草笔记">
 <meta property="og:image" content="/img/author.jpg">
-<meta name=title content="关于我 - luckfu的潦草笔记">
-<meta name=description content="无聊的写写记记">
+<meta name=title content="使用python脚本注册Oracle甲骨文 VM.Standard.A1.Flex - luckfu的潦草笔记">
+<meta name=description content="python脚本申请VM.Standard.A1.Flex">
 <link rel="shortcut icon" href=/img/favicon.ico>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
 <link rel=apple-touch-icon-precomposed href=/img/apple-touch-icon.png>
@@ -40,8 +40,6 @@ hahaha
 <div class=multi-lang-switch>
 <i class="fa fa-fw fa-language" style=margin-right:5px></i>
 <a class=lang-link id=zh-cn href=#>中文</a>
-<span class=lang-line> / </span>
-<a class=lang-link id=en href=http://www.luckfu.com/en/about.html>English</a>
 </div>
 <div class=custom-logo-site-title>
 <a href=/ class=brand rel=start>
@@ -70,7 +68,7 @@ hahaha
 <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档
 </a>
 </li>
-<li class="menu-item menu-item-active">
+<li class=menu-item>
 <a href=/about.html rel=section>
 <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于我
 </a>
@@ -106,16 +104,192 @@ hahaha
 <section id=posts class=posts-expand>
 <article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
 <header class=post-header>
-<h1 class=post-title itemprop="name headline" style=font-weight:700>
-<a class=post-title-link href=http://www.luckfu.com/about.html itemprop=url>
-关于我
+<h1 class=post-title itemprop="name headline">
+<a class=post-title-link href=http://www.luckfu.com/post/ampere_a1_free/ itemprop=url>
+使用python脚本注册Oracle甲骨文 VM.Standard.A1.Flex
 </a>
 </h1>
+<div class=post-meta>
+<span class=post-time>
+<i class="fa fa-calendar-o fa-fw"></i>
+<span class=post-meta-item-text>时间：</span>
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-05-11">
+2021-05-11
+</time>
+</span>
+<span class=post-category>
+&nbsp; | &nbsp;
+<i class="fa fa-folder-o fa-fw"></i>
+<span class=post-meta-item-text>分类：</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/categories/cloud-vps itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>cloud vps</span>
+</a>
+&nbsp;
+</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/categories/python itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>python</span>
+</a>
+&nbsp;
+</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/categories/oci itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>oci</span>
+</a>
+&nbsp;
+</span>
+</span>
+<span>
+|
+<i class="fa fa-file-word-o fa-fw"></i>
+<span class=post-meta-item-text>字数：</span>
+<span class=leancloud-world-count>1096 字</span>
+</span>
+<span>
+|
+<i class="fa fa-eye fa-fw"></i>
+<span class=post-meta-item-text>阅读：</span>
+<span class=leancloud-view-count>3分钟</span>
+</span>
+<span id=/post/ampere_a1_free/ class=leancloud_visitors data-flag-title="使用python脚本注册Oracle甲骨文 VM.Standard.A1.Flex">
+|
+<i class="fa fa-binoculars fa-fw"></i>
+<span class=post-meta-item-text>阅读次数：</span>
+<span class=leancloud-visitors-count></span>
+</span>
+</div>
 </header>
 <div class=post-body itemprop=articleBody>
-<p>更多信息请访问<a href=https://github.com/gohugoio>GitHub</a>.</p>
+<p>Oracle cloud 开放注册账号能申请4c24g的免费云服务器,数据库以及其他的服务，1c1g的x86服务器比较容易申请，但热门的4c24g的Ampere A1类型主机通过网页正常申请根本申请不到，目前网络上流行的抢注方法无外乎两种模式：</p>
+<ul>
+<li>浏览器插件或脚本或按键精灵，这种方法的问题是控制台超时，还容易被服务器判定非法操作，禁用账号，对于动辄要求稳定运行几天才能完成的操作，显然已经不合适。</li>
+<li>调用oci命令脚本，这是最安全的模式，因为oci是oracle官方提供，原理是使用oci命令直接申请实例，例如：</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>oci compute instance launch ....
+</code></pre></div><p>然而，根据我香港主机测试，这种最多只能做到20秒刷新一次，原因是 oci 命令执行的完整的过程：</p>
+<ul>
+<li>1、启动、开始连接 oracle cloud</li>
+<li>2、验证用户合法性</li>
+<li>3、执行命令</li>
+<li>4、退出</li>
+</ul>
+<blockquote>
+<p>1，2，4步骤在循环中浪费了大量时间，本文中采用python调用oci api 的模式，省略多次验证环节，循环执行生成instance命令，刷新速度可以达到3秒/次 当返回instance创建成功时，自动退出。</p>
+</blockquote>
+<h1 id=布署步骤>布署步骤</h1>
+<h2 id=1下载oci工具>1、下载oci工具</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>bash -c &#34;$(curl –L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)&#34;
+</code></pre></div><p>默认回车，安装完成后，执行下面命令检查是否成功</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>oci -v
+</code></pre></div><h2 id=2配置oci连接>2、配置oci连接</h2>
+<p>在oracle cloud控制台上，点击右上角头像=>菜单中选择“用户设置” 复制用户和租户ID
+<img src=/post/ampere_a1_free/id.png alt></p>
+<p>输入</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>oci setup config
+</code></pre></div><p>填写正确的用户和租户id</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>Enter a location for your config [/root/.oci/config]: 
+Enter a user OCID: #输入你的用户ocid
+Enter a tenancy OCID: #输入你租户的用户id
+Enter a region by index or name(e.g.
+1: ap-chiyoda-1, 2: ap-chuncheon-1, 3: ap-hyderabad-1, 4: ap-melbourne-1, 5: ap-mumbai-1,
+6: ap-osaka-1, 7: ap-seoul-1, 8: ap-sydney-1, 9: ap-tokyo-1, 10: ca-montreal-1,
+11: ca-toronto-1, 12: eu-amsterdam-1, 13: eu-frankfurt-1, 14: eu-zurich-1, 15: me-dubai-1,
+16: me-jeddah-1, 17: sa-santiago-1, 18: sa-saopaulo-1, 19: uk-cardiff-1, 20: uk-gov-cardiff-1,
+21: uk-gov-london-1, 22: uk-london-1, 23: us-ashburn-1, 24: us-gov-ashburn-1, 25: us-gov-chicago-1,
+26: us-gov-phoenix-1, 27: us-langley-1, 28: us-luke-1, 29: us-phoenix-1, 30: us-sanjose-1): 9  #这里选择区域
+Do you want to generate a new API Signing RSA key pair? (If you decline you will be asked to supply the path to an existing key.) [Y/n]: y  #输入y
+Enter a directory for your keys to be created [/root/.oci]: 
+Enter a name for your key [oci_api_key]: 
+Public key written to: /root/.oci/oci_api_key_public.pem
+Enter a passphrase for your private key (empty for no passphrase): 
+Private key written to: /root/.oci/oci_api_key.pem
+Fingerprint: 
+Config written to /root/.oci/config
+...
+</code></pre></div><p>复制生成的公钥，获取命令如下：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>cat /root/.oci/oci_api_key_public.pem
+</code></pre></div><p>把展示出来的内容复制下来。并且添加到，甲骨文后台=>用户设置&#187;资源&#187;API秘钥&#187;添加API秘钥</p>
+<h2 id=3python脚本>3、python脚本</h2>
+<h3 id=安装python-oci>安装python oci</h3>
+<p>假设你已经安装好python环境</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>pip install oci
+</code></pre></div><h3 id=登录证书>登录证书</h3>
+<ul>
+<li>新建或使用系统已有的证书，本文直接查看本机已有证书记录下来</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAA......local
+</code></pre></div><h3 id=修改脚本>修改脚本</h3>
+<p>下载:</p>
+<ul>
+<li><a href=/post/oracle_cloud_Ampere_A1_free/luanch.py>link</a></li>
+<li>修改luanch.py 脚本中的参数</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>INSTANCE_NAME = &#39;vps实例名&#39; #你要创建的vps实例名  
+SUBNET_ID = &#34;网络-&gt;虚拟云网络-&gt;虚拟云网络详细信息-&gt;OCID&#34; #如果是全新用户，先创建一个VNC
+compartment_id= &lt;font color=red&gt;&#34;租户id&#34;
+ssh_public_key=&#34;id_rsa.pub的内容&#34;
+</code></pre></div><h3 id=运行>运行</h3>
+<p>执行脚本，当主机申请完成，会自动退出</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>python ./luanch.py
+</code></pre></div>
 </div>
 <footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/oracle-cloud rel=tag title="Oracle Cloud">#Oracle Cloud#</a>
+<a href=/tags/free-vps rel=tag title="Free VPS">#Free VPS#</a>
+<a href=/tags/python-script rel=tag title="python script">#python script#</a>
+<a href=/tags/%e8%87%aa%e5%8a%a8%e5%8c%96%e8%84%9a%e6%9c%ac rel=tag title=自动化脚本>#自动化脚本#</a>
+<a href=/tags/vm.standard.a1.flex rel=tag title=VM.Standard.A1.Flex>#VM.Standard.A1.Flex#</a>
+</div>
+<div class=addthis_inline_share_toolbox></div>
+<div class=post-nav>
+<div class=article-copyright>
+<div class=article-copyright-img>
+</div>
+<div class=article-copyright-info>
+<p>
+<span>声明：</span>使用python脚本注册Oracle甲骨文 VM.Standard.A1.Flex
+</p>
+<p>
+<span>链接：</span>http://www.luckfu.com/post/ampere_a1_free/
+</p>
+<p>
+<span>作者：</span>luckfu
+</p>
+<p>
+<span>声明： </span>本博客文章除特别声明外，均采用 <a href=https://creativecommons.org/licenses/by-nc-sa/3.0/ target=_blank style=text-decoration:underline>CC BY-NC-SA 3.0</a>许可协议，转载请注明出处！
+</p>
+</div>
+</div>
+<div class=clear></div>
+</div>
+<div class=reward-qr-info>
+<div>创作实属不易，如有帮助，那就打赏博主些许茶钱吧 ^_^</div>
+<button id=rewardButton disable=enable onclick="var qr=document.getElementById('QR');qr.style.display==='none'?qr.style.display='block':qr.style.display='none'">
+<span>赏</span>
+</button>
+<div id=QR style=display:none>
+<div id=wechat style=display:inline-block>
+<img id=wechat_qr src=/img/wechat-pay.png alt="WeChat Pay">
+<p>微信打赏</p>
+</div>
+<div id=alipay style=display:inline-block>
+<img id=alipay_qr src=/img/ali-pay.png alt=Alipay>
+<p>支付宝打赏</p>
+</div>
+</div>
+</div>
+<div class=post-nav>
+<div class="post-nav-next post-nav-item">
+<a href=http://www.luckfu.com/post/ampere_a1_docker/ rel=next title=将docker容器作为虚拟机折腾>
+<i class="fa fa-chevron-left"></i> 将docker容器作为虚拟机折腾
+</a>
+</div>
+<div class="post-nav-prev post-nav-item">
+</div>
+</div>
 <div id=wcomments></div>
 </footer>
 </article>
@@ -131,7 +305,15 @@ hahaha
 </div>
 <aside id=sidebar class=sidebar>
 <div class=sidebar-inner>
-<section class="site-overview sidebar-panel sidebar-panel-active">
+<ul class="sidebar-nav motion-element">
+<li class="sidebar-nav-toc sidebar-nav-active" data-target=post-toc-wrap>
+文章目录
+</li>
+<li class=sidebar-nav-overview data-target=site-overview>
+站点概览
+</li>
+</ul>
+<section class="site-overview sidebar-panel">
 <div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person>
 <img class=site-author-image itemprop=image src=/img/avatar.gif alt=luckfu>
 <p class=site-author-name itemprop=name>luckfu</p>
@@ -192,6 +374,24 @@ GitHub
 <a href=/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC>自动化脚本</a>
 </li>
 </ul>
+</div>
+</section>
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+<div class=post-toc>
+<div class=post-toc-content><nav id=TableOfContents>
+<ul>
+<li><a href=#1下载oci工具>1、下载oci工具</a></li>
+<li><a href=#2配置oci连接>2、配置oci连接</a></li>
+<li><a href=#3python脚本>3、python脚本</a>
+<ul>
+<li><a href=#安装python-oci>安装python oci</a></li>
+<li><a href=#登录证书>登录证书</a></li>
+<li><a href=#修改脚本>修改脚本</a></li>
+<li><a href=#运行>运行</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
 </div>
 </section>
 </div>
