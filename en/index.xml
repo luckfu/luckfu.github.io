@@ -18,7 +18,7 @@
 &lt;li>4、exit&lt;/li>
 &lt;/ul>
 &lt;blockquote>
-&lt;p>Steps 1, 2, and 4 waste a lot of time in the loop. In this article, we use python to call the oci api , omit multiple verification , and execute the generated instance command in loop. The refresh speed can reach 3 seconds/time. When the instance creation is successful, return ,Automatic withdrawal.&lt;/p>
+&lt;p>Steps 1, 2, and 4 waste a lot of time in the loop. In this article, we use python to call the oci api , omit multiple verification , and execute the create instance command in loop. The refresh speed can reach 3 seconds/time. When the instance creation is successful, return ,Automatic withdrawal.&lt;/p>
 &lt;/blockquote></description></item><item><title>About</title><link>http://www.luckfu.com/en/about.html</link><pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/en/about.html</guid><description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
 Hugo makes use of a variety of open source projects including:
 https://github.</description></item></channel></rss>

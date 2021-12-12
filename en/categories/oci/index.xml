@@ -12,5 +12,5 @@
 &lt;li>4、exit&lt;/li>
 &lt;/ul>
 &lt;blockquote>
-&lt;p>Steps 1, 2, and 4 waste a lot of time in the loop. In this article, we use python to call the oci api , omit multiple verification , and execute the generated instance command in loop. The refresh speed can reach 3 seconds/time. When the instance creation is successful, return ,Automatic withdrawal.&lt;/p>
+&lt;p>Steps 1, 2, and 4 waste a lot of time in the loop. In this article, we use python to call the oci api , omit multiple verification , and execute the create instance command in loop. The refresh speed can reach 3 seconds/time. When the instance creation is successful, return ,Automatic withdrawal.&lt;/p>
 &lt;/blockquote></description></item></channel></rss>
