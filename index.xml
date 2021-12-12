@@ -19,4 +19,4 @@
 &lt;/ul>
 &lt;blockquote>
 &lt;p>1，2，4步骤在循环中浪费了大量时间，本文中采用python调用oci api 的模式，一次登录省略多次验证环节，循环执行创建instance命令，刷新速度可以达到3秒/次 当返回instance创建成功时，自动退出。&lt;/p>
-&lt;/blockquote></description></item><item><title>关于我</title><link>http://www.luckfu.com/about.html</link><pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/about.html</guid><description>更多信息请访问GitHub.</description></item></channel></rss>
+&lt;/blockquote></description></item><item><title>写了第一个github action</title><link>http://www.luckfu.com/post/first_github_action/</link><pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/first_github_action/</guid><description>这是水文，因为昏天黑地才搞定第一个action，晕头转向几个小时，更新一篇文章试试action运行。</description></item><item><title>关于我</title><link>http://www.luckfu.com/about.html</link><pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/about.html</guid><description>更多信息请访问GitHub.</description></item></channel></rss>

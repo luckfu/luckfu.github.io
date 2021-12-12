@@ -26,4 +26,4 @@ cat /root/.oci/oci_api_key_public.pem 把展示出来的内容复制下来。并
 3、python脚本 安装python oci 假设你已经安装好python环境
 pip install oci 登录证书 新建或使用系统已有的证书，本文直接查看本机已有证书记录下来 cat ~/.ssh/id_rsa.pub ssh-rsa AAAAB3NzaC1yc2EAAA......local 修改脚本 下载:
 link 修改luanch.py 脚本中的参数 INSTANCE_NAME = 'vps实例名' #你要创建的vps实例名 SUBNET_ID = "网络->虚拟云网络->虚拟云网络详细信息->OCID" #如果是全新用户，先创建一个VNC compartment_id= &lt;font color=red>"租户id" ssh_public_key="id_rsa.pub的内容" 运行 执行脚本，当主机申请完成，会自动退出
-python ./luanch.py</content></entry><entry><title>关于我</title><url>http://www.luckfu.com/about.html</url><categories/><tags/><content type="html"> 更多信息请访问GitHub.</content></entry></search>
+python ./luanch.py</content></entry><entry><title>写了第一个github action</title><url>http://www.luckfu.com/post/first_github_action/</url><categories><category>cloud vps</category><category>python</category><category>oci</category></categories><tags><tag>githubd</tag><tag>github action</tag></tags><content type="html"> 这是水文，因为昏天黑地才搞定第一个action，晕头转向几个小时，更新一篇文章试试action运行。</content></entry><entry><title>关于我</title><url>http://www.luckfu.com/about.html</url><categories/><tags/><content type="html"> 更多信息请访问GitHub.</content></entry></search>
