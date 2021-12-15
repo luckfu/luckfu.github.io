@@ -139,13 +139,13 @@
 |
 <i class="fa fa-file-word-o fa-fw"></i>
 <span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>994 字</span>
+<span class=leancloud-world-count>1028 字</span>
 </span>
 <span>
 |
 <i class="fa fa-eye fa-fw"></i>
 <span class=post-meta-item-text>阅读：</span>
-<span class=leancloud-view-count>2分钟</span>
+<span class=leancloud-view-count>3分钟</span>
 </span>
 <span id=/post/fate_install/ class=leancloud_visitors data-flag-title="联邦学习框架 FATE 单机版源码部署 ARM主机">
 |
@@ -248,6 +248,7 @@ flow init -c conf/service_conf.yaml
     <span style=color:green;font-weight:700>&#34;retmsg&#34;</span>: <span style=color:#b44>&#34;Fate Flow CLI has been initialized successfully.&#34;</span>
 }
 </code></pre></div><h1 id=9-fate-board-安装>9. FATE-Board 安装</h1>
+<p>FATE-Board的部署需要java环境和Maven</p>
 <h2 id=91-配置修改>9.1 配置修改</h2>
 <p>修改 ${FATE_PROJECT_BASE}/fateboard/src/main/resources/application.properties 文件</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>spring.datasource.driver-Class-Name<span style=color:#666>=</span>org.sqlite.JDBC
@@ -265,7 +266,8 @@ mvn clean <span style=color:#a2f;font-weight:700>package</span> <span style=colo
 </span><span style=color:#b62;font-weight:700></span>-Xloggc:gc.log -XX:+HeapDumpOnOutOfMemoryError  <span style=color:#b62;font-weight:700>\
 </span><span style=color:#b62;font-weight:700></span>-jar <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>/fateboard//target/fateboard-<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>version</span><span style=color:#b68;font-weight:700>}</span>.jar &gt; /dev/null 2&gt;&amp;<span style=color:#666>1</span> &amp;
 </code></pre></div><p>访问 http:127.0.0.1:8080
-<img src=/post/fate_install/FATE-Board.png alt></p>
+<img src=/post/fate_install/FATE-Board.png alt>
+用户名 admin 密码 admin</p>
 <h1 id=10-测试项>10. 测试项</h1>
 <h2 id=101-toy测试>10.1 Toy测试</h2>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>flow <span style=color:#a2f>test</span> toy -gid <span style=color:#666>10000</span> -hid <span style=color:#666>10000</span>
