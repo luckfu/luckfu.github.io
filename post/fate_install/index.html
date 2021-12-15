@@ -114,8 +114,8 @@
 <span class=post-time>
 <i class="fa fa-calendar-o fa-fw"></i>
 <span class=post-meta-item-text>时间：</span>
-<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-12-10">
-2021-12-10
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-12-15">
+2021-12-15
 </time>
 </span>
 <span class=post-category>
@@ -222,7 +222,7 @@ sed -i.bak <span style=color:#b44>&#34;s#venv=.*#venv=</span><span style=color:#
 </span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>computing</span>:<span style=color:#bbb> </span>standalone<span style=color:#bbb>
 </span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>federation</span>:<span style=color:#bbb> </span>standalone<span style=color:#bbb>
 </span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>storage</span>:<span style=color:#bbb> </span>standalone<span style=color:#bbb>
-</span></code></pre></div><h2 id=7-启动fate-flow-server>7. 启动fate flow server</h2>
+</span></code></pre></div><h1 id=7-启动fate-flow-server>7. 启动fate flow server</h1>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>;
 <span style=color:#a2f>source</span> bin/init_env.sh;
 <span style=color:#a2f>cd</span> fateflow;
@@ -234,7 +234,7 @@ service start sucessfully. pid: 111907
 status:app      111907 75.7  1.1 3740008 373448 pts/2  Sl+  12:21   0:17 python /xx/FATE/fateflow/python/fate_flow/fate_flow_server.py
 python  111907  app   14u  IPv4 3570158828      0t0  TCP localhost:boxp (LISTEN)
 python  111907  app   13u  IPv4 3570158827      0t0  TCP localhost:9360 (LISTEN)
-</code></pre></div><h2 id=8-安装fate-client>8. 安装fate client</h2>
+</code></pre></div><h1 id=8-安装fate-client>8. 安装fate client</h1>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>;
 <span style=color:#a2f>source</span> bin/init_env.sh;
 <span style=color:#a2f>cd</span> python/fate_client/;
@@ -266,12 +266,12 @@ mvn clean <span style=color:#a2f;font-weight:700>package</span> <span style=colo
 </span><span style=color:#b62;font-weight:700></span>-jar <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>/fateboard//target/fateboard-<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>version</span><span style=color:#b68;font-weight:700>}</span>.jar &gt; /dev/null 2&gt;&amp;<span style=color:#666>1</span> &amp;
 </code></pre></div><p>访问 http:127.0.0.1:8080
 <img src=/post/fate_install/FATE-Board.png alt></p>
-<h2 id=10-测试项>10. 测试项</h2>
-<h3 id=101-toy测试>10.1 Toy测试</h3>
+<h1 id=10-测试项>10. 测试项</h1>
+<h2 id=101-toy测试>10.1 Toy测试</h2>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>flow <span style=color:#a2f>test</span> toy -gid <span style=color:#666>10000</span> -hid <span style=color:#666>10000</span>
 </code></pre></div><p>如果成功，屏幕显示类似下方的语句:</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>success to calculate secure_sum, it is 2000.0
-</code></pre></div><h3 id=102-单元测试>10.2 单元测试</h3>
+</code></pre></div><h2 id=102-单元测试>10.2 单元测试</h2>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>;
 bash ./python/federatedml/test/run_test.sh
 </code></pre></div><p>如果成功，屏幕显示类似下方的语句:</p>
@@ -330,13 +330,10 @@ bash ./python/federatedml/test/run_test.sh
 </div>
 <div class=post-nav>
 <div class="post-nav-next post-nav-item">
-<a href=http://www.luckfu.com/post/first_github_action/ rel=next title="hugo + github action + github vscode 真香">
-<i class="fa fa-chevron-left"></i> hugo + github action + github vscode 真香
-</a>
 </div>
 <div class="post-nav-prev post-nav-item">
-<a href=http://www.luckfu.com/post/ampere_a1_docker/ rel=prev title=将docker容器作为虚拟机折腾>
-将docker容器作为虚拟机折腾
+<a href=http://www.luckfu.com/post/first_github_action/ rel=prev title="hugo + github action + github vscode 真香">
+hugo + github action + github vscode 真香
 <i class="fa fa-chevron-right"></i>
 </a>
 </div>
@@ -447,19 +444,13 @@ GitHub
 <li><a href=#52-安装python依赖包>5.2 安装Python依赖包</a></li>
 </ul>
 <ul>
-<li><a href=#7-启动fate-flow-server>7. 启动fate flow server</a></li>
-<li><a href=#8-安装fate-client>8. 安装fate client</a></li>
-</ul>
-<ul>
 <li><a href=#91-配置修改>9.1 配置修改</a></li>
 <li><a href=#92-打包>9.2 打包</a></li>
 <li><a href=#93-启动-fate-board>9.3 启动 FATE-Board</a></li>
-<li><a href=#10-测试项>10. 测试项</a>
+</ul>
 <ul>
 <li><a href=#101-toy测试>10.1 Toy测试</a></li>
 <li><a href=#102-单元测试>10.2 单元测试</a></li>
-</ul>
-</li>
 </ul>
 </nav></div>
 </div>
