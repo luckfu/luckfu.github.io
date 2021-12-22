@@ -133,7 +133,7 @@ Kubernetes修改NodePort范围必须要注意的事项
 |
 <i class="fa fa-file-word-o fa-fw"></i>
 <span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>505 字</span>
+<span class=leancloud-world-count>513 字</span>
 </span>
 <span>
 |
@@ -164,8 +164,13 @@ systemctl restart kubelet
 <p>你真正需要的是，修改kube-apiserver.yaml，重点来了，一个熟手在上产系统上，修改配置的常规操作是:</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>cp kube-apiserver.yaml kube-apiserver.yaml.bak
 vi kube-apiserver.yaml
+.....
+    Host Port:     &lt;none&gt;
+    Command:
+      kube-apiserver
+      - --service-cluster-ip-range<span style=color:#666>=</span>10.96.0.0/12
 <span style=color:#080;font-style:italic># 插入</span>
-     - --service-node-port-range<span style=color:#666>=</span>1-65535
+      - --service-node-port-range<span style=color:#666>=</span>1-65535
 ......
 </code></pre></div><p>这时候你会发现无论你删除pod重启还是重启服务，新配置都不生效，<font color=red size=5>问题出在备份文件，</font>移走<code>kube-apiserver.yaml.bak</code> 再查看</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl describe pod <span style=color:#b8860b>$apiserver_pods</span> -n kube-system 
