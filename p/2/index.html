@@ -1,17 +1,18 @@
 <!doctype html><html lang=zh-cn dir=content/zh-cn>
 <head>
+<meta name=generator content="Hugo 0.91.0">
 <meta name=baidu-site-verification content="code-HXR9G6t0qN">
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=content-security-policy content="upgrade-insecure-requests">
-<title> python - luckfu的潦草笔记 </title>
+<title> luckfu的潦草笔记 </title>
 <meta name=keywords content="博客,程序员,架构师,思考, 笔记,技术,分享,大数据,产品">
 <meta name=author content="luckfu">
-<meta property="og:title" content="python">
+<meta property="og:title" content="Home">
 <meta property="og:site_name" content="luckfu的潦草笔记">
 <meta property="og:image" content="/img/author.jpg">
-<meta name=title content="python - luckfu的潦草笔记">
+<meta name=title content="Home - luckfu的潦草笔记">
 <meta name=description content="欢迎来到luckfu的潦草笔记，主要记录一些琐碎过往。">
 <link rel="shortcut icon" href=/img/favicon.ico>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
@@ -25,7 +26,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3345927991797420" crossorigin=anonymous></script>
 </head>
 <body itemscope itemtype=http://schema.org/WebPage lang=zh-hans>
-<div class="container one-collumn sidebar-position-left">
+<div class="container one-collumn sidebar-position-left page-home">
 <div class=headband></div>
 <header id=header class=header itemscope itemtype=http://schema.org/WPHeader>
 <div class=header-inner> <div class=site-brand-container>
@@ -41,7 +42,7 @@
 <i class="fa fa-fw fa-language" style=margin-right:5px></i>
 <a class=lang-link id=zh-cn href=#>中文</a>
 <span class=lang-line> / </span>
-<a class=lang-link id=en href=http://www.luckfu.com/en/categories/python/>English</a>
+<a class=lang-link id=en href=http://www.luckfu.com/en/>English</a>
 </div>
 <div class=custom-logo-site-title>
 <a href=/ class=brand rel=start>
@@ -103,32 +104,89 @@
 <div class=main-inner>
 <div class=content-wrap>
 <div id=content class=content>
-<section id=posts class=posts-collapse>
-<div class=collection-title>
-<h2>python
-<small>分类</small>
-</h2>
-</div>
-<div class=collection-title>
-<h2 class="archive-year motion-element" id=archive-year-2021>2021</h2>
-</div>
-<article class="post post-type-normal }}" itemscope itemtype=http://schema.org/Article>
+<section id=posts class=posts-expand>
+<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
 <header class=post-header>
-<h1 class=post-title>
+<h1 class=post-title itemprop="name headline">
 <a class=post-title-link href=http://www.luckfu.com/post/ampere_a1_free/ itemprop=url>
-<span itemprop=name>使用python脚本抢注Oracle甲骨文 VM.Standard.A1.Flex</span>
+使用python脚本抢注Oracle甲骨文 VM.Standard.A1.Flex
 </a>
 </h1>
 <div class=post-meta>
-<time class=post-time itemprop=dateCreated datetime=2021-05-11 content="05-11">
-05-11
+<span class=post-time>
+<i class="fa fa-calendar-o fa-fw"></i>
+<span class=post-meta-item-text>时间：</span>
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-05-11">
+2021-05-11
 </time>
+</span>
+<span class=post-category>
+&nbsp; | &nbsp;
+<i class="fa fa-folder-o fa-fw"></i>
+<span class=post-meta-item-text>分类：</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/categories/cloud-vps itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>cloud vps</span>
+</a>
+&nbsp;
+</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/categories/python itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>python</span>
+</a>
+&nbsp;
+</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/categories/oci itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>oci</span>
+</a>
+&nbsp;
+</span>
+</span>
+<span>
+|
+<i class="fa fa-file-word-o fa-fw"></i>
+<span class=post-meta-item-text>字数：</span>
+<span class=leancloud-world-count>1100 字</span>
+</span>
+<span>
+|
+<i class="fa fa-eye fa-fw"></i>
+<span class=post-meta-item-text>阅读：</span>
+<span class=leancloud-view-count>3分钟</span>
+</span>
 </div>
 </header>
+<div class=post-body itemprop=articleBody>
+<p>Oracle cloud 开放注册账号能申请4c24g的免费云服务器,数据库以及其他的服务，1c1g的x86服务器比较容易申请，但热门的4c24g的Ampere A1类型主机通过网页正常申请根本申请不到，目前网络上流行的抢注方法无外乎两种模式：</p>
+<ul>
+<li>浏览器插件或脚本或按键精灵，这种方法的问题是控制台超时，还容易被服务器判定非法操作，禁用账号，对于动辄要求稳定运行几天才能完成的操作，显然已经不合适。</li>
+<li>调用oci命令脚本，这是最安全的模式，因为oci是oracle官方提供，原理是使用oci命令直接申请实例，例如：</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>oci compute instance launch ....
+</code></pre></div><p>然而，根据我香港主机测试，这种最多只能做到20秒刷新一次，原因是 oci 命令执行的完整的过程：</p>
+<ul>
+<li>1、启动、开始连接 oracle cloud</li>
+<li>2、验证用户合法性</li>
+<li>3、执行命令</li>
+<li>4、退出</li>
+</ul>
+<blockquote>
+<p>1，2，4步骤在循环中浪费了大量时间，本文中采用python调用oci api 的模式，一次登录省略多次验证环节，循环执行创建instance命令，刷新速度可以达到3秒/次 当返回instance创建成功时，自动退出。</p>
+</blockquote>
+</div>
+<div class="post-more-link text-center">
+<a class=btn href=http://www.luckfu.com/post/ampere_a1_free/ rel=contents>
+阅读全文 &#187;
+</a>
+</div>
+<footer class=post-footer><div class=post-eof></div></footer>
 </article>
 </section>
 <nav class=pagination>
-<span class="page-number current">1</span>
+<a class="extend prev" rel=prev href=/><i class="fa fa-angle-left"></i></a>
+<a class=page-number href=/>1</a>
+<span class="page-number current">2</span>
 </nav>
 </div>
 </div>
@@ -170,7 +228,7 @@
 </div>
 </nav>
 <div class="feed-link motion-element">
-<a href=/categories/python/index.xml rel=alternate type=application/rss+xml target=_blank>
+<a href=/index.xml rel=alternate type=application/rss+xml target=_blank>
 <i class="fa fa-rss"></i>
 RSS 订阅
 </a>
