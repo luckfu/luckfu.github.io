@@ -5,13 +5,13 @@
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=content-security-policy content="upgrade-insecure-requests">
-<title> HoRNDIS驱动提供Android USB共享网络给macOS Monterey - luckfu的潦草笔记 </title>
+<title> 安装 HoRNDIS驱动 将Android设备USB共享网络给Mac Monterey - luckfu的潦草笔记 </title>
 <meta name=keywords content="博客,程序员,架构师,思考, 笔记,技术,分享,大数据,产品">
 <meta name=author content="luckfu">
-<meta property="og:title" content="HoRNDIS驱动提供Android USB共享网络给macOS Monterey">
+<meta property="og:title" content="安装 HoRNDIS驱动 将Android设备USB共享网络给Mac Monterey">
 <meta property="og:site_name" content="luckfu的潦草笔记">
 <meta property="og:image" content="/img/author.jpg">
-<meta name=title content="HoRNDIS驱动提供Android USB共享网络给macOS Monterey - luckfu的潦草笔记">
+<meta name=title content="安装 HoRNDIS驱动 将Android设备USB共享网络给Mac Monterey - luckfu的潦草笔记">
 <meta name=description content="macOS Monterey 通过安卓usb共享上网">
 <link rel="shortcut icon" href=/img/favicon.ico>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
@@ -107,7 +107,7 @@
 <header class=post-header>
 <h1 class=post-title itemprop="name headline">
 <a class=post-title-link href=http://www.luckfu.com/post/horndis_mac/ itemprop=url>
-HoRNDIS驱动提供Android USB共享网络给macOS Monterey
+安装 HoRNDIS驱动 将Android设备USB共享网络给Mac Monterey
 </a>
 </h1>
 <div class=post-meta>
@@ -157,7 +157,7 @@ HoRNDIS驱动提供Android USB共享网络给macOS Monterey
 |
 <i class="fa fa-file-word-o fa-fw"></i>
 <span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>601 字</span>
+<span class=leancloud-world-count>682 字</span>
 </span>
 <span>
 |
@@ -165,7 +165,7 @@ HoRNDIS驱动提供Android USB共享网络给macOS Monterey
 <span class=post-meta-item-text>阅读：</span>
 <span class=leancloud-view-count>2分钟</span>
 </span>
-<span id=/post/horndis_mac/ class=leancloud_visitors data-flag-title="HoRNDIS驱动提供Android USB共享网络给macOS Monterey">
+<span id=/post/horndis_mac/ class=leancloud_visitors data-flag-title="安装 HoRNDIS驱动 将Android设备USB共享网络给Mac Monterey">
 |
 <i class="fa fa-binoculars fa-fw"></i>
 <span class=post-meta-item-text>阅读次数：</span>
@@ -200,7 +200,15 @@ HoRNDIS驱动提供Android USB共享网络给macOS Monterey
 <h2 id=34-允许horndis-内核扩展>3.4 允许HoRNDIS 内核扩展</h2>
 <p>在“系统偏好设置”=>&ldquo;隐私与安全"中允许app从任意位置
 <img src=https://user-images.githubusercontent.com/6248794/146626460-a7d2f91d-ea83-44c8-8bbf-596cdad3451e.png alt></p>
-<p>最后通过 USB 将手机连接到 Mac，打开手机上的usb网络共享&mldr;.</p>
+<h2 id=35-开启sip-为了安全>3.5 开启SIP (为了安全)</h2>
+<p>进入Recovery模式，开启SIP</p>
+<ul>
+<li>重启，开机按住command+R键，进入恢复模式</li>
+<li>点击实用工具 => 点击终端</li>
+<li>终端内输入命令：csrutil enable</li>
+</ul>
+<p>最后通过 USB 将手机连接到 Mac，打开手机上的usb网络共享&mldr;.
+<img src=/post/HoRNDIS_mac/install_use.png alt></p>
 </div>
 <footer class=post-footer>
 <div class=post-tags>
@@ -216,7 +224,7 @@ HoRNDIS驱动提供Android USB共享网络给macOS Monterey
 </div>
 <div class=article-copyright-info>
 <p>
-<span>声明：</span>HoRNDIS驱动提供Android USB共享网络给macOS Monterey
+<span>声明：</span>安装 HoRNDIS驱动 将Android设备USB共享网络给Mac Monterey
 </p>
 <p>
 <span>链接：</span>http://www.luckfu.com/post/horndis_mac/
@@ -369,6 +377,7 @@ GitHub
 <li><a href=#32-关闭sip>3.2 关闭SIP</a></li>
 <li><a href=#33-安装horndis>3.3 安装HoRNDIS</a></li>
 <li><a href=#34-允许horndis-内核扩展>3.4 允许HoRNDIS 内核扩展</a></li>
+<li><a href=#35-开启sip-为了安全>3.5 开启SIP (为了安全)</a></li>
 </ul>
 </nav></div>
 </div>
