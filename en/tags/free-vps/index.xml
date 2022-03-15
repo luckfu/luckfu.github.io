@@ -9,8 +9,8 @@
 &lt;li>Browser plug-ins or scripts or button wizards. The problem with this method is that the console is timed out. It is also easy to be judged by the server as illegal operations. Accounts are disabled. It is obviously not suitable for operations that require stable operation for several days.&lt;/li>
 &lt;li>Call the oci command script, this is the safest mode, because oci is officially provided by oracle, the principle is to use the oci command to directly apply for an instance, for example：&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">oci compute instance launch ....
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>However, according to my Hong Kong host test, this can only be refreshed every 20 seconds at most, because the complete process of the oci command execution：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>oci compute instance launch ....
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>However, according to my Hong Kong host test, this can only be refreshed every 20 seconds at most, because the complete process of the oci command execution：&lt;/p>
 &lt;ul>
 &lt;li>1、start to connect to oracle cloud&lt;/li>
 &lt;li>2、Verify user legitimacy&lt;/li>

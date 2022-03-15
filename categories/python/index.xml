@@ -3,8 +3,8 @@
 &lt;li>浏览器插件或脚本或按键精灵，这种方法的问题是控制台超时，还容易被服务器判定非法操作，禁用账号，对于动辄要求稳定运行几天才能完成的操作，显然已经不合适。&lt;/li>
 &lt;li>调用oci命令脚本，这是最安全的模式，因为oci是oracle官方提供，原理是使用oci命令直接申请实例，例如：&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">oci compute instance launch ....
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>然而，根据我香港主机测试，这种最多只能做到20秒刷新一次，原因是 oci 命令执行的完整的过程：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>oci compute instance launch ....
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然而，根据我香港主机测试，这种最多只能做到20秒刷新一次，原因是 oci 命令执行的完整的过程：&lt;/p>
 &lt;ul>
 &lt;li>1、启动、开始连接 oracle cloud&lt;/li>
 &lt;li>2、验证用户合法性&lt;/li>

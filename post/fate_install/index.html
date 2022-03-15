@@ -1,510 +1,132 @@
-<!doctype html><html lang=zh-cn dir=content/zh-cn>
-<head>
-<meta name=baidu-site-verification content="code-HXR9G6t0qN">
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta http-equiv=content-security-policy content="upgrade-insecure-requests">
-<title> 联邦学习框架 FATE 单机版源码部署 ARM主机 - luckfu的潦草笔记 </title>
-<meta name=keywords content="博客,程序员,架构师,思考, 笔记,技术,分享,大数据,产品">
-<meta name=author content="luckfu">
-<meta property="og:title" content="联邦学习框架 FATE 单机版源码部署 ARM主机">
-<meta property="og:site_name" content="luckfu的潦草笔记">
-<meta property="og:image" content="/img/author.jpg">
-<meta name=title content="联邦学习框架 FATE 单机版源码部署 ARM主机 - luckfu的潦草笔记">
-<meta name=description content="FATE 单机版源码部署 ARM">
-<link rel="shortcut icon" href=/img/favicon.ico>
-<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
-<link rel=apple-touch-icon-precomposed href=/img/apple-touch-icon.png>
-<link href=//cdn.bootcdn.net/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css rel=stylesheet type=text/css>
-<link href=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.css rel=stylesheet>
-<link href=/css/main.css rel=stylesheet type=text/css>
-<link href=/css/syntax.css rel=stylesheet type=text/css>
-<script type=text/javascript>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?656fb5e7c7a37752108a9bb75a5c8f6a",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151587-2"></script>
-<script type=text/javascript>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-151587-2 ')</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3345927991797420" crossorigin=anonymous></script>
-</head>
-<body itemscope itemtype=http://schema.org/WebPage lang=zh-hans>
-<div class="container one-collumn sidebar-position-left page-home">
-<div class=headband></div>
-<header id=header class=header itemscope itemtype=http://schema.org/WPHeader>
-<div class=header-inner> <div class=site-brand-container>
-<div class=site-nav-toggle>
-<div class=toggle role=button style=opacity:1;top:0>
+<!doctype html><html lang=zh-cn dir=content/zh-cn><head><meta name=baidu-site-verification content="code-HXR9G6t0qN"><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=content-security-policy content="upgrade-insecure-requests"><title>联邦学习框架 FATE 单机版源码部署 ARM主机 - luckfu的潦草笔记</title><meta name=keywords content="博客,程序员,架构师,思考, 笔记,技术,分享,大数据,产品"><meta name=author content="luckfu"><meta property="og:title" content="联邦学习框架 FATE 单机版源码部署 ARM主机"><meta property="og:site_name" content="luckfu的潦草笔记"><meta property="og:image" content="/img/author.jpg"><meta name=title content="联邦学习框架 FATE 单机版源码部署 ARM主机 - luckfu的潦草笔记"><meta name=description content="FATE 单机版源码部署 ARM"><link rel="shortcut icon" href=/img/favicon.ico><link rel=apple-touch-icon href=/img/apple-touch-icon.png><link rel=apple-touch-icon-precomposed href=/img/apple-touch-icon.png><link href=//cdn.bootcdn.net/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css rel=stylesheet type=text/css><link href=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.css rel=stylesheet><link href=/css/main.css rel=stylesheet type=text/css><link href=/css/syntax.css rel=stylesheet type=text/css><script type=text/javascript>var _hmt=_hmt||[];(function(){var e=document.createElement("script"),t;e.src="https://hm.baidu.com/hm.js?656fb5e7c7a37752108a9bb75a5c8f6a",t=document.getElementsByTagName("script")[0],t.parentNode.insertBefore(e,t)})()</script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-151587-2"></script>
+<script type=text/javascript>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","UA-151587-2 ")</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3345927991797420" crossorigin=anonymous></script></head><body itemscope itemtype=http://schema.org/WebPage lang=zh-hans><div class="container one-collumn sidebar-position-left page-home"><div class=headband></div><header id=header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle role=button style=opacity:1;top:0><span class=toggle-line></span>
 <span class=toggle-line></span>
-<span class=toggle-line></span>
-<span class=toggle-line></span>
-</div>
-</div>
-<div class=site-meta>
-<div class=multi-lang-switch>
-<i class="fa fa-fw fa-language" style=margin-right:5px></i>
-<a class=lang-link id=zh-cn href=#>中文</a>
-</div>
-<div class=custom-logo-site-title>
-<a href=/ class=brand rel=start>
-<span class=logo-line-before><i></i></span>
+<span class=toggle-line></span></div></div><div class=site-meta><div class=multi-lang-switch><i class="fa fa-fw fa-language" style=margin-right:5px></i>
+<a class=lang-link id=zh-cn href=#>中文</a></div><div class=custom-logo-site-title><a href=/ class=brand rel=start><span class=logo-line-before><i></i></span>
 <span class=site-title>luckfu的潦草笔记</span>
-<span class=logo-line-after><i></i></span>
-</a>
-</div>
-<p class=site-subtitle>最初的梦想绝对会到达!</p>
-</div>
-<div class=site-nav-right>
-<div class="toggle popup-trigger" style=opacity:1;top:0>
-<i class="fa fa-search fa-fw fa-lg"></i>
-</div>
-</div>
-</div>
-<nav class=site-nav>
-<ul id=menu class=menu>
-<li class=menu-item>
-<a href=/ rel=section>
-<i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页
-</a>
-</li>
-<li class=menu-item>
-<a href=/post rel=section>
-<i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档
-</a>
-</li>
-<li class=menu-item>
-<a href=/about.html rel=section>
-<i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于我
-</a>
-</li>
-<li class=menu-item>
-<a href=/404.html rel=section>
-<i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益404
-</a>
-</li>
-<li class="menu-item menu-item-search">
-<a href=javascript:; class=popup-trigger> <i class="menu-item-icon fa fa-search fa-fw"></i> <br> 搜索</a>
-</li>
-</ul>
-<div class=site-search>
-<div class="popup search-popup local-search-popup">
-<div class="local-search-header clearfix">
-<span class=search-icon><i class="fa fa-search"></i> </span>
-<span class=popup-btn-close><i class="fa fa-times-circle"></i></span>
-<div class=local-search-input-wrapper>
-<input autocomplete=off placeholder=搜索关键字... spellcheck=false type=text id=local-search-input autocapitalize=none autocorrect=off>
-</div>
-</div>
-<div id=local-search-result></div>
-</div>
-</div>
-</nav>
-</div>
-</header>
-<main id=main class=main>
-<div class=main-inner>
-<div class=content-wrap>
-<div id=content class=content>
-<section id=posts class=posts-expand>
-<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
-<header class=post-header>
-<h1 class=post-title itemprop="name headline">
-<a class=post-title-link href=http://www.luckfu.com/post/fate_install/ itemprop=url>
-联邦学习框架 FATE 单机版源码部署 ARM主机
-</a>
-</h1>
-<div class=post-meta>
-<span class=post-time>
-<i class="fa fa-calendar-o fa-fw"></i>
+<span class=logo-line-after><i></i></span></a></div><p class=site-subtitle>最初的梦想绝对会到达!</p></div><div class=site-nav-right><div class="toggle popup-trigger" style=opacity:1;top:0><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul id=menu class=menu><li class=menu-item><a href=/ rel=section><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class=menu-item><a href=/post rel=section><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li><li class=menu-item><a href=/about.html rel=section><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于我</a></li><li class=menu-item><a href=/404.html rel=section><i class="menu-item-icon fa fa-fw fa-heartbeat"></i><br>公益404</a></li><li class="menu-item menu-item-search"><a href=javascript:; class=popup-trigger><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class=site-search><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class=search-icon><i class="fa fa-search"></i></span>
+<span class=popup-btn-close><i class="fa fa-times-circle"></i></span><div class=local-search-input-wrapper><input autocomplete=off placeholder=搜索关键字... spellcheck=false type=text id=local-search-input autocapitalize=none autocorrect=off></div></div><div id=local-search-result></div></div></div></nav></div></header><main id=main class=main><div class=main-inner><div class=content-wrap><div id=content class=content><section id=posts class=posts-expand><article class="post post-type-normal" itemscope itemtype=http://schema.org/Article><header class=post-header><h1 class=post-title itemprop="name headline"><a class=post-title-link href=http://www.luckfu.com/post/fate_install/ itemprop=url>联邦学习框架 FATE 单机版源码部署 ARM主机</a></h1><div class=post-meta><span class=post-time><i class="fa fa-calendar-o fa-fw"></i>
 <span class=post-meta-item-text>时间：</span>
-<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-12-15">
-2021-12-15
-</time>
-</span>
-<span class=post-category>
-&nbsp; | &nbsp;
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-12-15">2021-12-15</time></span>
+<span class=post-category>&nbsp; | &nbsp;
 <i class="fa fa-folder-o fa-fw"></i>
 <span class=post-meta-item-text>分类：</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing>
-<a href=/categories/fate itemprop=url rel=index style=text-decoration:underline>
-<span itemprop=name>FATE</span>
-</a>
-&nbsp;
-</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing>
-<a href=/categories/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0 itemprop=url rel=index style=text-decoration:underline>
-<span itemprop=name>联邦学习</span>
-</a>
-&nbsp;
-</span>
-</span>
-<span>
-|
+<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=/categories/fate itemprop=url rel=index style=text-decoration:underline><span itemprop=name>FATE</span></a>
+&nbsp;</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=/categories/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0 itemprop=url rel=index style=text-decoration:underline><span itemprop=name>联邦学习</span></a>
+&nbsp;</span></span>
+<span>|
 <i class="fa fa-file-word-o fa-fw"></i>
 <span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>1028 字</span>
-</span>
-<span>
-|
+<span class=leancloud-world-count>1028 字</span></span>
+<span>|
 <i class="fa fa-eye fa-fw"></i>
 <span class=post-meta-item-text>阅读：</span>
-<span class=leancloud-view-count>3分钟</span>
-</span>
-<span id=/post/fate_install/ class=leancloud_visitors data-flag-title="联邦学习框架 FATE 单机版源码部署 ARM主机">
-|
+<span class=leancloud-view-count>3分钟</span></span>
+<span id=/post/fate_install/ class=leancloud_visitors data-flag-title="联邦学习框架 FATE 单机版源码部署 ARM主机">|
 <i class="fa fa-binoculars fa-fw"></i>
 <span class=post-meta-item-text>阅读次数：</span>
-<span class=leancloud-visitors-count></span>
-</span>
-</div>
-</header>
-<div class=post-body itemprop=articleBody>
-<p>FATE(Federated AI Technology Enabler)是一个联邦学习框架。本文大部分内容来自官方文档整合，单独记录的原因是这次需要源码部署，官方部署文档 <a href=https://github.com/FederatedAI/FATE>https://github.com/FederatedAI/FATE</a> 中一些细节需要自己摸索，形成总结。</p>
-<h1 id=1部署前环境检查>1.部署前环境检查</h1>
-<ul>
-<li>python环境</li>
-<li>jdk</li>
-<li>Maven</li>
-<li>本地8080、9360、9380端口是否被占用</li>
-</ul>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>netstat -apln|grep <span style=color:#666>8080</span>
-netstat -apln|grep <span style=color:#666>9360</span>
-netstat -apln|grep <span style=color:#666>9380</span>
-</code></pre></div><h1 id=2-设置环境变量>2. 设置环境变量</h1>
-<p>设置环境变量是因为FATA框架中，很多脚本要用到环境变量</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>export</span> <span style=color:#b8860b>branch</span><span style=color:#666>={</span>分支名称, 若使用某个发布版本分支, 则为<span style=color:#b44>`</span>v版本号<span style=color:#b44>`</span>, 如<span style=color:#b44>`</span>v1.7.0<span style=color:#b44>`</span><span style=color:#666>}</span>
-<span style=color:#a2f>export</span> <span style=color:#b8860b>version</span><span style=color:#666>={</span>FATE版本号, 如1.7.0<span style=color:#666>}</span>
-<span style=color:#a2f>export</span> <span style=color:#b8860b>version_tag</span><span style=color:#666>={</span>FATE版本标签, 如rc1/rc2/release<span style=color:#666>}</span>
-
-</code></pre></div><h1 id=3-获取源码>3. 获取源码</h1>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>git clone https://github.com/FederatedAI/FATE.git -b <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>branch</span><span style=color:#b68;font-weight:700>}</span> --recurse-submodules --depth<span style=color:#666>=</span><span style=color:#666>1</span>
-<span style=color:#080;font-style:italic>#或者</span>
-git clone https://gitee.com/FederatedAI/FATE.git -b <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>branch</span><span style=color:#b68;font-weight:700>}</span> --depth<span style=color:#666>=</span>1;
-
-<span style=color:#080;font-style:italic>#更新代码</span>
-<span style=color:#a2f>cd</span> FATE;
-bash build/common/update_submodule_from_gitee.sh
-git pull
-git submodule update --remote
-</code></pre></div><h1 id=4-运行时环境变量>4. 运行时环境变量</h1>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>cd</span> <span style=color:#666>{</span>上述代码的存放目录<span style=color:#666>}</span>
-<span style=color:#a2f>export</span> <span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#666>=</span><span style=color:#b8860b>$PWD</span>
-<span style=color:#a2f>export</span> <span style=color:#b8860b>version</span><span style=color:#666>=</span><span style=color:#b44>`</span>grep <span style=color:#b44>&#34;FATE=&#34;</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>/fate.env | awk -F <span style=color:#b44>&#34;=&#34;</span> <span style=color:#b44>&#39;{print $2}&#39;</span><span style=color:#b44>`</span>
-</code></pre></div><h1 id=5-安装fate所需要的python依赖包>5. 安装FATE所需要的Python依赖包</h1>
-<h2 id=51-修改依赖包说明文件>5.1 修改依赖包说明文件</h2>
-<blockquote>
-<p>官方部署文档中 requirements版本要求非常严格，实际部署中，可能因为某些原因无法满足，比如我的环境是ARM版Ubuntu,tensorflow和pytouch的版本支持有限，这种情况下可以删除python/requirements.txt的版本描述。原则上版本高一点是可以的。</p>
-</blockquote>
-<p>在 python/requirements.txt 增加</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>ruamel<span style=color:#666>.</span>yaml
-peewee
-apsw
-dotenv
-redis
-cos<span style=color:#666>-</span>python<span style=color:#666>-</span>sdk<span style=color:#666>-</span>v5
-beautifultable
-kazoo
-coverage
-cloudpickle
-lmdb
-coverage
-pycryptodomex
-libsm3py
-</code></pre></div><h2 id=52-安装python依赖包>5.2 安装Python依赖包</h2>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>;
-sh bin/install_os_dependencies.sh;
-<span style=color:#a2f>source</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_VENV_BASE</span><span style=color:#b68;font-weight:700>}</span>/bin/activate;
-pip install -r python/requirements.txt
-</code></pre></div><h1 id=6-配置fate>6. 配置FATE</h1>
-<p>编辑<code>bin/init_env.sh</code>环境变量文件</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>
-sed -i.bak <span style=color:#b44>&#34;s#PYTHONPATH=.*#PYTHONPATH=</span><span style=color:#b8860b>$PWD</span><span style=color:#b44>/python:</span><span style=color:#b8860b>$PWD</span><span style=color:#b44>/fateflow/python#g&#34;</span> bin/init_env.sh;
-sed -i.bak <span style=color:#b44>&#34;s#venv=.*#venv=</span><span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_VENV_BASE</span><span style=color:#b68;font-weight:700>}</span><span style=color:#b44>#g&#34;</span> bin/init_env.sh
-</code></pre></div><p>检查<code>conf/service_conf.yaml</code>全局配置文件中是否将基础引擎配置为单机版, 若<code>default_engines</code>显示如下，则为单机版</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>default_engines</span>:<span style=color:#bbb>
-</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>computing</span>:<span style=color:#bbb> </span>standalone<span style=color:#bbb>
-</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>federation</span>:<span style=color:#bbb> </span>standalone<span style=color:#bbb>
-</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>storage</span>:<span style=color:#bbb> </span>standalone<span style=color:#bbb>
-</span></code></pre></div><h1 id=7-启动fate-flow-server>7. 启动fate flow server</h1>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>;
-<span style=color:#a2f>source</span> bin/init_env.sh;
-<span style=color:#a2f>cd</span> fateflow;
-bash bin/service.sh status;
-bash bin/service.sh start
-</code></pre></div><p>显示如下类似则为启动成功，否则请依据提示查看日志</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>bash
-service start sucessfully. pid: 111907
-status:app      111907 75.7  1.1 3740008 373448 pts/2  Sl+  12:21   0:17 python /xx/FATE/fateflow/python/fate_flow/fate_flow_server.py
-python  111907  app   14u  IPv4 3570158828      0t0  TCP localhost:boxp (LISTEN)
-python  111907  app   13u  IPv4 3570158827      0t0  TCP localhost:9360 (LISTEN)
-</code></pre></div><h1 id=8-安装fate-client>8. 安装fate client</h1>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>;
-<span style=color:#a2f>source</span> bin/init_env.sh;
-<span style=color:#a2f>cd</span> python/fate_client/;
-python setup.py install
-</code></pre></div><p>初始化<code>fate flow client</code></p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>cd</span> ../../;
-flow init -c conf/service_conf.yaml
-</code></pre></div><p>显示如下类似则为初始化成功，否则请依据提示查看日志</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-    <span style=color:green;font-weight:700>&#34;retcode&#34;</span>: <span style=color:#666>0</span>,
-    <span style=color:green;font-weight:700>&#34;retmsg&#34;</span>: <span style=color:#b44>&#34;Fate Flow CLI has been initialized successfully.&#34;</span>
-}
-</code></pre></div><h1 id=9-fate-board-安装>9. FATE-Board 安装</h1>
-<p>FATE-Board的部署需要java环境和Maven</p>
-<h2 id=91-配置修改>9.1 配置修改</h2>
-<p>修改 ${FATE_PROJECT_BASE}/fateboard/src/main/resources/application.properties 文件</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>spring.datasource.driver-Class-Name<span style=color:#666>=</span>org.sqlite.JDBC
-···
-fateboard.datasource.jdbc-url<span style=color:#666>=</span>jdbc:sqlite:路径/数据库文件名
-
-</code></pre></div><h2 id=92-打包>9.2 打包</h2>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>cd fateboard<span style=color:#666>/</span>
-mvn clean <span style=color:#a2f;font-weight:700>package</span> <span style=color:#666>-</span>DskipTests
-</code></pre></div><h2 id=93-启动-fate-board>9.3 启动 FATE-Board</h2>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>nohup <span style=color:#b62;font-weight:700>\
-</span><span style=color:#b62;font-weight:700></span>java -Dspring.config.location<span style=color:#666>=</span><span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>/fateboard/src/main/resources/application.properties <span style=color:#b62;font-weight:700>\
-</span><span style=color:#b62;font-weight:700></span>-Dssh_config_file<span style=color:#666>=</span><span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>/fateboard//src/main/resources/  <span style=color:#b62;font-weight:700>\
-</span><span style=color:#b62;font-weight:700></span>-Xmx2048m -Xms2048m -XX:+PrintGCDetails  <span style=color:#b62;font-weight:700>\
-</span><span style=color:#b62;font-weight:700></span>-Xloggc:gc.log -XX:+HeapDumpOnOutOfMemoryError  <span style=color:#b62;font-weight:700>\
-</span><span style=color:#b62;font-weight:700></span>-jar <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>/fateboard//target/fateboard-<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>version</span><span style=color:#b68;font-weight:700>}</span>.jar &gt; /dev/null 2&gt;&amp;<span style=color:#666>1</span> &amp;
-</code></pre></div><p>访问 http:127.0.0.1:8080
+<span class=leancloud-visitors-count></span></span></div></header><div class=post-body itemprop=articleBody><p>FATE(Federated AI Technology Enabler)是一个联邦学习框架。本文大部分内容来自官方文档整合，单独记录的原因是这次需要源码部署，官方部署文档 <a href=https://github.com/FederatedAI/FATE>https://github.com/FederatedAI/FATE</a> 中一些细节需要自己摸索，形成总结。</p><h1 id=1部署前环境检查>1.部署前环境检查</h1><ul><li>python环境</li><li>jdk</li><li>Maven</li><li>本地8080、9360、9380端口是否被占用</li></ul><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>netstat -apln|grep <span style=color:#666>8080</span>
+</span></span><span style=display:flex><span>netstat -apln|grep <span style=color:#666>9360</span>
+</span></span><span style=display:flex><span>netstat -apln|grep <span style=color:#666>9380</span>
+</span></span></code></pre></div><h1 id=2-设置环境变量>2. 设置环境变量</h1><p>设置环境变量是因为FATA框架中，很多脚本要用到环境变量</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#a2f>export</span> <span style=color:#b8860b>branch</span><span style=color:#666>={</span>分支名称, 若使用某个发布版本分支, 则为<span style=color:#b44>`</span>v版本号<span style=color:#b44>`</span>, 如<span style=color:#b44>`</span>v1.7.0<span style=color:#b44>`</span><span style=color:#666>}</span>
+</span></span><span style=display:flex><span><span style=color:#a2f>export</span> <span style=color:#b8860b>version</span><span style=color:#666>={</span>FATE版本号, 如1.7.0<span style=color:#666>}</span>
+</span></span><span style=display:flex><span><span style=color:#a2f>export</span> <span style=color:#b8860b>version_tag</span><span style=color:#666>={</span>FATE版本标签, 如rc1/rc2/release<span style=color:#666>}</span>
+</span></span></code></pre></div><h1 id=3-获取源码>3. 获取源码</h1><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>git clone https://github.com/FederatedAI/FATE.git -b <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>branch</span><span style=color:#b68;font-weight:700>}</span> --recurse-submodules --depth<span style=color:#666>=</span><span style=color:#666>1</span>
+</span></span><span style=display:flex><span><span style=color:#080;font-style:italic>#或者</span>
+</span></span><span style=display:flex><span>git clone https://gitee.com/FederatedAI/FATE.git -b <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>branch</span><span style=color:#b68;font-weight:700>}</span> --depth<span style=color:#666>=</span>1;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#080;font-style:italic>#更新代码</span>
+</span></span><span style=display:flex><span><span style=color:#a2f>cd</span> FATE;
+</span></span><span style=display:flex><span>bash build/common/update_submodule_from_gitee.sh
+</span></span><span style=display:flex><span>git pull
+</span></span><span style=display:flex><span>git submodule update --remote
+</span></span></code></pre></div><h1 id=4-运行时环境变量>4. 运行时环境变量</h1><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#a2f>cd</span> <span style=color:#666>{</span>上述代码的存放目录<span style=color:#666>}</span>
+</span></span><span style=display:flex><span><span style=color:#a2f>export</span> <span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#666>=</span><span style=color:#b8860b>$PWD</span>
+</span></span><span style=display:flex><span><span style=color:#a2f>export</span> <span style=color:#b8860b>version</span><span style=color:#666>=</span><span style=color:#b44>`</span>grep <span style=color:#b44>&#34;FATE=&#34;</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>/fate.env | awk -F <span style=color:#b44>&#34;=&#34;</span> <span style=color:#b44>&#39;{print $2}&#39;</span><span style=color:#b44>`</span>
+</span></span></code></pre></div><h1 id=5-安装fate所需要的python依赖包>5. 安装FATE所需要的Python依赖包</h1><h2 id=51-修改依赖包说明文件>5.1 修改依赖包说明文件</h2><blockquote><p>官方部署文档中 requirements版本要求非常严格，实际部署中，可能因为某些原因无法满足，比如我的环境是ARM版Ubuntu,tensorflow和pytouch的版本支持有限，这种情况下可以删除python/requirements.txt的版本描述。原则上版本高一点是可以的。</p></blockquote><p>在 python/requirements.txt 增加</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>ruamel<span style=color:#666>.</span>yaml
+</span></span><span style=display:flex><span>peewee
+</span></span><span style=display:flex><span>apsw
+</span></span><span style=display:flex><span>dotenv
+</span></span><span style=display:flex><span>redis
+</span></span><span style=display:flex><span>cos<span style=color:#666>-</span>python<span style=color:#666>-</span>sdk<span style=color:#666>-</span>v5
+</span></span><span style=display:flex><span>beautifultable
+</span></span><span style=display:flex><span>kazoo
+</span></span><span style=display:flex><span>coverage
+</span></span><span style=display:flex><span>cloudpickle
+</span></span><span style=display:flex><span>lmdb
+</span></span><span style=display:flex><span>coverage
+</span></span><span style=display:flex><span>pycryptodomex
+</span></span><span style=display:flex><span>libsm3py
+</span></span></code></pre></div><h2 id=52-安装python依赖包>5.2 安装Python依赖包</h2><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>;
+</span></span><span style=display:flex><span>sh bin/install_os_dependencies.sh;
+</span></span><span style=display:flex><span><span style=color:#a2f>source</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_VENV_BASE</span><span style=color:#b68;font-weight:700>}</span>/bin/activate;
+</span></span><span style=display:flex><span>pip install -r python/requirements.txt
+</span></span></code></pre></div><h1 id=6-配置fate>6. 配置FATE</h1><p>编辑<code>bin/init_env.sh</code>环境变量文件</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>
+</span></span><span style=display:flex><span>sed -i.bak <span style=color:#b44>&#34;s#PYTHONPATH=.*#PYTHONPATH=</span><span style=color:#b8860b>$PWD</span><span style=color:#b44>/python:</span><span style=color:#b8860b>$PWD</span><span style=color:#b44>/fateflow/python#g&#34;</span> bin/init_env.sh;
+</span></span><span style=display:flex><span>sed -i.bak <span style=color:#b44>&#34;s#venv=.*#venv=</span><span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_VENV_BASE</span><span style=color:#b68;font-weight:700>}</span><span style=color:#b44>#g&#34;</span> bin/init_env.sh
+</span></span></code></pre></div><p>检查<code>conf/service_conf.yaml</code>全局配置文件中是否将基础引擎配置为单机版, 若<code>default_engines</code>显示如下，则为单机版</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:green;font-weight:700>default_engines</span>:<span style=color:#bbb>
+</span></span></span><span style=display:flex><span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>computing</span>:<span style=color:#bbb> </span>standalone<span style=color:#bbb>
+</span></span></span><span style=display:flex><span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>federation</span>:<span style=color:#bbb> </span>standalone<span style=color:#bbb>
+</span></span></span><span style=display:flex><span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>storage</span>:<span style=color:#bbb> </span>standalone<span style=color:#bbb>
+</span></span></span></code></pre></div><h1 id=7-启动fate-flow-server>7. 启动fate flow server</h1><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>;
+</span></span><span style=display:flex><span><span style=color:#a2f>source</span> bin/init_env.sh;
+</span></span><span style=display:flex><span><span style=color:#a2f>cd</span> fateflow;
+</span></span><span style=display:flex><span>bash bin/service.sh status;
+</span></span><span style=display:flex><span>bash bin/service.sh start
+</span></span></code></pre></div><p>显示如下类似则为启动成功，否则请依据提示查看日志</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>bash
+</span></span><span style=display:flex><span>service start sucessfully. pid: 111907
+</span></span><span style=display:flex><span>status:app      111907 75.7  1.1 3740008 373448 pts/2  Sl+  12:21   0:17 python /xx/FATE/fateflow/python/fate_flow/fate_flow_server.py
+</span></span><span style=display:flex><span>python  111907  app   14u  IPv4 3570158828      0t0  TCP localhost:boxp (LISTEN)
+</span></span><span style=display:flex><span>python  111907  app   13u  IPv4 3570158827      0t0  TCP localhost:9360 (LISTEN)
+</span></span></code></pre></div><h1 id=8-安装fate-client>8. 安装fate client</h1><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>;
+</span></span><span style=display:flex><span><span style=color:#a2f>source</span> bin/init_env.sh;
+</span></span><span style=display:flex><span><span style=color:#a2f>cd</span> python/fate_client/;
+</span></span><span style=display:flex><span>python setup.py install
+</span></span></code></pre></div><p>初始化<code>fate flow client</code></p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#a2f>cd</span> ../../;
+</span></span><span style=display:flex><span>flow init -c conf/service_conf.yaml
+</span></span></code></pre></div><p>显示如下类似则为初始化成功，否则请依据提示查看日志</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:green;font-weight:700>&#34;retcode&#34;</span>: <span style=color:#666>0</span>,
+</span></span><span style=display:flex><span>    <span style=color:green;font-weight:700>&#34;retmsg&#34;</span>: <span style=color:#b44>&#34;Fate Flow CLI has been initialized successfully.&#34;</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h1 id=9-fate-board-安装>9. FATE-Board 安装</h1><p>FATE-Board的部署需要java环境和Maven</p><h2 id=91-配置修改>9.1 配置修改</h2><p>修改 ${FATE_PROJECT_BASE}/fateboard/src/main/resources/application.properties 文件</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>spring.datasource.driver-Class-Name<span style=color:#666>=</span>org.sqlite.JDBC
+</span></span><span style=display:flex><span>···
+</span></span><span style=display:flex><span>fateboard.datasource.jdbc-url<span style=color:#666>=</span>jdbc:sqlite:路径/数据库文件名
+</span></span></code></pre></div><h2 id=92-打包>9.2 打包</h2><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>cd fateboard<span style=color:#666>/</span>
+</span></span><span style=display:flex><span>mvn clean <span style=color:#a2f;font-weight:700>package</span> <span style=color:#666>-</span>DskipTests
+</span></span></code></pre></div><h2 id=93-启动-fate-board>9.3 启动 FATE-Board</h2><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>nohup <span style=color:#b62;font-weight:700>\
+</span></span></span><span style=display:flex><span><span style=color:#b62;font-weight:700></span>java -Dspring.config.location<span style=color:#666>=</span><span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>/fateboard/src/main/resources/application.properties <span style=color:#b62;font-weight:700>\
+</span></span></span><span style=display:flex><span><span style=color:#b62;font-weight:700></span>-Dssh_config_file<span style=color:#666>=</span><span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>/fateboard//src/main/resources/  <span style=color:#b62;font-weight:700>\
+</span></span></span><span style=display:flex><span><span style=color:#b62;font-weight:700></span>-Xmx2048m -Xms2048m -XX:+PrintGCDetails  <span style=color:#b62;font-weight:700>\
+</span></span></span><span style=display:flex><span><span style=color:#b62;font-weight:700></span>-Xloggc:gc.log -XX:+HeapDumpOnOutOfMemoryError  <span style=color:#b62;font-weight:700>\
+</span></span></span><span style=display:flex><span><span style=color:#b62;font-weight:700></span>-jar <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>/fateboard//target/fateboard-<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>version</span><span style=color:#b68;font-weight:700>}</span>.jar &gt; /dev/null 2&gt;&amp;<span style=color:#666>1</span> &amp;
+</span></span></code></pre></div><p>访问 http:127.0.0.1:8080
 <img src=/post/fate_install/FATE-Board.png alt>
-用户名 admin 密码 admin</p>
-<h1 id=10-测试项>10. 测试项</h1>
-<h2 id=101-toy测试>10.1 Toy测试</h2>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>flow <span style=color:#a2f>test</span> toy -gid <span style=color:#666>10000</span> -hid <span style=color:#666>10000</span>
-</code></pre></div><p>如果成功，屏幕显示类似下方的语句:</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>success to calculate secure_sum, it is 2000.0
-</code></pre></div><h2 id=102-单元测试>10.2 单元测试</h2>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>;
-bash ./python/federatedml/test/run_test.sh
-</code></pre></div><p>如果成功，屏幕显示类似下方的语句:</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>there are <span style=color:#666>0</span> failed <span style=color:#a2f>test</span>
-</code></pre></div>
-</div>
-<footer class=post-footer>
-<div class=post-tags>
-<a href=/tags/fate rel=tag title=FATE>#FATE#</a>
+用户名 admin 密码 admin</p><h1 id=10-测试项>10. 测试项</h1><h2 id=101-toy测试>10.1 Toy测试</h2><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>flow <span style=color:#a2f>test</span> toy -gid <span style=color:#666>10000</span> -hid <span style=color:#666>10000</span>
+</span></span></code></pre></div><p>如果成功，屏幕显示类似下方的语句:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>success to calculate secure_sum, it is 2000.0
+</span></span></code></pre></div><h2 id=102-单元测试>10.2 单元测试</h2><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#a2f>cd</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>FATE_PROJECT_BASE</span><span style=color:#b68;font-weight:700>}</span>;
+</span></span><span style=display:flex><span>bash ./python/federatedml/test/run_test.sh
+</span></span></code></pre></div><p>如果成功，屏幕显示类似下方的语句:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>there are <span style=color:#666>0</span> failed <span style=color:#a2f>test</span>
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-tags><a href=/tags/fate rel=tag title=FATE>#FATE#</a>
 <a href=/tags/fate-board rel=tag title=FATE-Board>#FATE-Board#</a>
-<a href=/tags/%e8%81%94%e9%82%a6%e5%ad%a6%e4%b9%a0 rel=tag title=联邦学习>#联邦学习#</a>
-</div>
-<div class=addthis_inline_share_toolbox></div>
-<div class=post-nav>
-<div class=article-copyright>
-<div class=article-copyright-img>
-</div>
-<div class=article-copyright-info>
-<p>
-<span>声明：</span>联邦学习框架 FATE 单机版源码部署 ARM主机
-</p>
-<p>
-<span>链接：</span>http://www.luckfu.com/post/fate_install/
-</p>
-<p>
-<span>作者：</span>luckfu
-</p>
-<p>
-<span>声明： </span>本博客文章除特别声明外，均采用 <a href=https://creativecommons.org/licenses/by-nc-sa/3.0/ target=_blank style=text-decoration:underline>CC BY-NC-SA 3.0</a>许可协议，转载请注明出处！
-</p>
-</div>
-</div>
-<div class=clear></div>
-</div>
-<div class=reward-qr-info>
-<div>创作实属不易，如有帮助，那就打赏博主些许茶钱吧 ^_^</div>
-<button id=rewardButton disable=enable onclick="var qr=document.getElementById('QR');qr.style.display==='none'?qr.style.display='block':qr.style.display='none'">
-<span>赏</span>
-</button>
-<div id=QR style=display:none>
-<div id=wechat style=display:inline-block>
-<img id=wechat_qr src=/img/wechat-pay.png alt="WeChat Pay">
-<p>微信打赏</p>
-</div>
-<div id=alipay style=display:inline-block>
-<img id=alipay_qr src=/img/ali-pay.png alt=Alipay>
-<p>支付宝打赏</p>
-</div>
-<div id=paypal style=display:inline-block>
-<a href="https://paypal.me/luckfu?country.x=C2&locale.x=zh_XC">
-<img src=/img/paypal.png alt="paypal Pay">
-</a>
-<p>PayPal打赏</p>
-</div>
-</div>
-</div>
-<div class=post-nav>
-<div class="post-nav-next post-nav-item">
-<a href=http://www.luckfu.com/post/macos_monterey_bluetooth_apn/ rel=next title="macOS Monterey中蓝牙PAN(Bluetooth PAN)到哪里去了？ 😡">
-<i class="fa fa-chevron-left"></i> macOS Monterey中蓝牙PAN(Bluetooth PAN)到哪里去了？ 😡
-</a>
-</div>
-<div class="post-nav-prev post-nav-item">
-<a href=http://www.luckfu.com/post/first_github_action/ rel=prev title="hugo + github action + github vscode 真香">
-hugo + github action + github vscode 真香
-<i class="fa fa-chevron-right"></i>
-</a>
-</div>
-</div>
-<div id=wcomments></div>
-</footer>
-</article>
-</section>
-</div>
-</div>
-<div class=sidebar-toggle>
-<div class=sidebar-toggle-line-wrap>
-<span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+<a href=/tags/%e8%81%94%e9%82%a6%e5%ad%a6%e4%b9%a0 rel=tag title=联邦学习>#联邦学习#</a></div><div class=addthis_inline_share_toolbox></div><div class=post-nav><div class=article-copyright><div class=article-copyright-img></div><div class=article-copyright-info><p><span>声明：</span>联邦学习框架 FATE 单机版源码部署 ARM主机</p><p><span>链接：</span>http://www.luckfu.com/post/fate_install/</p><p><span>作者：</span>luckfu</p><p><span>声明： </span>本博客文章除特别声明外，均采用 <a href=https://creativecommons.org/licenses/by-nc-sa/3.0/ target=_blank style=text-decoration:underline>CC BY-NC-SA 3.0</a>许可协议，转载请注明出处！</p></div></div><div class=clear></div></div><div class=reward-qr-info><div>创作实属不易，如有帮助，那就打赏博主些许茶钱吧 ^_^</div><button id=rewardButton disable=enable onclick='var qr=document.getElementById("QR");qr.style.display==="none"?qr.style.display="block":qr.style.display="none"'>
+<span>赏</span></button><div id=QR style=display:none><div id=wechat style=display:inline-block><img id=wechat_qr src=/img/wechat-pay.png alt="WeChat Pay"><p>微信打赏</p></div><div id=alipay style=display:inline-block><img id=alipay_qr src=/img/ali-pay.png alt=Alipay><p>支付宝打赏</p></div><div id=paypal style=display:inline-block><a href="https://paypal.me/luckfu?country.x=C2&locale.x=zh_XC"><img src=/img/paypal.png alt="paypal Pay"></a><p>PayPal打赏</p></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=http://www.luckfu.com/post/macos_monterey_bluetooth_apn/ rel=next title="macOS Monterey中蓝牙PAN(Bluetooth PAN)到哪里去了？ 😡"><i class="fa fa-chevron-left"></i> macOS Monterey中蓝牙PAN(Bluetooth PAN)到哪里去了？ 😡</a></div><div class="post-nav-prev post-nav-item"><a href=http://www.luckfu.com/post/first_github_action/ rel=prev title="hugo + github action + github vscode 真香">hugo + github action + github vscode 真香
+<i class="fa fa-chevron-right"></i></a></div></div><div id=wcomments></div></footer></article></section></div></div><div class=sidebar-toggle><div class=sidebar-toggle-line-wrap><span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
 <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-<span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-</div>
-</div>
-<aside id=sidebar class=sidebar>
-<div class=sidebar-inner>
-<ul class="sidebar-nav motion-element">
-<li class="sidebar-nav-toc sidebar-nav-active" data-target=post-toc-wrap>
-文章目录
-</li>
-<li class=sidebar-nav-overview data-target=site-overview>
-站点概览
-</li>
-</ul>
-<section class="site-overview sidebar-panel">
-<div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person>
-<img class=site-author-image itemprop=image src=/img/avatar.gif alt=luckfu>
-<p class=site-author-name itemprop=name>luckfu</p>
-<p class="site-description motion-element" itemprop=description>
-一瞬间，过去的一切都离你而去，剩下的只有回忆!
-</p>
-</div>
-<nav class="site-state motion-element">
-<div class="site-state-item site-state-posts">
-<a href=/post/>
-<span class=site-state-item-count>9</span>
-<span class=site-state-item-name>日志</span>
-</a>
-</div>
-<div class="site-state-item site-state-categories">
-<a href=/categories/>
-<span class=site-state-item-count>17</span>
-<span class=site-state-item-name>分类</span>
-</a>
-</div>
-<div class="site-state-item site-state-tags">
-<a href=/tags/>
-<span class=site-state-item-count>19</span>
-<span class=site-state-item-name>标签</span>
-</a>
-</div>
-</nav>
-<div class="links-of-author motion-element">
-<span class=links-of-author-item>
-<a href=https://github.com/luckfu/ target=_blank title=GitHub>
-<i class="fa fa-fw fa-github"></i>
-GitHub
-</a>
-</span>
-</div>
-<div class="tagcloud-of-blogroll motion-element tagcloud-of-blogroll-inline">
-<div class=tagcloud-of-blogroll-title>
-<i class="fa fa-fw fa-tags"></i>
-标签云
-</div>
-<ul class=tagcloud-of-blogroll-list>
-<li class=tagcloud-of-blogroll-item>
-<a href=/tags/free-vps>Free vps</a>
-</li>
-<li class=tagcloud-of-blogroll-item>
-<a href=/tags/macos>Macos</a>
-</li>
-<li class=tagcloud-of-blogroll-item>
-<a href=/tags/monterey>Monterey</a>
-</li>
-<li class=tagcloud-of-blogroll-item>
-<a href=/tags/oracle-cloud>Oracle cloud</a>
-</li>
-<li class=tagcloud-of-blogroll-item>
-<a href=/tags/vm.standard.a1.flex>Vm.Standard.A1.Flex</a>
-</li>
-<li class=tagcloud-of-blogroll-item>
-<a href=/tags/%E7%94%9F%E6%B4%BB>生活</a>
-</li>
-<li class=tagcloud-of-blogroll-item>
-<a href=/tags/bluetooth-pan>Bluetooth pan</a>
-</li>
-<li class=tagcloud-of-blogroll-item>
-<a href=/tags/docker>Docker</a>
-</li>
-<li class=tagcloud-of-blogroll-item>
-<a href=/tags/fate>Fate</a>
-</li>
-<li class=tagcloud-of-blogroll-item>
-<a href=/tags/fate-board>Fate board</a>
-</li>
-</ul>
-</div>
-</section>
-<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-<div class=post-toc>
-<div class=post-toc-content><nav id=TableOfContents>
-<ul>
-<li><a href=#51-修改依赖包说明文件>5.1 修改依赖包说明文件</a></li>
-<li><a href=#52-安装python依赖包>5.2 安装Python依赖包</a></li>
-</ul>
-<ul>
-<li><a href=#91-配置修改>9.1 配置修改</a></li>
-<li><a href=#92-打包>9.2 打包</a></li>
-<li><a href=#93-启动-fate-board>9.3 启动 FATE-Board</a></li>
-</ul>
-<ul>
-<li><a href=#101-toy测试>10.1 Toy测试</a></li>
-<li><a href=#102-单元测试>10.2 单元测试</a></li>
-</ul>
-</nav></div>
-</div>
-</section>
-</div>
-</aside>
-</div>
-</main>
-<footer id=footer class=footer>
-<div class=footer-inner>
-<div class=copyright>
-<span class=copyright-year>
-&copy; 2010 - 2022
-</span>
+<span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id=sidebar class=sidebar><div class=sidebar-inner><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target=post-toc-wrap>文章目录</li><li class=sidebar-nav-overview data-target=site-overview>站点概览</li></ul><section class="site-overview sidebar-panel"><div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image src=/img/avatar.gif alt=luckfu><p class=site-author-name itemprop=name>luckfu</p><p class="site-description motion-element" itemprop=description>一瞬间，过去的一切都离你而去，剩下的只有回忆!</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href=/post/><span class=site-state-item-count>10</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>18</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>21</span>
+<span class=site-state-item-name>标签</span></a></div></nav><div class="links-of-author motion-element"><span class=links-of-author-item><a href=https://github.com/luckfu/ target=_blank title=GitHub><i class="fa fa-fw fa-github"></i>
+GitHub</a></span></div><div class="tagcloud-of-blogroll motion-element tagcloud-of-blogroll-inline"><div class=tagcloud-of-blogroll-title><i class="fa fa-fw fa-tags"></i>
+标签云</div><ul class=tagcloud-of-blogroll-list><li class=tagcloud-of-blogroll-item><a href=/tags/free-vps>Free vps</a></li><li class=tagcloud-of-blogroll-item><a href=/tags/k8s>K8s</a></li><li class=tagcloud-of-blogroll-item><a href=/tags/macos>Macos</a></li><li class=tagcloud-of-blogroll-item><a href=/tags/monterey>Monterey</a></li><li class=tagcloud-of-blogroll-item><a href=/tags/oracle-cloud>Oracle cloud</a></li><li class=tagcloud-of-blogroll-item><a href=/tags/vm.standard.a1.flex>Vm.Standard.A1.Flex</a></li><li class=tagcloud-of-blogroll-item><a href=/tags/%E7%94%9F%E6%B4%BB>生活</a></li><li class=tagcloud-of-blogroll-item><a href=/tags/bluetooth-pan>Bluetooth pan</a></li><li class=tagcloud-of-blogroll-item><a href=/tags/docker>Docker</a></li><li class=tagcloud-of-blogroll-item><a href=/tags/fate>Fate</a></li></ul></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class=post-toc><div class=post-toc-content><nav id=TableOfContents><ul><li><a href=#51-修改依赖包说明文件>5.1 修改依赖包说明文件</a></li><li><a href=#52-安装python依赖包>5.2 安装Python依赖包</a></li></ul><ul><li><a href=#91-配置修改>9.1 配置修改</a></li><li><a href=#92-打包>9.2 打包</a></li><li><a href=#93-启动-fate-board>9.3 启动 FATE-Board</a></li></ul><ul><li><a href=#101-toy测试>10.1 Toy测试</a></li><li><a href=#102-单元测试>10.2 单元测试</a></li></ul></nav></div></div></section></div></aside></div></main><footer id=footer class=footer><div class=footer-inner><div class=copyright><span class=copyright-year>&copy; 2010 - 2022</span>
 <span class=with-love><i class="fa fa-heart"></i></span>
-<span class=copyright-author>luckfu的潦草笔记</span>
-</div>
-<div class=powered-info>
-<span class=powered-by>
-Powered by - <a class=powered-link href=//gohugo.io target=_blank title=hugo>Hugo v0.92.0</a>
-</span>
+<span class=copyright-author>luckfu的潦草笔记</span></div><div class=powered-info><span class=powered-by>Powered by - <a class=powered-link href=//gohugo.io target=_blank title=hugo>Hugo v0.94.2</a></span>
 <span class=separator-line>/</span>
-<span class=theme-info>
-Theme by - <a class=powered-link href=//github.com/elkan1788/hugo-theme-next target=_blank> NexT
-</a>
-</span>
-</div>
-<div class=license-info>
-<span class=storage-info>
-</span>
-<span class=license-num>
-<a href=http://beian.miit.gov.cn target=_blank>鄂ICP备18026409号-1</a>
-</span>
-</div>
-</footer>
-<div class=back-to-top>
-<i class="fa fa-arrow-up"></i>
-<span id=scrollpercent><span>0</span>%</span>
-</div>
-</div>
-<script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js></script>
+<span class=theme-info>Theme by - <a class=powered-link href=//github.com/elkan1788/hugo-theme-next target=_blank>NexT</a></span></div><div class=license-info><span class=storage-info></span><span class=license-num><a href=http://beian.miit.gov.cn target=_blank>鄂ICP备18026409号-1</a></span></div></footer><div class=back-to-top><i class="fa fa-arrow-up"></i>
+<span id=scrollpercent><span>0</span>%</span></div></div><script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js></script>
 <script type=text/javascript src=/js/search.js></script>
 <script type=text/javascript src=/js/affix.js></script>
 <script type=text/javascript src=/js/scrollspy.js></script>
-<script type=text/javascript>function detectIE(){var a=window.navigator.userAgent,b=a.indexOf('MSIE '),c=a.indexOf('Trident/'),d=a.indexOf('Edge/');return b>0||c>0||d>0?-1:1}function getCntViewHeight(){var b=$('#content').height(),a=$(window).height(),c=b>a?b-a:$(document).height()-a;return c}function getScrollbarWidth(){var a=$('<div />').addClass('scrollbar-measure').prependTo('body'),b=a[0],c=b.offsetWidth-b.clientWidth;return a.remove(),c}function registerBackTop(){var b=50,a=$('.back-to-top');$(window).on('scroll',function(){var d,e,f,c,g;a.toggleClass('back-to-top-on',window.pageYOffset>b),d=$(window).scrollTop(),e=getCntViewHeight(),f=d/e,c=Math.round(f*100),g=c>100?100:c,$('#scrollpercent>span').html(g)}),a.on('click',function(){$("html,body").animate({scrollTop:0,screenLeft:0},800)})}function initScrollSpy(){var a='.post-toc',d=$(a),b='.active-current';d.on('activate.bs.scrollspy',function(){var b=$(a+' .active').last();c(),b.addClass('active-current')}).on('clear.bs.scrollspy',c),$('body').scrollspy({target:a});function c(){$(a+' '+b).removeClass(b.substring(1))}}function initAffix(){var a=$('.header-inner').height(),b=parseInt($('.main').css('padding-bottom'),10),c=a+10;$('.sidebar-inner').affix({offset:{top:c,bottom:b}}),$(document).on('affixed.bs.affix',function(){updateTOCHeight(document.body.clientHeight-100)})}function initTOCDimension(){var a,b;$(window).on('resize',function(){a&&clearTimeout(a),a=setTimeout(function(){var a=document.body.clientHeight-100;updateTOCHeight(a)},0)}),updateTOCHeight(document.body.clientHeight-100),b=getScrollbarWidth(),$('.post-toc').css('width','calc(100% + '+b+'px)')}function updateTOCHeight(a){a=a||'auto',$('.post-toc').css('max-height',a)}$(function(){var b=$('.header-inner').height()+10,c,d,a,e;$('#sidebar').css({'margin-top':b}).show(),c=parseInt($('#sidebar').css('margin-top')),d=parseInt($('.sidebar-inner').css('height')),a=c+d,e=$('.content-wrap').height(),e<a&&$('.content-wrap').css('min-height',a),$('.site-nav-toggle').on('click',function(){var a=$('.site-nav'),e=$('.toggle'),b='site-nav-on',f='toggle-close',c=a.hasClass(b),g=c?'slideUp':'slideDown',d=c?'removeClass':'addClass';a.stop()[g]('normal',function(){a[d](b),e[d](f)})}),registerBackTop(),initScrollSpy(),initAffix(),initTOCDimension(),$('.sidebar-nav-toc').click(function(){$(this).addClass('sidebar-nav-active'),$(this).next().removeClass('sidebar-nav-active'),$('.'+$(this).next().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)}),$('.sidebar-nav-overview').click(function(){$(this).addClass('sidebar-nav-active'),$(this).prev().removeClass('sidebar-nav-active'),$('.'+$(this).prev().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)})})</script>
-<script src=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.js></script>
-<script type=text/javascript>$(function(){$('.post-body').viewer()})</script>
-<script type=text/javascript>$(function(){detectIE()>0?$.getScript(document.location.protocol+'//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js',function(){new Waline({el:'#wcomments',visitor:!0,avatar:'wavatar',avatarCDN:'https://sdn.geekzu.org/avatar/',avatarForce:!1,wordLimit:'200',placeholder:' 欢迎留下您的宝贵建议，请填写您的昵称和邮箱便于后续交流. ^_^ ',requiredFields:['nick','mail'],serverURL:"https://blog-comment-6x61e4e8l-luckfu.vercel.app/",lang:"zh-cn"})}):$('#wcomments').html('抱歉，Waline插件不支持IE或Edge，建议使用Chrome浏览器。')})</script>
-<script type=text/javascript src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Your%20AddthisId"></script>
-<script>(function(){var a=document.createElement('script'),c=window.location.protocol.split(':')[0],b;c==='https'?a.src='https://zz.bdstatic.com/linksubmit/push.js':a.src='http://push.zhanzhang.baidu.com/push.js',b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
-</body>
-</html>
+<script type=text/javascript>function detectIE(){var e=window.navigator.userAgent,t=e.indexOf("MSIE "),n=e.indexOf("Trident/"),s=e.indexOf("Edge/");return t>0||n>0||s>0?-1:1}function getCntViewHeight(){var t=$("#content").height(),e=$(window).height(),n=t>e?t-e:$(document).height()-e;return n}function getScrollbarWidth(){var e=$("<div />").addClass("scrollbar-measure").prependTo("body"),t=e[0],n=t.offsetWidth-t.clientWidth;return e.remove(),n}function registerBackTop(){var t=50,e=$(".back-to-top");$(window).on("scroll",function(){e.toggleClass("back-to-top-on",window.pageYOffset>t);var s=$(window).scrollTop(),o=getCntViewHeight(),i=s/o,n=Math.round(i*100),a=n>100?100:n;$("#scrollpercent>span").html(a)}),e.on("click",function(){$("html,body").animate({scrollTop:0,screenLeft:0},800)})}function initScrollSpy(){var e=".post-toc",s=$(e),t=".active-current";s.on("activate.bs.scrollspy",function(){var t=$(e+" .active").last();n(),t.addClass("active-current")}).on("clear.bs.scrollspy",n),$("body").scrollspy({target:e});function n(){$(e+" "+t).removeClass(t.substring(1))}}function initAffix(){var e=$(".header-inner").height(),t=parseInt($(".main").css("padding-bottom"),10),n=e+10;$(".sidebar-inner").affix({offset:{top:n,bottom:t}}),$(document).on("affixed.bs.affix",function(){updateTOCHeight(document.body.clientHeight-100)})}function initTOCDimension(){$(window).on("resize",function(){e&&clearTimeout(e),e=setTimeout(function(){var e=document.body.clientHeight-100;updateTOCHeight(e)},0)}),updateTOCHeight(document.body.clientHeight-100);var e,t=getScrollbarWidth();$(".post-toc").css("width","calc(100% + "+t+"px)")}function updateTOCHeight(e){e=e||"auto",$(".post-toc").css("max-height",e)}$(function(){var t=$(".header-inner").height()+10,n,s,e,o;$("#sidebar").css({'margin-top':t}).show(),n=parseInt($("#sidebar").css("margin-top")),s=parseInt($(".sidebar-inner").css("height")),e=n+s,o=$(".content-wrap").height(),o<e&&$(".content-wrap").css("min-height",e),$(".site-nav-toggle").on("click",function(){var e=$(".site-nav"),o=$(".toggle"),t="site-nav-on",i="toggle-close",n=e.hasClass(t),a=n?"slideUp":"slideDown",s=n?"removeClass":"addClass";e.stop()[a]("normal",function(){e[s](t),o[s](i)})}),registerBackTop(),initScrollSpy(),initAffix(),initTOCDimension(),$(".sidebar-nav-toc").click(function(){$(this).addClass("sidebar-nav-active"),$(this).next().removeClass("sidebar-nav-active"),$("."+$(this).next().attr("data-target")).toggle(500),$("."+$(this).attr("data-target")).toggle(500)}),$(".sidebar-nav-overview").click(function(){$(this).addClass("sidebar-nav-active"),$(this).prev().removeClass("sidebar-nav-active"),$("."+$(this).prev().attr("data-target")).toggle(500),$("."+$(this).attr("data-target")).toggle(500)})})</script><script src=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.js></script>
+<script type=text/javascript>$(function(){$(".post-body").viewer()})</script><script type=text/javascript>$(function(){detectIE()>0?$.getScript(document.location.protocol+"//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js",function(){new Waline({el:"#wcomments",visitor:!0,avatar:"wavatar",avatarCDN:"https://sdn.geekzu.org/avatar/",avatarForce:!1,wordLimit:"200",placeholder:" 欢迎留下您的宝贵建议，请填写您的昵称和邮箱便于后续交流. ^_^ ",requiredFields:["nick","mail"],serverURL:"https://blog-comment-6x61e4e8l-luckfu.vercel.app/",lang:"zh-cn"})}):$("#wcomments").html("抱歉，Waline插件不支持IE或Edge，建议使用Chrome浏览器。")})</script><script type=text/javascript src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Your%20AddthisId"></script>
+<script>(function(){var e=document.createElement("script"),t,n=window.location.protocol.split(":")[0];n==="https"?e.src="https://zz.bdstatic.com/linksubmit/push.js":e.src="http://push.zhanzhang.baidu.com/push.js",t=document.getElementsByTagName("script")[0],t.parentNode.insertBefore(e,t)})()</script></body></html>
