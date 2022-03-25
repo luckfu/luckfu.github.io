@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IP Address on luckfu的潦草笔记</title><link>http://www.luckfu.com/tags/ip-address/</link><description>Recent content in IP Address on luckfu的潦草笔记</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 25 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.luckfu.com/tags/ip-address/index.xml" rel="self" type="application/rss+xml"/><item><title>修改k8s集群ip</title><link>http://www.luckfu.com/post/change_k8s_ip/</link><pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/change_k8s_ip/</guid><description>&lt;p>近期因为ip地址洁癖，需要将一个在线的k8s集群地址替换成另一个顺序地址。过程记录如下：
-思路：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IP Address on luckfu的潦草笔记</title><link>http://www.luckfu.com/tags/ip-address/</link><description>Recent content in IP Address on luckfu的潦草笔记</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 25 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.luckfu.com/tags/ip-address/index.xml" rel="self" type="application/rss+xml"/><item><title>修改k8s集群ip</title><link>http://www.luckfu.com/post/change_k8s_ip/</link><pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/change_k8s_ip/</guid><description>&lt;p>近期因为ip地址洁癖，需要将一个在线的k8s集群地址替换成另一个顺序地址。过程记录如下：&lt;/p>
+&lt;ul>
+&lt;li>思路：&lt;/li>
+&lt;/ul>
 &lt;ul>
 &lt;li>1、修改nfs服务器配置，允许新ip访问&lt;/li>
 &lt;li>2、停一台master 服务器，改IP，重新加入集群做master&lt;/li>
 &lt;li>3、重复操作直到master节点全部更换ip&lt;/li>
 &lt;li>4、停止部分node，修改ip，加入集群。&lt;/li>
-&lt;li>5、停止剩下的node，修改ip，假如集群&lt;/li>
+&lt;li>5、停止剩下的node，修改ip，加入集群&lt;/li>
 &lt;/ul></description></item></channel></rss>

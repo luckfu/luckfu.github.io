@@ -24,8 +24,7 @@
 <span id=/post/change_k8s_ip/ class=leancloud_visitors data-flag-title=修改k8s集群ip>|
 <i class="fa fa-binoculars fa-fw"></i>
 <span class=post-meta-item-text>阅读次数：</span>
-<span class=leancloud-visitors-count></span></span></div></header><div class=post-body itemprop=articleBody><p>近期因为ip地址洁癖，需要将一个在线的k8s集群地址替换成另一个顺序地址。过程记录如下：
-思路：</p><ul><li>1、修改nfs服务器配置，允许新ip访问</li><li>2、停一台master 服务器，改IP，重新加入集群做master</li><li>3、重复操作直到master节点全部更换ip</li><li>4、停止部分node，修改ip，加入集群。</li><li>5、停止剩下的node，修改ip，假如集群</li></ul><h2 id=删除主节点-master-主机执行>删除主节点 (master 主机执行)</h2><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#080;font-style:italic># kubectl get nodes</span>
+<span class=leancloud-visitors-count></span></span></div></header><div class=post-body itemprop=articleBody><p>近期因为ip地址洁癖，需要将一个在线的k8s集群地址替换成另一个顺序地址。过程记录如下：</p><ul><li>思路：</li></ul><ul><li>1、修改nfs服务器配置，允许新ip访问</li><li>2、停一台master 服务器，改IP，重新加入集群做master</li><li>3、重复操作直到master节点全部更换ip</li><li>4、停止部分node，修改ip，加入集群。</li><li>5、停止剩下的node，修改ip，加入集群</li></ul><h2 id=删除主节点-master-主机执行>删除主节点 (master 主机执行)</h2><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#080;font-style:italic># kubectl get nodes</span>
 </span></span><span style=display:flex><span>NAME          STATUS   ROLES    AGE    VERSION
 </span></span><span style=display:flex><span>k8s-master    Ready    master   195d   v1.17.1
 </span></span><span style=display:flex><span>k8s-worker1   Ready    &lt;none&gt;   194d   v1.17.1
