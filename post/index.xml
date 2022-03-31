@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on luckfu的潦草笔记</title><link>http://www.luckfu.com/post/</link><description>Recent content in Posts on luckfu的潦草笔记</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 31 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.luckfu.com/post/index.xml" rel="self" type="application/rss+xml"/><item><title>制作libPSI docker镜像</title><link>http://www.luckfu.com/post/libpsi_docker/</link><pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/libpsi_docker/</guid><description>&lt;p>libPSI是“隐私保护集合求交”的开源库。本文是对该库docker容器化的记录&lt;/p>
-&lt;p>Dockerfile&lt;/p></description></item><item><title>警惕骗子</title><link>http://www.luckfu.com/post/alert_scammers/</link><pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/alert_scammers/</guid><description>今天收到诈骗短信 INDIANA DEPARTMENT OF WORKFORCE DEVELOPMENT: Your Back2Work deposit of 2,800.00 is now available, click on https://blueberryservices.in/uplink/g to receive payment</description></item><item><title>修改k8s集群ip</title><link>http://www.luckfu.com/post/change_k8s_ip/</link><pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/change_k8s_ip/</guid><description>&lt;p>近期因为ip地址洁癖，需要将一个在线的k8s集群地址替换成另一个顺序地址。过程记录如下：&lt;/p>
+&lt;p>Dockerfile&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>FROM ubuntu
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>MAINTAINER luckfu@gmail.com
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ENV PATH=/usr/local/cmake/bin:/usr/local/bin:/usr/bin:$PATH \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> C_INCLUDE_PATH=/usr/local/include/:$C_INCLUDE_PATH \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> CPLUS_INCLUDE_PATH=/usr/local/include/:$C_INCLUDE_PATH \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>RUN apt -y update \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; apt install gcc g++ m4 openssl libssl-dev libsodium-dev libtool python3 git wget lzip make -y \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; apt-get clean \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; ln -s /usr/bin/python3 /usr/bin/python \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; echo &amp;#34;start cmake \n ------------------------------ \n&amp;#34; \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; wget https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3.tar.gz \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; tar xvf cmake-3.21.3.tar.gz \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; cd cmake-3.21.3 \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; ./bootstrap --prefix=/usr/local/ \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; cd .. \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; ln -s /usr/local/bin/cmake /usr/bin/cmake \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; rm -rf cmake-3.21.3 cmake-3.21.3.tar.gz\
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; echo &amp;#34;start libPSI \n -------------------------------\n&amp;#34; \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; git clone https://github.com/osu-crypto/libPSI.git \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; cd libPSI \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; python build.py \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; ./out/build/linux/frontend/frontend.exe -u \
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;amp;&amp;amp; ln -s /libPSI/out/build/linux/frontend/frontend.exe /usr/bin/frontend.exe
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>警惕骗子</title><link>http://www.luckfu.com/post/alert_scammers/</link><pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/alert_scammers/</guid><description>今天收到诈骗短信 INDIANA DEPARTMENT OF WORKFORCE DEVELOPMENT: Your Back2Work deposit of 2,800.00 is now available, click on https://blueberryservices.in/uplink/g to receive payment</description></item><item><title>修改k8s集群ip</title><link>http://www.luckfu.com/post/change_k8s_ip/</link><pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/change_k8s_ip/</guid><description>&lt;p>近期因为ip地址洁癖，需要将一个在线的k8s集群地址替换成另一个顺序地址。过程记录如下：&lt;/p>
 &lt;ul>
 &lt;li>思路：&lt;/li>
 &lt;/ul>
