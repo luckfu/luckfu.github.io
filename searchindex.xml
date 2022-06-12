@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>中老年之友 Copilot</title><url>http://www.luckfu.com/post/2022-05-26_copilot/</url><categories><category>python</category></categories><tags><tag>github</tag><tag>Copilot</tag></tags><content type="html"> 又一个差点忘记它存在的神作，今天准备部署一台mysql，临时做个笔记，到我这个年纪，不可能记得my.cnf内容，刚想去网上或者其它服务器贴一段过来，vscode中突然有了自动提示，才想起来我是Copilot测试用户啊😄。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>用豆浆机做放心食用的豆腐脑(内酯或葡萄糖酸钙点卤)</title><url>http://www.luckfu.com/post/2022-06-12_tofu_brain/</url><categories><category>生活</category></categories><tags><tag>生活</tag></tags><content type="html"> 最近楼下的油条摊开始有豆腐脑售卖，勾起了豆腐脑馋虫，外面的豆腐脑始终不是太放心，于是尝试用豆浆机制作，我的豆浆机是1人份的，最大容量350毫升，也就是一小瓶可乐差不多的量。 打生豆浆 其实，直接用豆浆机打成熟豆浆过滤豆渣是可行的，但等到把豆渣过滤出来，豆浆温度已经不足，还需要再加热，而熟豆浆的温度高，手工过滤豆渣时烫手，所以还是老实按步骤打生豆浆。
+豆子一定要泡发过的，生豆和水的比例为 1.5:10 选择豆浆机的“果汁”功能，将泡过的黄豆打出生豆浆。 过滤豆渣
+![](/post/images/2022-06-12/130.jpeg
+过滤后的豆浆
+![](/post/images/2022-06-12/131.jpe
+过滤后的豆渣
+煮豆浆 生豆浆是有毒的，必须煮熟，将生豆浆再次倒入豆浆机 ![](/post/images/2022-06-12/132.jpe 豆浆从生到熟的过程中会有假沸的现象，中途必须多次搅动，避免假沸过程中豆浆溢出，而豆浆机本身在煮豆浆过程中，会一直搅拌，避免溢出正好可以省掉用锅煮豆浆的麻烦。
+![](/post/images/2022-06-12/133.jpe
+点浆 葡萄糖酸内酯，350ml 大约1克的内酯，用开水花开，一点点水，刚刚好化开内酯晶体就行，放在容器内，将煮好的豆浆冲入容器，赶紧向一个方向搅匀，然后盖上盖子，静置，很快就会凝结成豆腐脑，我用的一个小焖烧罐，容量也正好。
+![](/post/images/2022-06-12/134.jpe
+点豆腐脑的东西有很多，之所以不愿意在外面吃，是因为不知道外面卖的豆腐脑用什么点卤，传统的卤水要不是石膏水要不是盐卤，多少有点小毒，内酯是后出现的新材料，基本无毒，做的豆腐脑也更水嫩，另外，中老年人补钙的葡萄糖酸钙，其实也是可以用来点豆腐脑的，而且口味和传统盐卤点的更接近，350ml豆浆用一只蓝瓶葡萄糖酸钙口服液就行，过程和使用内酯一样。
+成品 内酯豆腐脑 葡萄糖酸钙豆腐脑</content></entry><entry><title>中老年之友 Copilot</title><url>http://www.luckfu.com/post/2022-05-26_copilot/</url><categories><category>python</category></categories><tags><tag>github</tag><tag>Copilot</tag></tags><content type="html"> 又一个差点忘记它存在的神作，今天准备部署一台mysql，临时做个笔记，到我这个年纪，不可能记得my.cnf内容，刚想去网上或者其它服务器贴一段过来，vscode中突然有了自动提示，才想起来我是Copilot测试用户啊😄。
 根据上下文猜到我在部署mysql应该容易，写下“配路径”的时候猜到我想写my.cnf真的很贴心了。</content></entry><entry><title>python使用yahoo_financials_stmt包获取雅虎财经的股票财务数据</title><url>http://www.luckfu.com/post/2022-05-21_yahoo_financials_stmt/</url><categories><category>python</category><category>finance</category></categories><tags><tag>python</tag><tag>股票</tag><tag>财务数据</tag></tags><content type="html">  外围市场免费的股票财务数据接口难找，从雅虎财经提取财务数据可能是免费方案中最简单的方法，自从yahoo财经取消API支持后，只能自己爬取或使用第三方库，但是yahoo偶尔的页面变更和地区限制也给爬取数据造成很大困扰。
 本文介绍我最近提交的yahoo_financials_stmt包获取股票财务数据 项目地址：https://github.com/luckfu/yahoo_financials_stmt
 因为yahoo限制中国大陆地区使用，所以如果你在大陆地区，需要自行代理
@@ -49,18 +60,7 @@ kubeadm token create --print-join-command kubeadm join apiserver.k8s.com:6443 --
 11月，朝哥又来了武汉，这次是同济，我去了两次，也只能在楼下见到小向老师，最后一次去，向老师说，CAR-T已经制备完，在冷库放着了，就等回输，我甚至感觉有点兴奋了，因为这种疗法最近传的神乎其神，新闻里都是痊愈的报道，觉得朝哥遇到了好时候，朝哥自己应该也是满怀希望的，最后一次视频，朝哥看着我做完早餐，评价吃的还可以，就是缺了点蔬菜，然后聊起在医院附近租房，因为恢复期要求出现状况30分钟能到医院。
 12月29，我问朝哥，什么时候能进行下一步治疗，朝哥说快了，元旦放假后的第一个周末，小向老师打来电话，说朝哥已经走了.
 套用一句以前朝哥说过的话，一个人生里做了大半辈子朋友的人就这么走了&hellip;&hellip;🙏
-朝哥的追悼会，许老哥哥说了很多朝哥的人生和工作经历，但于我记忆中的朝哥，那只是很小的一部分，年纪大了，记性不好，记下一些碎念，缅怀朝哥。 朝哥一直热衷于网络上各种新奇应用，朝哥走了，互联网理应留有他的印记，或许，下一次github再把数据备入冰川1000年，这些碎念也会埋藏千年&hellip;&hellip;</content></entry><entry><title>梨膏咖啡</title><url>http://www.luckfu.com/post/xueli_gao_coffee/</url><categories><category>生活</category></categories><tags><tag>生活</tag></tags><content type="html"> 早上刷头条，一个视频中提到中式咖啡，咖啡厅里一个老外正在品尝“陈皮咖啡”，于是起床后我也用胶囊咖啡打了一杯梨膏咖啡😊 味道还不错，咖啡梨膏一次喝了，省了一杯水</content></entry><entry><title>用豆浆机做放心食用的豆腐脑(内酯或葡萄糖酸钙点卤)</title><url>http://www.luckfu.com/post/2022-06-12_tofu_brain/</url><categories><category>生活</category></categories><tags><tag>生活</tag></tags><content type="html"> 最近楼下的油条摊开始有豆腐脑售卖，勾起了豆腐脑馋虫，外面的豆腐脑始终不是太放心，于是尝试用豆浆机制作，我的豆浆机是1人份的，最大容量350毫升，也就是一小瓶可乐差不多的量。 打生豆浆 其实，直接用豆浆机打成熟豆浆过滤豆渣是可行的，但等到把豆渣过滤出来，豆浆温度已经不足，还需要再加热，而熟豆浆的温度高，手工过滤豆渣时烫手，所以还是老实按步骤打生豆浆。
-豆子一定要泡发过的，生豆和水的比例为 1.5:10 选择豆浆机的“果汁”功能，将泡过的黄豆打出生豆浆。 过滤豆渣
-![](/post/images/2022-06-12/130.jpeg
-过滤后的豆浆
-![](/post/images/2022-06-12/131.jpe
-过滤后的豆渣
-煮豆浆 生豆浆是有毒的，必须煮熟，将生豆浆再次倒入豆浆机 ![](/post/images/2022-06-12/132.jpe 豆浆从生到熟的过程中会有假沸的现象，中途必须多次搅动，避免假沸过程中豆浆溢出，而豆浆机本身在煮豆浆过程中，会一直搅拌，避免溢出正好可以省掉用锅煮豆浆的麻烦。
-![](/post/images/2022-06-12/133.jpe
-点浆 葡萄糖酸内酯，350ml 大约1克的内酯，用开水花开，一点点水，刚刚好化开内酯晶体就行，放在容器内，将煮好的豆浆冲入容器，赶紧向一个方向搅匀，然后盖上盖子，静置，很快就会凝结成豆腐脑，我用的一个小焖烧罐，容量也正好。
-![](/post/images/2022-06-12/134.jpe
-点豆腐脑的东西有很多，之所以不愿意在外面吃，是因为不知道外面卖的豆腐脑用什么点卤，传统的卤水要不是石膏水要不是盐卤，多少有点小毒，内酯是后出现的新材料，基本无毒，做的豆腐脑也更水嫩，另外，中老年人补钙的葡萄糖酸钙，其实也是可以用来点豆腐脑的，而且口味和传统盐卤点的更接近，350ml豆浆用一只蓝瓶葡萄糖酸钙口服液就行，过程和使用内酯一样。
-成品 内酯豆腐脑 葡萄糖酸钙豆腐脑</content></entry><entry><title>安装 HoRNDIS驱动 将Android设备USB共享网络给Mac Monterey</title><url>http://www.luckfu.com/post/horndis_mac/</url><categories><category>Monterey</category><category>macOS</category><category>RNDIS</category><category>USB网络共享</category><category>HoRNDIS</category></categories><tags><tag>Monterey</tag><tag>macOS</tag><tag>RNDIS</tag><tag>HoRNDIS</tag></tags><content type="html"> 1、macOS的RNDIS支持 apple的小动作从Monterey开始取消蓝牙PAN网络共享之后，不得不想其它连接方法实现双网络，Android的USB网络共享基于RNDIS协议，据说在windows下可用，但macOS没有原生支持，在mac下的第三方实现似乎只有HoRNDIS 官网 https://www.joshuawise.com/horndis 但官网经年未更新过了，提供的最新版仅仅支持到 macOS10.10 Yosemite，直接下载安装会提示系统阻止不安全插件，好在HoRNDIS开源社区还挺活跃 可以通过github上相关分支安装对应版本。
+朝哥的追悼会，许老哥哥说了很多朝哥的人生和工作经历，但于我记忆中的朝哥，那只是很小的一部分，年纪大了，记性不好，记下一些碎念，缅怀朝哥。 朝哥一直热衷于网络上各种新奇应用，朝哥走了，互联网理应留有他的印记，或许，下一次github再把数据备入冰川1000年，这些碎念也会埋藏千年&hellip;&hellip;</content></entry><entry><title>梨膏咖啡</title><url>http://www.luckfu.com/post/xueli_gao_coffee/</url><categories><category>生活</category></categories><tags><tag>生活</tag></tags><content type="html"> 早上刷头条，一个视频中提到中式咖啡，咖啡厅里一个老外正在品尝“陈皮咖啡”，于是起床后我也用胶囊咖啡打了一杯梨膏咖啡😊 味道还不错，咖啡梨膏一次喝了，省了一杯水</content></entry><entry><title>安装 HoRNDIS驱动 将Android设备USB共享网络给Mac Monterey</title><url>http://www.luckfu.com/post/horndis_mac/</url><categories><category>Monterey</category><category>macOS</category><category>RNDIS</category><category>USB网络共享</category><category>HoRNDIS</category></categories><tags><tag>Monterey</tag><tag>macOS</tag><tag>RNDIS</tag><tag>HoRNDIS</tag></tags><content type="html"> 1、macOS的RNDIS支持 apple的小动作从Monterey开始取消蓝牙PAN网络共享之后，不得不想其它连接方法实现双网络，Android的USB网络共享基于RNDIS协议，据说在windows下可用，但macOS没有原生支持，在mac下的第三方实现似乎只有HoRNDIS 官网 https://www.joshuawise.com/horndis 但官网经年未更新过了，提供的最新版仅仅支持到 macOS10.10 Yosemite，直接下载安装会提示系统阻止不安全插件，好在HoRNDIS开源社区还挺活跃 可以通过github上相关分支安装对应版本。
 2、HoRNDIS 下载 Monterey 对应的 https://github.com/chris1111/HoRNDIS 下载地址 https://github.com/chris1111/HoRNDIS/releases
 下载文件后解压可见 3、安装 安装步骤说明在 “GUIDE Consent HoRNDIS.pdf”中
 3.1 允许安装 因为是第三方打包的程序，所以需要添加手工添加公证 执行 Consent-HoRNDIS.command，如果系统阻止，在“系统偏好设置”=>&ldquo;隐私与安全"中允许，
