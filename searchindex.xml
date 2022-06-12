@@ -3,10 +3,9 @@
 过滤豆渣
 过滤后的豆浆
 过滤后的豆渣
-煮豆浆 生豆浆是有毒的，必须煮熟，将生豆浆再次倒入豆浆机 ![](/post/images/2022-06-12/132.jpe 豆浆从生到熟的过程中会有假沸的现象，中途必须多次搅动，避免假沸过程中豆浆溢出，而豆浆机本身在煮豆浆过程中，会一直搅拌，避免溢出正好可以省掉用锅煮豆浆的麻烦。
-![](/post/images/2022-06-12/133.jpe
+煮豆浆 生豆浆是有毒的，必须煮熟，将生豆浆再次倒入豆浆机
+豆浆从生到熟的过程中会有假沸的现象，中途必须多次搅动，避免假沸过程中豆浆溢出，而豆浆机本身在煮豆浆过程中，会一直搅拌，避免溢出正好可以省掉用锅煮豆浆的麻烦。
 点浆 葡萄糖酸内酯，350ml 大约1克的内酯，用开水花开，一点点水，刚刚好化开内酯晶体就行，放在容器内，将煮好的豆浆冲入容器，赶紧向一个方向搅匀，然后盖上盖子，静置，很快就会凝结成豆腐脑，我用的一个小焖烧罐，容量也正好。
-![](/post/images/2022-06-12/134.jpe
 点豆腐脑的东西有很多，之所以不愿意在外面吃，是因为不知道外面卖的豆腐脑用什么点卤，传统的卤水要不是石膏水要不是盐卤，多少有点小毒，内酯是后出现的新材料，基本无毒，做的豆腐脑也更水嫩，另外，中老年人补钙的葡萄糖酸钙，其实也是可以用来点豆腐脑的，而且口味和传统盐卤点的更接近，350ml豆浆用一只蓝瓶葡萄糖酸钙口服液就行，过程和使用内酯一样。
 成品 内酯豆腐脑 葡萄糖酸钙豆腐脑</content></entry><entry><title>中老年之友 Copilot</title><url>http://www.luckfu.com/post/2022-05-26_copilot/</url><categories><category>python</category></categories><tags><tag>github</tag><tag>Copilot</tag></tags><content type="html"> 又一个差点忘记它存在的神作，今天准备部署一台mysql，临时做个笔记，到我这个年纪，不可能记得my.cnf内容，刚想去网上或者其它服务器贴一段过来，vscode中突然有了自动提示，才想起来我是Copilot测试用户啊😄。
 根据上下文猜到我在部署mysql应该容易，写下“配路径”的时候猜到我想写my.cnf真的很贴心了。</content></entry><entry><title>python使用yahoo_financials_stmt包获取雅虎财经的股票财务数据</title><url>http://www.luckfu.com/post/2022-05-21_yahoo_financials_stmt/</url><categories><category>python</category><category>finance</category></categories><tags><tag>python</tag><tag>股票</tag><tag>财务数据</tag></tags><content type="html">  外围市场免费的股票财务数据接口难找，从雅虎财经提取财务数据可能是免费方案中最简单的方法，自从yahoo财经取消API支持后，只能自己爬取或使用第三方库，但是yahoo偶尔的页面变更和地区限制也给爬取数据造成很大困扰。
