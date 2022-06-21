@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>用豆浆机做安心食用的豆腐脑(内酯或葡萄糖酸钙点卤)</title><url>http://www.luckfu.com/post/2022-06-12_tofu_brain/</url><categories><category>生活</category></categories><tags><tag>生活</tag></tags><content type="html"> 最近楼下的油条摊开始有豆腐脑售卖，勾起了豆腐脑馋虫，外面的豆腐脑始终不是太放心，于是尝试用豆浆机制作，我的豆浆机是1人份的，最大容量350ML，也就是一小瓶可乐差不多的量。 打生豆浆 其实，直接用豆浆机打成熟豆浆过滤豆渣是可行的，但等到把豆渣过滤出来，豆浆温度已经不足，还需要再加热，而熟豆浆的温度高，手工过滤豆渣时烫手，所以还是老实按步骤打生豆浆。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>python 快速判断字符串是否包含中文</title><url>http://www.luckfu.com/post/2022-06-21_str_contain_chinese/</url><categories><category>python</category></categories><tags><tag>python</tag></tags><content type="html"> 事情是这样的，近期要优化一个数据导出程序，数据库是UTF-8要求导出文件编码为GBK,在python中,传统的写法:
+xxx.decode('utf-8').encode('gbk','ignore') 但decode和encode在一个几千万行的文件导出时，耗时太长，初略测试不做decode的导出，至少性能提高三倍，可这时会有新的问题出现，那就是假如数据中有中文或别的编码文字，编码会出错。
+我的思路是检查一下字符串，如果包含中文就进行encode，如果没有中文则直接写入，以此优化程序性能。
+老程序是用python 2.7写的，python2的编码非常蛋疼， 常见的解决方案：
+import re zhPattern = re.compile(u'[\u4e00-\u9fa5]+') 耗时不会比decode后encode少
+def chk_chinese(check_str): for ch in check_str: print(ch) if u'\u4e00' &lt;= ch &lt;= u'\u9fff': return True return False 古早的 python 2.7 用不了
+最后理了一下思路，其实并不需要取检查中文，命题应该是 “检查字符串中是否有非ascii字符”，毕竟只要有非ascii编码的字符，就需要转码操作
+def chk_no_ascii(check_str): for ch in check_str: if ord(ch)>127: return True return False 但这样函数在输入字符串全是ascii码时，会遍历整个字符串，观察了下我这里的数据特性，一般中文字段，前3个字符中一定有中文存在，所以优化成 for ch in check_str[:6]
+最终测试执行速度较源程序提升2倍</content></entry><entry><title>用豆浆机做安心食用的豆腐脑(内酯或葡萄糖酸钙点卤)</title><url>http://www.luckfu.com/post/2022-06-12_tofu_brain/</url><categories><category>生活</category></categories><tags><tag>生活</tag></tags><content type="html"> 最近楼下的油条摊开始有豆腐脑售卖，勾起了豆腐脑馋虫，外面的豆腐脑始终不是太放心，于是尝试用豆浆机制作，我的豆浆机是1人份的，最大容量350ML，也就是一小瓶可乐差不多的量。 打生豆浆 其实，直接用豆浆机打成熟豆浆过滤豆渣是可行的，但等到把豆渣过滤出来，豆浆温度已经不足，还需要再加热，而熟豆浆的温度高，手工过滤豆渣时烫手，所以还是老实按步骤打生豆浆。
 豆子一定要泡发过的，生豆和水的比例为 1.5:10 选择豆浆机的“果汁”功能，将泡过的黄豆打出生豆浆。
 过滤豆渣 过滤后的豆浆
 过滤后的豆渣
