@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>python 快速判断字符串是否包含中文</title><url>http://www.luckfu.com/post/2022-06-21_str_contain_chinese/</url><categories><category>python</category></categories><tags><tag>python</tag></tags><content type="html"> 事情是这样的，最近优化一个数据导出程序，数据库是UTF-8，要求导出文件编码为GBK,在python中,传统的写法:
 xxx.decode('utf-8').encode('gbk','ignore') 但decode和encode在一个几千万行的文件导出时，耗时太长，粗略测试不做decode的导出，至少性能提高三倍，可这时会有新的问题出现，假如数据中有中文或别的编码文字，编码会出错。
 我的思路是检查一下字符串，如果包含中文就进行encode，如果没有中文则直接写入，以此优化程序性能。
-老程序是用python 2.7写的，python2的编码众所周知的蛋疼，但生产系统嘛，只能忍
+老程序是用python 2.7写的，python2的编码众所周知的蛋疼，但生产系统嘛，忍忍就过去了&hellip;&hellip;
 常见的解决方案：
 import re zhPattern = re.compile(u'[\u4e00-\u9fa5]+') 正则的方式耗时不会比decode后encode少
 def chk_chinese(check_str): for ch in check_str: print(ch) if u'\u4e00' &lt;= ch &lt;= u'\u9fff': return True return False 古早的 python 2.7 用不了
