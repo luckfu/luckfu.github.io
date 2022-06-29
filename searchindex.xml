@@ -6,7 +6,7 @@
 二、配置DBeaver的Oracle连接 在 DBeaver 中安装驱动程序后，创建一个新的数据库连接。单击带有加号的插头并选择 oracle
 选择tns选项卡
 还需要导入 Oracle 的密钥文件，这是能否正常连接的关键。点击“驱动属性”选项卡，您应该会看到以表格形式显示的总参数列表，向下滚动大约 1 页，您将看到需要设置的参数，它们是 :
-javax.net.ssl.keyStore avax.net.ssl.keyStorePassword javax.net.ssl.trustStore java.net.ssl.trustStorePassword 填写wallet路径下的truststore.jks。密码是 下载 oracle wallet时设置的密码
+驱动属性 值 javax.net.ssl.keyStore 路径/keystore.jks avax.net.ssl.keyStorePassword wallet密码 javax.net.ssl.trustStore 路径/truststore.jks java.net.ssl.trustStorePassword wallet密码 ｜ 填写wallet路径下的truststore.jks。密码是 下载 oracle wallet时设置的密码
 测试连接&hellip;&hellip;</content></entry><entry><title>python 快速判断字符串是否包含中文</title><url>http://www.luckfu.com/post/2022-06-21_str_contain_chinese/</url><categories><category>python</category></categories><tags><tag>python</tag></tags><content type="html"> 事情是这样的，最近优化一个数据导出程序，数据库是UTF-8，要求导出文件编码为GBK,在python中,传统的写法:
 xxx.decode('utf-8').encode('gbk','ignore') 但decode和encode在一个几千万行的文件导出时，耗时太长，粗略测试不做decode的导出，至少性能提高三倍，可这时会有新的问题出现，假如数据中有中文或别的编码文字，编码会出错。
 我的思路是检查一下字符串，如果包含中文就进行encode，如果没有中文则直接写入，以此优化程序性能。
