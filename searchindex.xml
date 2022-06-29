@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>DBeaver 通过 wallet 连接 Oracle Free Cloud</title><url>http://www.luckfu.com/post/2022-06-29_dbeaver_to_oraclefree_cloud_with_wallet/</url><categories><category>cloud vps</category><category>oracle</category></categories><tags><tag>Oracle Cloud</tag><tag>Free VPS</tag><tag>Oracle</tag><tag>VM.Standard.A1.Flex</tag></tags><content type="html"> Oracle Cloud的免费套餐很香，DBeaver通过wallet连接oracle数据库有些细节设置，下面说明详细配置步骤。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>DBeaver 通过 wallet 连接 Oracle Free Cloud</title><url>http://www.luckfu.com/post/2022-06-29_dbeaver_to_oraclefree_cloud_with_wallet/</url><categories><category>cloud vps</category><category>oracle</category></categories><tags><tag>Oracle Cloud</tag><tag>Free VPS</tag><tag>Oracle</tag><tag>VM.Standard.A1.Flex</tag></tags><content type="html"> Oracle Cloud的免费套餐很香，DBeaver通过wallet连接oracle数据库有些细节设置需要注意，下面说明详细配置步骤。
 一、下载证书钱包 oracle cloud 仪表盘中，找到数据库实例
 单击 DB 连接按钮。点击下载 客户端身份证明 wallet 按钮
 设置wallet 密码
