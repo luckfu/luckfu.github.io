@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>物尽其用</title><url>http://www.luckfu.com/post/2022-07-05_btop/</url><categories><category>生活</category></categories><tags><tag>生活</tag></tags><content type="html"> 把CPU跑满吧！ pandarallel https://nalepae.github.io/pandarallel/</content></entry><entry><title>DBeaver 通过 wallet 连接 Oracle Free Cloud</title><url>http://www.luckfu.com/post/2022-06-29_dbeaver_to_oraclefree_cloud_with_wallet/</url><categories><category>cloud vps</category><category>oracle</category></categories><tags><tag>Oracle Cloud</tag><tag>Free VPS</tag><tag>Oracle</tag><tag>VM.Standard.A1.Flex</tag></tags><content type="html"> Oracle Cloud的免费套餐很香，DBeaver通过wallet连接oracle数据库有些细节设置需要注意，下面说明详细配置步骤。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>Chrome突然出现由贵单位管理</title><url>http://www.luckfu.com/post/2022-07-09_chrome_managed_by_your_organisation/</url><categories><category>cloud vps</category><category>oracle</category></categories><tags><tag>chrome</tag><tag>流氓软件</tag><tag>Policy</tag></tags><content type="html"> 网上爆出Chrome最近更新后，突然出现 “由贵单位管理”，检查了一下我的机器，mac都还好，但是windows server 2018 那台机器中招了
+wtf 🤔 贵单位是哪个单位？我司？甲方？互联网流氓？
+按照网上的检查方式，查了注册表，\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome下并没有EnabledPlugins键，也就无从查起，不知道具体哪家的"产品"在监视。
+使用Chrome政策删除脚本也无效 https://drive.google.com/uc?export=download&amp;id=0B5uG-tHNHBj5XzNJbzlsd0NONnc
+怀疑之我司安全助手
+各种此类“安全助手”通常都是“联软UniAccess”外包，这个软件本身就挺流氓，会监视你的网络访问，软件安装列表等，但是涉及很多公司的内网访问，多数情况下安装它是身不由己，卸载起来也挺麻烦，需要安全模式下删除程序目录 删除安全助手并不能解决问题。
+安装来源的疑问，这台机器是来自腾讯云北京的服务器，本身是不能绕过墙访问google的，那么chrome当初是从哪来的🤔️？是在不记得当初的来源，只能尝试从官方源再次下载离线包来安装一次，安装前，卸载系统的chrome，删除注册表中的google chrome项目。重装后再次启动，问题解决
+再次安装我司“安全助手”，并没有出现“由贵单位管理”，看来冤枉这个流氓了。
+最后的总结，chrome 要从可信任的渠道下载，最好从google源头下载。
+疑问，这个“团伙”既然已经更改了chrome的Policy，甚至在墙内能自由更新了，这次为甚么毛糙到chrome新版直接出现提示，改源码呀，别让它显示呀。</content></entry><entry><title>物尽其用</title><url>http://www.luckfu.com/post/2022-07-05_btop/</url><categories><category>生活</category></categories><tags><tag>生活</tag></tags><content type="html"> 把CPU跑满吧！ pandarallel https://nalepae.github.io/pandarallel/</content></entry><entry><title>DBeaver 通过 wallet 连接 Oracle Free Cloud</title><url>http://www.luckfu.com/post/2022-06-29_dbeaver_to_oraclefree_cloud_with_wallet/</url><categories><category>cloud vps</category><category>oracle</category></categories><tags><tag>Oracle Cloud</tag><tag>Free VPS</tag><tag>Oracle</tag><tag>VM.Standard.A1.Flex</tag></tags><content type="html"> Oracle Cloud的免费套餐很香，DBeaver通过wallet连接oracle数据库有些细节设置需要注意，下面说明详细配置步骤。
 一、下载证书钱包 oracle cloud 仪表盘中，找到数据库实例
 单击 DB 连接按钮。点击下载 客户端身份证明 wallet 按钮
 设置wallet 密码

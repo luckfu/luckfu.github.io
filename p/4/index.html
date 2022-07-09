@@ -8,7 +8,26 @@
 <a class=lang-link id=en href=http://www.luckfu.com/en/>English</a></div><div class=custom-logo-site-title><a href=/ class=brand rel=start><span class=logo-line-before><i></i></span>
 <span class=site-title>luckfu的潦草笔记</span>
 <span class=logo-line-after><i></i></span></a></div><p class=site-subtitle>最初的梦想绝对会到达!</p></div><div class=site-nav-right><div class="toggle popup-trigger" style=opacity:1;top:0><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul id=menu class=menu><li class=menu-item><a href=/ rel=section><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class=menu-item><a href=/post rel=section><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li><li class=menu-item><a href=/about.html rel=section><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于我</a></li><li class=menu-item><a href=/404.html rel=section><i class="menu-item-icon fa fa-fw fa-heartbeat"></i><br>公益404</a></li><li class="menu-item menu-item-search"><a href=javascript:; class=popup-trigger><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class=site-search><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class=search-icon><i class="fa fa-search"></i></span>
-<span class=popup-btn-close><i class="fa fa-times-circle"></i></span><div class=local-search-input-wrapper><input autocomplete=off placeholder=搜索关键字... spellcheck=false type=text id=local-search-input autocapitalize=none autocorrect=off></div></div><div id=local-search-result></div></div></div></nav></div></header><main id=main class=main><div class=main-inner><div class=content-wrap><div id=content class=content><section id=posts class=posts-expand><article class="post post-type-normal" itemscope itemtype=http://schema.org/Article><header class=post-header><h1 class=post-title itemprop="name headline"><a class=post-title-link href=http://www.luckfu.com/post/2022-01-23_xuzhao/ itemprop=url>纪念朝哥</a></h1><div class=post-meta><span class=post-time><i class="fa fa-calendar-o fa-fw"></i>
+<span class=popup-btn-close><i class="fa fa-times-circle"></i></span><div class=local-search-input-wrapper><input autocomplete=off placeholder=搜索关键字... spellcheck=false type=text id=local-search-input autocapitalize=none autocorrect=off></div></div><div id=local-search-result></div></div></div></nav></div></header><main id=main class=main><div class=main-inner><div class=content-wrap><div id=content class=content><section id=posts class=posts-expand><article class="post post-type-normal" itemscope itemtype=http://schema.org/Article><header class=post-header><h1 class=post-title itemprop="name headline"><a class=post-title-link href=http://www.luckfu.com/post/2022-03-15_helm_deploy_mysql_master_slave/ itemprop=url>helm 部署mysql主从库</a></h1><div class=post-meta><span class=post-time><i class="fa fa-calendar-o fa-fw"></i>
+<span class=post-meta-item-text>时间：</span>
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2022-03-15">2022-03-15</time></span>
+<span class=post-category>&nbsp; | &nbsp;
+<i class="fa fa-folder-o fa-fw"></i>
+<span class=post-meta-item-text>分类：</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=/categories/k8s itemprop=url rel=index style=text-decoration:underline><span itemprop=name>k8s</span></a>
+&nbsp;</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=/categories/mysql itemprop=url rel=index style=text-decoration:underline><span itemprop=name>mysql</span></a>
+&nbsp;</span></span>
+<span>|
+<i class="fa fa-file-word-o fa-fw"></i>
+<span class=post-meta-item-text>字数：</span>
+<span class=leancloud-world-count>270 字</span></span>
+<span>|
+<i class="fa fa-eye fa-fw"></i>
+<span class=post-meta-item-text>阅读：</span>
+<span class=leancloud-view-count>1分钟</span></span></div></header><div class=post-body itemprop=articleBody><h1 id=通过helm在k8s上部署mysql主从库>通过helm在k8s上部署mysql主从库</h1><p>搭建一个主从复制（Master-Slave）的MySQL集群</p><h2 id=添加-helm-源>添加 helm 源</h2><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>helm repo add stable  https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts/
+</span></span><span style=display:flex><span>helm repo add bitnami https://charts.bitnami.com/bitnami
+</span></span></code></pre></div></div><div class="post-more-link text-center"><a class=btn href=http://www.luckfu.com/post/2022-03-15_helm_deploy_mysql_master_slave/ rel=contents>阅读全文 &#187;</a></div><footer class=post-footer><div class=post-eof></div></footer></article><article class="post post-type-normal" itemscope itemtype=http://schema.org/Article><header class=post-header><h1 class=post-title itemprop="name headline"><a class=post-title-link href=http://www.luckfu.com/post/2022-01-23_xuzhao/ itemprop=url>纪念朝哥</a></h1><div class=post-meta><span class=post-time><i class="fa fa-calendar-o fa-fw"></i>
 <span class=post-meta-item-text>时间：</span>
 <time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2022-01-23">2022-01-23</time></span>
 <span class=post-category>&nbsp; | &nbsp;
@@ -78,27 +97,7 @@
 <span>|
 <i class="fa fa-eye fa-fw"></i>
 <span class=post-meta-item-text>阅读：</span>
-<span class=leancloud-view-count>2分钟</span></span></div></header><div class=post-body itemprop=articleBody><p>Kubernetes 集群中NodePort默认范围是 30000-32767，网络上对修改方法的说明很多，但最近的实际操作中，有一个隐藏的问题，让我花了一天时间。</p><p>在Master节点上的文件 <code>/etc/kubernetes/manifests/kube-apiserver.yaml</code>，修改此文件，向其中添<code>--service-node-port-range=1-65535</code></p></div><div class="post-more-link text-center"><a class=btn href=http://www.luckfu.com/post/2021-12-22_k8s-nodeport-range/ rel=contents>阅读全文 &#187;</a></div><footer class=post-footer><div class=post-eof></div></footer></article><article class="post post-type-normal" itemscope itemtype=http://schema.org/Article><header class=post-header><h1 class=post-title itemprop="name headline"><a class=post-title-link href=http://www.luckfu.com/post/2021-12-21_macos_monterey_bluetooth_apn/ itemprop=url>macOS Monterey中蓝牙PAN(Bluetooth PAN)到哪里去了？ 😡</a></h1><div class=post-meta><span class=post-time><i class="fa fa-calendar-o fa-fw"></i>
-<span class=post-meta-item-text>时间：</span>
-<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-12-21">2021-12-21</time></span>
-<span class=post-category>&nbsp; | &nbsp;
-<i class="fa fa-folder-o fa-fw"></i>
-<span class=post-meta-item-text>分类：</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=/categories/monterey itemprop=url rel=index style=text-decoration:underline><span itemprop=name>Monterey</span></a>
-&nbsp;</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=/categories/bluetooth-pan itemprop=url rel=index style=text-decoration:underline><span itemprop=name>Bluetooth PAN</span></a>
-&nbsp;</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=/categories/macos itemprop=url rel=index style=text-decoration:underline><span itemprop=name>macOS</span></a>
-&nbsp;</span></span>
-<span>|
-<i class="fa fa-file-word-o fa-fw"></i>
-<span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>205 字</span></span>
-<span>|
-<i class="fa fa-eye fa-fw"></i>
-<span class=post-meta-item-text>阅读：</span>
-<span class=leancloud-view-count>1分钟</span></span></div></header><div class=post-body itemprop=articleBody><p>我有一台办公的旧mac，操作系统是big sur，使用wifi连接内网，同时蓝牙连接手机上外网，这对我来说是办公的硬性需求，然而不幸的是最近升级了Monterey，蓝牙网络连接没有了。</p><p>macOS big sur时的蓝牙连接网络
-<img src=/post/macOS_Monterey_bluetooth_apn/WechatIMG3.jpeg alt></p></div><div class="post-more-link text-center"><a class=btn href=http://www.luckfu.com/post/2021-12-21_macos_monterey_bluetooth_apn/ rel=contents>阅读全文 &#187;</a></div><footer class=post-footer><div class=post-eof></div></footer></article></section><nav class=pagination><a class="extend prev" rel=prev href=/p/3/><i class="fa fa-angle-left"></i></a>
+<span class=leancloud-view-count>2分钟</span></span></div></header><div class=post-body itemprop=articleBody><p>Kubernetes 集群中NodePort默认范围是 30000-32767，网络上对修改方法的说明很多，但最近的实际操作中，有一个隐藏的问题，让我花了一天时间。</p><p>在Master节点上的文件 <code>/etc/kubernetes/manifests/kube-apiserver.yaml</code>，修改此文件，向其中添<code>--service-node-port-range=1-65535</code></p></div><div class="post-more-link text-center"><a class=btn href=http://www.luckfu.com/post/2021-12-22_k8s-nodeport-range/ rel=contents>阅读全文 &#187;</a></div><footer class=post-footer><div class=post-eof></div></footer></article></section><nav class=pagination><a class="extend prev" rel=prev href=/p/3/><i class="fa fa-angle-left"></i></a>
 <a class=page-number href=/>1</a>
 <a class=page-number href=/p/2/>2</a>
 <a class=page-number href=/p/3/>3</a>
@@ -106,9 +105,9 @@
 <a class=page-number href=/p/5/>5</a>
 <a class="extend next" rel=next href=/p/5/><i class="fa fa-angle-right"></i></a></nav></div></div><div class=sidebar-toggle><div class=sidebar-toggle-line-wrap><span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
 <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-<span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id=sidebar class=sidebar><div class=sidebar-inner><section class="site-overview sidebar-panel sidebar-panel-active"><div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image src=/img/avatar.gif alt=luckfu><p class=site-author-name itemprop=name>luckfu</p><p class="site-description motion-element" itemprop=description>一瞬间，过去的一切都离你而去，剩下的只有回忆!</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href=/post/><span class=site-state-item-count>24</span>
+<span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id=sidebar class=sidebar><div class=sidebar-inner><section class="site-overview sidebar-panel sidebar-panel-active"><div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image src=/img/avatar.gif alt=luckfu><p class=site-author-name itemprop=name>luckfu</p><p class="site-description motion-element" itemprop=description>一瞬间，过去的一切都离你而去，剩下的只有回忆!</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href=/post/><span class=site-state-item-count>25</span>
 <span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>20</span>
-<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>31</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>34</span>
 <span class=site-state-item-name>标签</span></a></div></nav><div class="feed-link motion-element"><a href=/index.xml rel=alternate type=application/rss+xml target=_blank><i class="fa fa-rss"></i>
 RSS 订阅</a></div><div class="links-of-author motion-element"><span class=links-of-author-item><a href=https://github.com/luckfu/ target=_blank title=GitHub><i class="fa fa-fw fa-github"></i>
 GitHub</a></span></div><div class="tagcloud-of-blogroll motion-element tagcloud-of-blogroll-inline"><div class=tagcloud-of-blogroll-title><i class="fa fa-fw fa-tags"></i>
