@@ -6,8 +6,23 @@
 &lt;p>Chainlit是一个开源Python包，旨在彻底改变构建和共享语言模型（LM）应用程序的方式。Chainlit可以创建用户界面（UI），类似于由OpenAI开发的ChatGPT用户界面，Chainlit可以开发类&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>本文将介绍 Chainlit 使用 LangFlow构建 LLM 构建的工作流，将 LangFlow 发布的服务展现到Chainlit 前端&lt;/p>
-&lt;p>&lt;img alt="图片" src="https://raw.githubusercontent.com/luckfu/chat/main/Screenshot.png">&lt;/p></description></item><item><title>用GPT-4o写了一个端口转发程序</title><link>http://www.luckfu.com/post/2024-06-06_port-forward/</link><pubDate>Thu, 06 Jun 2024 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/2024-06-06_port-forward/</guid><description>&lt;p>昨天一个同事问我，类似阿里的PAI平台，当你在jupyter或者code环境的终端中，启动一个带网络端口的app，会自动启动一个端口转发，把你的app应用端口，映射到一个当前网站的url中，类似行为的还有code-server，整个过程是自动的，并且平台会提示你，你的端口被转发到了xxx.&lt;/p>
+&lt;p>本文将介绍 Chainlit 使用 LangFlow构建 LLM 的工作流，将 LangFlow 发布的服务展现到Chainlit 前端&lt;/p>
+&lt;p>&lt;img alt="图片" src="https://raw.githubusercontent.com/luckfu/chat/main/Screenshot.png">&lt;/p></description></item><item><title>自定义 LangChain OpenAI 聊天模型（CustomChatOpenAI）重构实践</title><link>http://www.luckfu.com/post/2022-05-27_langchain_openai/</link><pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/2022-05-27_langchain_openai/</guid><description>&lt;h1 id="自定义-langchain-openai-聊天模型customchatopenai重构实践">自定义 LangChain OpenAI 聊天模型（CustomChatOpenAI）重构实践&lt;/h1>
+&lt;p>在 AI 应用开发中，LangChain 提供了强大的链式调用能力，而 OpenAI 的接口则是主流大模型服务的事实标准。本文将介绍如何基于 LangChain 的 &lt;code>ChatOpenAI&lt;/code>，重构并扩展出一个支持推理内容（reasoning_content）流式输出的自定义聊天模型——&lt;code>CustomChatOpenAI&lt;/code>，并详细解析其设计思路与实现细节。&lt;/p>
+&lt;h2 id="背景与需求">背景与需求&lt;/h2>
+&lt;p>在实际业务中，除了常规的对话内容（content），我们还希望模型能输出推理过程（reasoning_content），并且在流式响应时能以 &lt;code>&amp;lt;think&amp;gt;...&amp;lt;/think&amp;gt;&lt;/code> 标签包裹推理内容，便于前端或下游系统做进一步处理。原生的 &lt;code>ChatOpenAI&lt;/code> 并不支持这一需求，因此需要自定义扩展。&lt;/p>
+&lt;h2 id="设计思路">设计思路&lt;/h2>
+&lt;h3 id="1-继承与扩展">1. 继承与扩展&lt;/h3>
+&lt;p>我们通过继承 &lt;code>ChatOpenAI&lt;/code>，重写其核心方法，增加对 &lt;code>reasoning_content&lt;/code> 的处理能力。核心思路如下：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>流式输出&lt;/strong>：在流式响应中，优先检测 &lt;code>reasoning_content&lt;/code>，并用 &lt;code>&amp;lt;think&amp;gt;...&amp;lt;/think&amp;gt;&lt;/code> 标签包裹，仅允许出现一次，避免重复嵌套。&lt;/li>
+&lt;li>&lt;strong>普通输出&lt;/strong>：在非流式响应中，将推理内容和最终回复拼接输出，格式统一。&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-关键方法解析">2. 关键方法解析&lt;/h3>
+&lt;h4 id="_create_client">&lt;code>_create_client&lt;/code>&lt;/h4>
+&lt;p>重写客户端创建方法，支持自定义 base_url 和 api_key，兼容多种 OpenAI 兼容服务。&lt;/p>
+&lt;h4 id="_process_stream">&lt;code>_process_stream&lt;/code>&lt;/h4>
+&lt;p>核心流式处理逻辑。遍历大模型返回的流式数据块，判断 &lt;code>delta&lt;/code> 中是否包含 &lt;code>reasoning_content&lt;/code> 或 &lt;code>content&lt;/code>，并按需插入 &lt;code>&amp;lt;think&amp;gt;&lt;/code> 标签。例如：&lt;/p></description></item><item><title>用GPT-4o写了一个端口转发程序</title><link>http://www.luckfu.com/post/2024-06-06_port-forward/</link><pubDate>Thu, 06 Jun 2024 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/2024-06-06_port-forward/</guid><description>&lt;p>昨天一个同事问我，类似阿里的PAI平台，当你在jupyter或者code环境的终端中，启动一个带网络端口的app，会自动启动一个端口转发，把你的app应用端口，映射到一个当前网站的url中，类似行为的还有code-server，整个过程是自动的，并且平台会提示你，你的端口被转发到了xxx.&lt;/p>
 &lt;p>&lt;img alt="code-server port forward" src="http://www.luckfu.com/post/images/2024-06-06/2024-06-06_14.30.12.png">&lt;/p></description></item><item><title>用Alpaca和LangChain制作一个自定义知识库的聊天机器人</title><link>http://www.luckfu.com/post/2023-06-06_langchain_qa/</link><pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/2023-06-06_langchain_qa/</guid><description>&lt;p>近来，聊天机器人已成为我们数字生活中不可或缺的一部分，简化了客户服务，增强了用户体验，甚至提供了陪伴。随着人工智能和自然语言处理技术的进步不断涌现，开发人员越来越多地寻求创新的解决方案，以创建更复杂、更人性化的聊天机器人。在本文中，我们将深入研究支持开发聊天机器人技术：使用LangChain框架构建的Alpaca，为有兴趣创建自己的聊天机器人或改进现有聊天机器人的人提供参考。准备好踏上聊天机器人创建技术领域的旅程，我们将揭开 Alpaca 非凡对话能力背后的秘密。&lt;/p>
 &lt;p>首先，您需要从HuggingFace安装Transformers库。通过 pip 使用 Python 包索引 （PyPI） 提供的版本，我建议直接从 GitHub 上的主分支安装它。这可确保您有权访问此项目所需的最新版本和模型。&lt;/p>
 &lt;p>要从 GitHub 安装转换器，只需运行以下命令：&lt;/p>
@@ -31,7 +46,7 @@
 &lt;img src="http://www.luckfu.com/post/images/2022-04-26/2022-04-26-01.jpeg">&lt;/p>
 &lt;blockquote>
 &lt;p>shapely是专门做图形计算的包，基本上图形线段，点的判断包里都有，shapely里主要由Point，LineString，Polygon这三类组成，在shapely里点，线，面之间都是可以做判断的，比如说计算点到线段的距离，点到面之间的距离，点与点之间的距离，点是否在一个图形的内部或外部，或边界上，线是否在图形的内部等。&lt;/p>
-&lt;/blockquote></description></item><item><title>防疫中的假期怎么办</title><link>http://www.luckfu.com/post/2022-05-01/</link><pubDate>Mon, 25 Apr 2022 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/2022-05-01/</guid><description>各种软性限制，不准离开工作地，然而还有几天就要小长假了，难道一个人呆在这个城市的一间小屋子里五天。 早上老婆来电话，问五一还有没有回去的希望，</description></item><item><title>健康码变黄码</title><link>http://www.luckfu.com/post/2022-04-19_yellow_code/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/2022-04-19_yellow_code/</guid><description>&lt;blockquote>
+&lt;/blockquote></description></item><item><title>健康码变黄码</title><link>http://www.luckfu.com/post/2022-04-19_yellow_code/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/2022-04-19_yellow_code/</guid><description>&lt;blockquote>
 &lt;p>最近一段时间的疫情防控愈演愈烈，客户场地已经不让进入，每48小时以内必须就近做一次核酸检测，正当觉得达成集齐七张核酸卡的成就召唤神龙，周三就可以完全解除禁锢时，突然发现，绿码变黄了
 &lt;img src="http://www.luckfu.com/post/images/live/%E6%A0%B8%E7%AE%97%E6%A3%80%E6%B5%8B.png">&lt;/p>
 &lt;/blockquote></description></item><item><title>真正能逼你换手机的，只有孩子的骚操作</title><link>http://www.luckfu.com/post/2022-04-06_iphone13/</link><pubDate>Wed, 06 Apr 2022 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/2022-04-06_iphone13/</guid><description>&lt;p>人到中年，换新手机的欲望是极低的，能逼你换手机的，只有靠孩子的骚操作，清明节孩子非要背他，爬上背的时候一脚踹掉屁股口袋里的电话&amp;hellip;&amp;hellip;

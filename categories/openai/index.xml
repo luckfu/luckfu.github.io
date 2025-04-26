@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Openai on luckfu的潦草笔记</title><link>http://www.luckfu.com/categories/openai/</link><description>Recent content in Openai on luckfu的潦草笔记</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://www.luckfu.com/categories/openai/index.xml" rel="self" type="application/rss+xml"/><item><title>自定义 LangChain OpenAI 聊天模型（CustomChatOpenAI）重构实践</title><link>http://www.luckfu.com/post/2022-05-27_langchain_openai/</link><pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate><guid>http://www.luckfu.com/post/2022-05-27_langchain_openai/</guid><description>&lt;h1 id="自定义-langchain-openai-聊天模型customchatopenai重构实践">自定义 LangChain OpenAI 聊天模型（CustomChatOpenAI）重构实践&lt;/h1>
+&lt;p>在 AI 应用开发中，LangChain 提供了强大的链式调用能力，而 OpenAI 的接口则是主流大模型服务的事实标准。本文将介绍如何基于 LangChain 的 &lt;code>ChatOpenAI&lt;/code>，重构并扩展出一个支持推理内容（reasoning_content）流式输出的自定义聊天模型——&lt;code>CustomChatOpenAI&lt;/code>，并详细解析其设计思路与实现细节。&lt;/p>
+&lt;h2 id="背景与需求">背景与需求&lt;/h2>
+&lt;p>在实际业务中，除了常规的对话内容（content），我们还希望模型能输出推理过程（reasoning_content），并且在流式响应时能以 &lt;code>&amp;lt;think&amp;gt;...&amp;lt;/think&amp;gt;&lt;/code> 标签包裹推理内容，便于前端或下游系统做进一步处理。原生的 &lt;code>ChatOpenAI&lt;/code> 并不支持这一需求，因此需要自定义扩展。&lt;/p>
+&lt;h2 id="设计思路">设计思路&lt;/h2>
+&lt;h3 id="1-继承与扩展">1. 继承与扩展&lt;/h3>
+&lt;p>我们通过继承 &lt;code>ChatOpenAI&lt;/code>，重写其核心方法，增加对 &lt;code>reasoning_content&lt;/code> 的处理能力。核心思路如下：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>流式输出&lt;/strong>：在流式响应中，优先检测 &lt;code>reasoning_content&lt;/code>，并用 &lt;code>&amp;lt;think&amp;gt;...&amp;lt;/think&amp;gt;&lt;/code> 标签包裹，仅允许出现一次，避免重复嵌套。&lt;/li>
+&lt;li>&lt;strong>普通输出&lt;/strong>：在非流式响应中，将推理内容和最终回复拼接输出，格式统一。&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-关键方法解析">2. 关键方法解析&lt;/h3>
+&lt;h4 id="_create_client">&lt;code>_create_client&lt;/code>&lt;/h4>
+&lt;p>重写客户端创建方法，支持自定义 base_url 和 api_key，兼容多种 OpenAI 兼容服务。&lt;/p>
+&lt;h4 id="_process_stream">&lt;code>_process_stream&lt;/code>&lt;/h4>
+&lt;p>核心流式处理逻辑。遍历大模型返回的流式数据块，判断 &lt;code>delta&lt;/code> 中是否包含 &lt;code>reasoning_content&lt;/code> 或 &lt;code>content&lt;/code>，并按需插入 &lt;code>&amp;lt;think&amp;gt;&lt;/code> 标签。例如：&lt;/p></description></item></channel></rss>

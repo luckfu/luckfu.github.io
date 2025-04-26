@@ -6,5 +6,5 @@
 &lt;p>Chainlit是一个开源Python包，旨在彻底改变构建和共享语言模型（LM）应用程序的方式。Chainlit可以创建用户界面（UI），类似于由OpenAI开发的ChatGPT用户界面，Chainlit可以开发类&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>本文将介绍 Chainlit 使用 LangFlow构建 LLM 构建的工作流，将 LangFlow 发布的服务展现到Chainlit 前端&lt;/p>
+&lt;p>本文将介绍 Chainlit 使用 LangFlow构建 LLM 的工作流，将 LangFlow 发布的服务展现到Chainlit 前端&lt;/p>
 &lt;p>&lt;img alt="图片" src="https://raw.githubusercontent.com/luckfu/chat/main/Screenshot.png">&lt;/p></description></item></channel></rss>
